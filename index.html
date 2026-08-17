@@ -403,12 +403,12 @@ extend base R.</li>
 </ul><p>We will use a Python virtual environment created by Conda to install
 and manage all software and dependencies required for the lesson. We
 will not use an R integrated development environment, like RStudio.
-Rather we will enter ommands into a JuPyteR notebook that will ececute
+Rather we will enter commands into a JuPyteR notebook that will execute
 the R commands using an R kernel instead of a Python kernel.</p>
 </section><section><h2 class="section-heading" id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a></h2>
 <hr class="half-width"><hr><p>The example images and a description of the Python environment
 (<code>environment.yml</code>) used in this lesson are available on
-FigShare. To download the data, please visit the dataset page for this
+Github. To download the data, please visit the dataset page for this
 workshop and click the “Download all” button. Unzip the downloaded file,
 and save the contents as a folder called <em>data</em> somewhere you
 will easily find it again, e.g. your Desktop or a folder you have
@@ -416,14 +416,14 @@ created for use during this workshop. The name <em>data</em> is optional
 but recommended, as this is the name we will use to refer to the folder
 throughout the lesson.</p>
 <div class="section level3">
-<h3 id="download-lesson-data">Download Lesson Data<a class="anchor" aria-label="anchor" href="#download-lesson-data"></a></h3>
-<p>Download the lesson data archive:</p>
-<pre class="text"><code><span><span class="va">bioimage</span><span class="op">-</span><span class="va">analysis</span><span class="op">-</span><span class="va">data.zip</span></span></code></pre>
-<p>and extract it into a folder named:</p>
-<pre class="text"><code><span><span class="va">data</span></span></code></pre>
+<h3 id="download-the-environment-file">Download the environment file:<a class="anchor" aria-label="anchor" href="#download-the-environment-file"></a></h3>
+<p>The complete Conda environment specification is available at:</p>
+<ul><li><p><a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/environment.yaml" class="external-link">environment.yaml</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/stephenogg/bioimage-analysis-with-r/main/episodes/data.zip" class="external-link">data</a></p></li>
+</ul><p>and extract it into a folder named: <code>bioimage-r</code></p>
 <p>We recommend the following directory structure:</p>
-<pre class="text"><code>bioimage-analysis/
-
+<pre class="text"><code>bioimage-r/
+|
 ├── data/
 ├── environment.yml
 └── notebooks/</code></pre>
@@ -461,26 +461,26 @@ available.</p>
 <p>Open:</p>
 <pre class="text"><code>Miniforge Prompt</code></pre>
 <p>Run:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
 </div>
 </div>
 <div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
 <p>Open Terminal and run:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
 </div>
 </div>
 <div id="nav-tabpanel-1-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-3">
 <p>Open a terminal and run:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -492,7 +492,7 @@ e.g. <code>conda 26.1.1</code></p>
 <hr class="half-width"><ul><li>Download the environment description file:</li>
 </ul><pre class="text"><code><span><span class="va">environment.yml</span></span></code></pre>
 <p>and place it in your working directory. (This file should already be
-downloaded.)</p>
+downloaded, if you followed the instructions above.)</p>
 <ul><li>Create the lesson environment.</li>
 </ul><div class="tabs">
 <nav><div id="nav-tab-2" class="nav nav-tabs" role="tablist">
@@ -515,31 +515,33 @@ downloaded.)</p>
 </nav><div id="nav-tabContent-2" class="tab-content">
 <div id="nav-tabpanel-2-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-1">
 <p>Open Miniforge Prompt and run:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
+</div>
+</div>
+<div id="nav-tabpanel-2-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-2">
+<p>Open Terminal and run:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
+</div>
+</div>
+<div id="nav-tabpanel-2-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-3">
+<p>Open a terminal and run:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-2-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-2">
-<p>Open Terminal and run:</p>
-<div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-2-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-3">
-<p>Open a terminal and run:</p>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<p>This will install:</p>
+<p>This will create a python virtual environment named
+<code>bioimage-r</code></p>
+<p>and install:</p>
 <ul><li>Python</li>
 <li>JupyterLab</li>
 <li>R</li>
@@ -569,31 +571,32 @@ computer asks you to approve any installations.</p>
 </div>
 </nav><div id="nav-tabContent-3" class="tab-content">
 <div id="nav-tabpanel-3-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-3-1">
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
+</div>
+</div>
+<div id="nav-tabpanel-3-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-3-2">
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
+</div>
+</div>
+<div id="nav-tabpanel-3-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-3-3">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-3-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-3-2">
-<div class="codewrapper sourceCode" id="cb13">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-3-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-3-3">
-<div class="codewrapper sourceCode" id="cb14">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<p>Your command prompt should now begin with the name of the active
-virtual environment in parentheses, e.g:</p>
-<pre class="text"><code><span><span class="op">(</span><span class="va">bioimage</span><span class="op">-</span><span class="va">r</span><span class="op">)</span></span></code></pre>
+<p>Before activating the virtual environment, your command prompt should
+begin with <code>(base)</code>. After activation, your command prompt
+should now begin with the name of the active virtual environment in
+parentheses, e.g: <code>bioimage-r</code>.</p>
 </section><section><h2 class="section-heading" id="step-4-launch-jupyterlab">Step 4: Launch JupyterLab<a class="anchor" aria-label="anchor" href="#step-4-launch-jupyterlab"></a></h2>
 <hr class="half-width"><div class="tabs">
 <nav><div id="nav-tab-4" class="nav nav-tabs" role="tablist">
@@ -616,26 +619,26 @@ virtual environment in parentheses, e.g:</p>
 </nav><div id="nav-tabContent-4" class="tab-content">
 <div id="nav-tabpanel-4-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-4-1">
 <p>From Miniforge Prompt:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1" aria-label="code-block-16-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
 </div>
 </div>
 <div id="nav-tabpanel-4-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-2">
 <p>From Terminal:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
 </div>
 </div>
 <div id="nav-tabpanel-4-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-3">
 <p>From Terminal:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1" aria-label="code-block-18-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
 </div>
 </div>
 </div>
@@ -665,7 +668,7 @@ below.</p>
 </ol><p>The cell will execute and display the result.</p>
 <p>Create a notebook cell, copy the code below into the cell and run it
 (<code>shift + enter</code>):</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -686,7 +689,7 @@ installation is working correctly.</p>
 <div class="section level3">
 <h3 id="test-required-packages">Test Required Packages<a class="anchor" aria-label="anchor" href="#test-required-packages"></a></h3>
 <p>Run:</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -703,7 +706,7 @@ installation is working correctly.</p>
 <div class="section level3">
 <h3 id="test-data-access">Test Data Access<a class="anchor" aria-label="anchor" href="#test-data-access"></a></h3>
 <p>Run:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -718,7 +721,7 @@ installation is working correctly.</p>
   Running Cells in a Notebook
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p><img src="fig/00-setup/jupyter_overview.png" alt="explanatin of cells in a JuPyteR notebook" class="figure"> To run code in a
 Jupyter notebook cell, click on a cell in the notebook (or add a new one
@@ -743,26 +746,26 @@ Prompt</strong>.</p>
 <div class="section level3">
 <h3 id="jupyterlab-will-not-start">JupyterLab Will Not Start<a class="anchor" aria-label="anchor" href="#jupyterlab-will-not-start"></a></h3>
 <p>Verify:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">jupyter</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="ex">jupyter</span> <span class="at">--version</span></span></code></pre>
 </div>
 <p>If no version number is displayed, recreate the Conda
 environment:</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" tabindex="-1" aria-label="code-block-23-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1" aria-label="code-block-20-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="r-kernel-not-listed">R Kernel Not Listed<a class="anchor" aria-label="anchor" href="#r-kernel-not-listed"></a></h3>
 <p>Run:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" tabindex="-1" aria-label="code-block-24-1"></a><span class="ex">jupyter</span> kernelspec list</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1" aria-label="code-block-21-1"></a><span class="ex">jupyter</span> kernelspec list</span></code></pre>
 </div>
 <p>You should see an entry for R.</p>
 <p>If no R kernel appears, recreate the Conda environment.</p>
@@ -770,10 +773,10 @@ environment:</p>
 <div class="section level3">
 <h3 id="ebimage-will-not-load">EBImage Will Not Load<a class="anchor" aria-label="anchor" href="#ebimage-will-not-load"></a></h3>
 <p>Activate the lesson environment:</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
 </div>
 <p>Then launch JupyterLab again.</p>
 <p>A small number of exercises will require you to run commands in a
