@@ -15,15 +15,16 @@ This lesson uses:
 
 We will use a Python virtual environment created by Conda to install and manage all 
 software and  dependencies required for the lesson. We will not use an R integrated 
-development environment, like RStudio. Rather we will enter ommands into a JuPyteR
-notebook that will ececute the R commands using an R kernel instead of a Python kernel.
+development environment, like RStudio. Rather we will enter commands into a JuPyteR
+notebook that will execute the R commands using an R kernel instead of a Python kernel.
+
 
 ## Data
 
 ---------
 
 The example images and a description of the Python environment (`environment.yml`) 
-used in this lesson are available on FigShare. To download the data, 
+used in this lesson are available on Github. To download the data, 
 please visit the dataset page for this workshop and click the “Download all” button. 
 Unzip the downloaded file, and save the contents as a folder called *data* 
 somewhere you will easily find it again, e.g. your Desktop or a folder you have created 
@@ -31,25 +32,21 @@ for use during this workshop. The name *data* is optional but recommended,
 as this is the name we will use to refer to the folder throughout the lesson.
 
 
-### Download Lesson Data
+### Download the environment file:
 
-Download the lesson data archive:
+The complete Conda environment specification is available at:
 
-```text
-bioimage-analysis-data.zip
-```
+- [environment.yaml](https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/environment.yaml)
 
-and extract it into a folder named:
+- [data](https://raw.githubusercontent.com/stephenogg/bioimage-analysis-with-r/main/episodes/data.zip)
 
-```text
-data
-```
+and extract it into a folder named: `bioimage-r`
 
 We recommend the following directory structure:
 
 ```text
-bioimage-analysis/
-
+bioimage-r/
+|
 ├── data/
 ├── environment.yml
 └── notebooks/
@@ -111,7 +108,8 @@ You should see a Conda version number - e.g. `conda 26.1.1`
 environment.yml
 ```
 
-and place it in your working directory. (This file should already be downloaded.)
+and place it in your working directory. (This file should already be downloaded, 
+if you followed the instructions above.)
 
 - Create the lesson environment.
 
@@ -143,7 +141,9 @@ conda env create -f environment.yml
 
 :::
 
-This will install:
+This will create a python virtual environment named `bioimage-r`
+
+and install:
 
 - Python
 - JupyterLab
@@ -178,12 +178,9 @@ conda activate bioimage-r
 ```
 :::
 
-Your command prompt should now begin with the name of the active virtual 
-environment in parentheses, e.g:
-
-```text
-(bioimage-r)
-```
+Before activating the virtual environment, your command prompt should begin with `(base)`.
+After activation, your command prompt should now begin with the name of the active virtual 
+environment in parentheses, e.g: `bioimage-r`.
 
 ## Step 4: Launch JupyterLab
 
