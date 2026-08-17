@@ -1,0 +1,72 @@
+name: bioimage-r
+
+channels:
+  - conda-forge
+  - bioconda
+
+dependencies:
+  # Core language runtimes
+  - python=3.12
+  - r-base>=4.4
+
+  # Jupyter
+  - jupyterlab
+  - notebook
+  - jupyterlab-git
+
+  # R kernel
+  - r-irkernel
+
+  # Core tidyverse ecosystem
+  - r-tidyverse
+  - r-ggplot2
+  - r-dplyr
+  - r-tidyr
+  - r-readr
+  - r-purrr
+  - r-stringr
+  - r-forcats
+
+  # Reporting and teaching
+  - r-rmarkdown
+  - r-knitr
+  - r-bslib
+  - r-tinytex
+
+  # Lesson utilities
+  - r-here
+  - r-patchwork
+  - r-glue
+  - r-fs
+  - r-yaml
+
+  # Data import
+  - r-readxl
+  - r-data.table
+
+  # Plotting
+  - r-scales
+  - r-viridis
+  - r-rcolorbrewer
+  - r-gridextra
+
+  # Image analysis
+  - bioconductor-ebimage
+  - bioconductor-rbioformats
+
+  # Java runtime needed by RBioFormats
+  - openjdk
+  - r-rjava
+
+  # Development / reproducibility
+  - r-renv
+  - r-sessioninfo
+
+  # Development tools
+  - git
+
+  # Python support
+  - pip
+
+  - pip:
+      - ipykernel
