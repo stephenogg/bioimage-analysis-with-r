@@ -118,20 +118,12 @@ The EBImage library was installed as part of the conda environment that you init
 
 ``` r
 library(EBImage)
-```
 
-``` error
-Error in `library()`:
-! there is no package called 'EBImage'
-```
-
-``` r
 packageVersion("EBImage")
 ```
 
-``` error
-Error in `packageVersion()`:
-! there is no package called 'EBImage'
+``` output
+[1] '4.54.0'
 ```
 
 Read (assign) a TIFF image to an R object using the `readImage()` function provided by EBImage.
@@ -144,9 +136,14 @@ img <- readImage(
 )
 ```
 
-``` error
-Error in `readImage()`:
-! could not find function "readImage"
+``` warning
+Warning in readTIFF(x, all = all, ...): TIFFReadDirectory: Unknown field with
+tag 50838 (0xc696) encountered
+```
+
+``` warning
+Warning in readTIFF(x, all = all, ...): TIFFReadDirectory: Unknown field with
+tag 50839 (0xc697) encountered
 ```
 
  and Display the image:
@@ -156,10 +153,7 @@ Error in `readImage()`:
 display(img)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 
 The image is now stored in R as a numerical array.
 
@@ -177,9 +171,8 @@ In the `Color` mode, the third dimension contains color channels of the image (u
 dim(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 512 512
 ```
 
 The output depends on the image.
@@ -205,9 +198,8 @@ We can also inspect pixel values.
 range(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 0 1
 ```
 
 
@@ -215,9 +207,9 @@ Error:
 summary(as.vector(img))
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.000000 0.007843 0.046123 0.023529 1.000000 
 ```
 
 The exact values depend on the image and its bit depth.  
@@ -254,33 +246,14 @@ Load each file.
 
 ``` r
 img_tif <- img
-```
 
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 img_png <- readImage(
   "data/03-reading-bioimages/cells-lossless.png"
 )
-```
 
-``` error
-Error in `readImage()`:
-! could not find function "readImage"
-```
-
-``` r
 img_jpg <- readImage(
   "data/03-reading-bioimages/cells-lossy.jpg"
 )
-```
-
-``` error
-Error in `readImage()`:
-! could not find function "readImage"
 ```
 
 Display the images.
@@ -290,30 +263,21 @@ Display the images.
 display(img_tif)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" />
 
 
 ``` r
 display(img_png)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" />
 
 
 ``` r
 display(img_jpg)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-10-1.png" alt="" style="display: block; margin: auto;" />
 
 At first glance they may appear very similar.
 
@@ -329,9 +293,8 @@ values are TRUE in an R vector or array.
 all(img_tif == img_png)
 ```
 
-``` error
-Error:
-! object 'img_tif' not found
+``` output
+[1] TRUE
 ```
 
 Because PNG uses lossless compression, pixel values may be preserved exactly. 
@@ -345,9 +308,8 @@ Now compare TIFF and JPEG.
 all(img_tif == img_jpg)
 ```
 
-``` error
-Error:
-! object 'img_tif' not found
+``` output
+[1] FALSE
 ```
 
 JPEG compression modifies pixel values.
@@ -384,11 +346,6 @@ difference <- abs(
 )
 ```
 
-``` error
-Error:
-! object 'img_tif' not found
-```
-
 Display the difference image.
 
 
@@ -398,10 +355,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-14-1.png" alt="" style="display: block; margin: auto;" />
 
 Although the JPEG image may look very similar to the original, the difference
 image reveals where pixel values have been modified.
@@ -474,46 +428,27 @@ histograms. Note that althrough the histograms are identical, the images are com
 display(img)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-15-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 another_img <- Image(matrix(sample(img), nrow = nrow(img), ncol = ncol(img)))
-```
 
-``` error
-Error in `Image()`:
-! could not find function "Image"
-```
-
-``` r
 display(another_img)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-15-2.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 graphics::hist(img, breaks = 50)
 ```
 
-``` error
-Error:
-! object 'img' not found
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-15-3.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 graphics::hist(another_img, breaks = 50)
 ```
 
-``` error
-Error:
-! object 'another_img' not found
-```
+<img src="fig/03-reading-bioimages-rendered-unnamed-chunk-15-4.png" alt="" style="display: block; margin: auto;" />
 
 
 :::::::::::::::::::::::::::::::::

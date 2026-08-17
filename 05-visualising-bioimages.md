@@ -55,11 +55,6 @@ Load the EBImage package.
 library(EBImage)
 ```
 
-``` error
-Error in `library()`:
-! there is no package called 'EBImage'
-```
-
 Read an image.
 
 
@@ -69,9 +64,9 @@ img <- readImage(
 )
 ```
 
-``` error
-Error in `readImage()`:
-! could not find function "readImage"
+``` warning
+Warning in readTIFF(x, all = all, ...): TIFFReadDirectory: Incorrect count for
+"ColorMap"; tag ignored
 ```
 
 Display the image.
@@ -81,10 +76,7 @@ Display the image.
 display(img)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/05-visualising-bioimages-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 
 This image is represented internally as a numerical array.
 
@@ -95,9 +87,8 @@ Let's inspect its dimensions.
 dim(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 2560 2560
 ```
 
 We can also examine the range of pixel values.
@@ -107,9 +98,8 @@ We can also examine the range of pixel values.
 range(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 0.000000 0.686656
 ```
 
 ::::::::::::::::::::::::::::::::::::: callout
@@ -139,9 +129,9 @@ We can calculate simple summary statistics.
 summary(as.vector(img))
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+0.0000000 0.0003204 0.0010529 0.0139743 0.0029145 0.6866560 
 ```
 
 These numbers summarise the underlying pixel intensity values, 
@@ -208,10 +198,7 @@ hist(
 )
 ```
 
-``` error
-Error:
-! object 'img' not found
-```
+<img src="fig/05-visualising-bioimages-rendered-unnamed-chunk-7-1.png" alt="" style="display: block; margin: auto;" />
 
 The histogram shows:
 
@@ -249,20 +236,7 @@ this to a new object. You rarely want to change your raw data!
 
 ``` r
 img_stretched <- normalize(img)
-```
-
-``` error
-Error in `normalize()`:
-! could not find function "normalize"
-```
-
-``` r
 img_equalized <- equalize(img)
-```
-
-``` error
-Error in `equalize()`:
-! could not find function "equalize"
 ```
 
 Display the enhanced images.
@@ -272,19 +246,13 @@ Display the enhanced images.
 display(img_stretched)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/05-visualising-bioimages-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 display(img_equalized)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/05-visualising-bioimages-rendered-unnamed-chunk-9-2.png" alt="" style="display: block; margin: auto;" />
 
 Compare the intensity ranges.
 
@@ -294,9 +262,8 @@ Original Image:
 range(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 0.000000 0.686656
 ```
 
 Streched Image:
@@ -305,9 +272,8 @@ Streched Image:
 range(img_stretched)
 ```
 
-``` error
-Error:
-! object 'img_stretched' not found
+``` output
+[1] 0 1
 ```
 
 Equalized Image:
@@ -316,9 +282,8 @@ Equalized Image:
 range(img_equalized)
 ```
 
-``` error
-Error:
-! object 'img_equalized' not found
+``` output
+[1] 0 1
 ```
 
 The image appearance changes dramatically, but the biological structures remain
@@ -337,27 +302,13 @@ hist(
   main = "Original",
   xlab = "Intensity"
 )
-```
 
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 hist(
   as.vector(img_stretched),
   main = "Normalised",
   xlab = "Intensity"
 )
-```
 
-``` error
-Error:
-! object 'img_stretched' not found
-```
-
-``` r
 hist(
   as.vector(img_equalized),
   main = "Equalized",
@@ -365,10 +316,7 @@ hist(
 )
 ```
 
-``` error
-Error:
-! object 'img_equalized' not found
-```
+<img src="fig/05-visualising-bioimages-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 par(mfrow = c(1, 1))

@@ -406,22 +406,15 @@ Load an OME-TIFF file using EBImage.
 
 ``` r
 library(EBImage)
-```
 
-``` error
-Error in `library()`:
-! there is no package called 'EBImage'
-```
-
-``` r
 img <- readImage(
   "data/04-microscopy-metadata/Actin.ome.tif"
 )
 ```
 
-``` error
-Error in `readImage()`:
-! could not find function "readImage"
+``` warning
+Warning in readTIFF(x, all = all, ...): TIFFReadDirectory: Incorrect count for
+"ColorMap"; tag ignored
 ```
 
 Interrogate & display the object and some of its parameters:
@@ -431,37 +424,50 @@ Interrogate & display the object and some of its parameters:
 img
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+Image 
+  colorMode    : Grayscale 
+  storage.mode : double 
+  dim          : 2560 2560 
+  frames.total : 1 
+  frames.render: 1 
+
+imageData(object)[1:5,1:6]
+            [,1]        [,2]         [,3]         [,4]         [,5]
+[1,] 0.032379644 0.022171359 0.0080872816 0.0056305791 0.0065613794
+[2,] 0.021667811 0.014892805 0.0055695430 0.0043640803 0.0046997787
+[3,] 0.007522698 0.005325399 0.0021515221 0.0019684138 0.0017547875
+[4,] 0.002502480 0.001998932 0.0010833906 0.0005188067 0.0003814755
+[5,] 0.002090486 0.001586938 0.0007934691 0.0003204395 0.0001525902
+             [,6]
+[1,] 0.0055848020
+[2,] 0.0036926833
+[3,] 0.0012359808
+[4,] 0.0002288853
+[5,] 0.0001678492
 ```
 
 ``` r
 dim(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 2560 2560
 ```
 
 ``` r
 range(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 0 1
 ```
 
 ``` r
 display(img)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/04-microscopy-metadata-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" />
 
 
 The image can be analysed successfully.
@@ -487,57 +493,68 @@ Try it to see if it works in your Jupyter environment:
 library(RBioFormats)
 ```
 
-``` error
-Error in `library()`:
-! there is no package called 'RBioFormats'
+``` output
+BioFormats library version 7.3.0
 ```
 
 ``` r
 bio_img <- read.image(
   "data/04-microscopy-metadata/Actin.ome.tif"
 )
-```
 
-``` error
-Error in `read.image()`:
-! could not find function "read.image"
-```
-
-``` r
 bio_img
 ```
 
-``` error
-Error:
-! object 'bio_img' not found
+``` output
+AnnotatedImage 
+  colorMode    : Grayscale 
+  storage.mode : double 
+  dim          : 2560 2560 
+  dimorder     : x y 
+  frames.total : 1 
+  frames.render: 1 
+
+imageData(object)[1:5,1:6]
+      y
+x             [,1]        [,2]         [,3]         [,4]         [,5]
+  [1,] 0.032379644 0.022171359 0.0080872816 0.0056305791 0.0065613794
+  [2,] 0.021667811 0.014892805 0.0055695430 0.0043640803 0.0046997787
+  [3,] 0.007522698 0.005325399 0.0021515221 0.0019684138 0.0017547875
+  [4,] 0.002502480 0.001998932 0.0010833906 0.0005188067 0.0003814755
+  [5,] 0.002090486 0.001586938 0.0007934691 0.0003204395 0.0001525902
+      y
+x              [,6]
+  [1,] 0.0055848020
+  [2,] 0.0036926833
+  [3,] 0.0012359808
+  [4,] 0.0002288853
+  [5,] 0.0001678492
+
+metadata
+ $ coreMetadata:List of 18
 ```
 
 ``` r
 dim(bio_img)
 ```
 
-``` error
-Error:
-! object 'bio_img' not found
+``` output
+[1] 2560 2560
 ```
 
 ``` r
 range(bio_img)
 ```
 
-``` error
-Error:
-! object 'bio_img' not found
+``` output
+[1] 0 1
 ```
 
 ``` r
 display(bio_img)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/04-microscopy-metadata-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Image Data and Metadata Become Separated

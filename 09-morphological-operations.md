@@ -58,11 +58,6 @@ Load the EBImage package.
 library(EBImage)
 ```
 
-``` error
-Error in `library()`:
-! there is no package called 'EBImage'
-```
-
 Load the example nuclei image provided with EBImage and select a single frame for exploration.
 
 
@@ -74,20 +69,8 @@ img <- readImage(
     package = "EBImage"
   )
 )
-```
 
-``` error
-Error in `readImage()`:
-! could not find function "readImage"
-```
-
-``` r
 nuclei <- img[,,1]
-```
-
-``` error
-Error:
-! object 'img' not found
 ```
 
 Display the image.
@@ -97,18 +80,10 @@ Display the image.
 display(nuclei)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 mask <- nuclei > 0.175
-```
-
-``` error
-Error:
-! object 'nuclei' not found
 ```
 
 Create a binary mask.
@@ -118,11 +93,6 @@ Create a binary mask.
 mask <- nuclei > 0.175
 ```
 
-``` error
-Error:
-! object 'nuclei' not found
-```
-
 Display the mask.
 
 
@@ -130,10 +100,7 @@ Display the mask.
 display(mask)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" />
 
 Although the nuclei are obvious to a trained biologist, the segmentation is not perfect.
 
@@ -234,11 +201,6 @@ brush <- makeBrush(
 )
 ```
 
-``` error
-Error in `makeBrush()`:
-! could not find function "makeBrush"
-```
-
 Display the brush.
 
 
@@ -246,10 +208,7 @@ Display the brush.
 display(brush)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-7-1.png" alt="" style="display: block; margin: auto;" />
 
 The structuring element determines how neighbouring pixels influence the
 operation. The structuring element defines the size and shape of the neighbourhood 
@@ -269,11 +228,6 @@ Dilation expands foreground objects. It adds pixels to the boundaries of objects
 dilated <- dilate(mask, brush)
 ```
 
-``` error
-Error in `dilate()`:
-! could not find function "dilate"
-```
-
 Display the original and dilated masks to see how `dilation()` has changed the 
 original mask.
 
@@ -288,10 +242,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" />
 
 Notice that objects become larger.
 
@@ -320,11 +271,6 @@ Erosion removes pixels from object boundaries.
 eroded <- erode(mask, brush)
 ```
 
-``` error
-Error in `erode()`:
-! could not find function "erode"
-```
-
 Display the result.
 
 
@@ -338,10 +284,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" />
 
 Objects become smaller.
 
@@ -376,11 +319,6 @@ Opening is one erosion operation followed by one dilation operation.
 opened <- opening(mask, brush)
 ```
 
-``` error
-Error in `opening()`:
-! could not find function "opening"
-```
-
 Display the comparison.
 
 
@@ -394,10 +332,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" />
 
 Opening is often used to remove small objects and noise.
 
@@ -417,11 +352,6 @@ Closing is the opposite of Opening is one dilation followed by one erosion.
 closed <- closing(mask, brush)
 ```
 
-``` error
-Error in `closing()`:
-! could not find function "closing"
-```
-
 Display the result.
 
 
@@ -435,10 +365,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-15-1.png" alt="" style="display: block; margin: auto;" />
 
 Closing helps to:
 
@@ -499,11 +426,6 @@ The `fillHull()` function can fill holes.
 filled <- fillHull(mask)
 ```
 
-``` error
-Error in `fillHull()`:
-! could not find function "fillHull"
-```
-
 Display the result. Note that this particular binary image already has no objects 
 with holes. 
 
@@ -518,10 +440,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" />
 
 This operation is particularly useful when working with nuclei, as nucleoli are 
 often less bright than the neighbouring nucleoplasm. 
@@ -560,11 +479,6 @@ Create a distance map.
 dmap <- distmap(mask)
 ```
 
-``` error
-Error in `distmap()`:
-! could not find function "distmap"
-```
-
 Display the distance map.
 
 
@@ -574,10 +488,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-19-1.png" alt="" style="display: block; margin: auto;" />
 
 Bright regions correspond to pixels located near object centres.
 
@@ -676,11 +587,6 @@ The watershed boundary is constructed at those meeting points.
 ws <- watershed(dmap)
 ```
 
-``` error
-Error in `watershed()`:
-! could not find function "watershed"
-```
-
 Display the result.
 
 
@@ -690,10 +596,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-21-1.png" alt="" style="display: block; margin: auto;" />
 
 Each object receives a unique label. Notice that the `ws()` function also inlcudes 
 the connected components analysis -- in EBImage.
@@ -708,45 +611,20 @@ without the watershed algorithm.
 
 ``` r
 labels <- bwlabel(mask)
-```
 
-``` error
-Error in `bwlabel()`:
-! could not find function "bwlabel"
-```
-
-``` r
 overlay_ws <- paintObjects(
   ws,
   toRGB(normalize(nuclei))
 )
-```
-
-``` error
-Error in `paintObjects()`:
-! could not find function "paintObjects"
-```
-
-``` r
 overlay_label <- paintObjects(
   labels,
   toRGB(normalize(nuclei))
 )
-```
 
-``` error
-Error in `paintObjects()`:
-! could not find function "paintObjects"
-```
-
-``` r
 display(EBImage::combine(overlay_ws, overlay_label), all = TRUE)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/09-morphological-operations-rendered-unnamed-chunk-22-1.png" alt="" style="display: block; margin: auto;" />
 
 Overlay visualisation makes it easier to evaluate segmentation quality.
 

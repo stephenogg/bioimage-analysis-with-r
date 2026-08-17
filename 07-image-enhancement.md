@@ -61,32 +61,14 @@ Load the EBImage package.
 library(EBImage)
 ```
 
-``` error
-Error in `library()`:
-! there is no package called 'EBImage'
-```
-
 Read an image.
 
 
 ``` r
   img <- readImage(system.file('images', 'cells.tif', package='EBImage')
   )
-```
-
-``` error
-Error in `readImage()`:
-! could not find function "readImage"
-```
-
-``` r
 # cells.tif contains 4 frames, let's subset the data so that our image object contains on ly the first frame.
   img<- img[,,1]
-```
-
-``` error
-Error:
-! object 'img' not found
 ```
 
 Display the image.
@@ -96,10 +78,7 @@ Display the image.
 display(img)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 
 Inspect the range of pixel values.
 
@@ -108,9 +87,8 @@ Inspect the range of pixel values.
 range(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 0 1
 ```
 
 Create a histogram.
@@ -124,14 +102,7 @@ hist(
   main = "Graphics Histogram",
   xlab = "Pixel Intensity"
 )
-```
 
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 hist(
   img,
   main = "EBImage Histogram",
@@ -139,10 +110,7 @@ hist(
 )
 ```
 
-``` error
-Error:
-! object 'img' not found
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 par(mfrow = c(1,1))
@@ -187,11 +155,6 @@ We can invert the image using:
 img_inv <- 1 - img
 ```
 
-``` error
-Error:
-! object 'img' not found
-```
-
 
 Compare the original and inverted images.
 
@@ -200,10 +163,7 @@ Compare the original and inverted images.
 display(EBImage::combine(img, img_inv), all = TRUE)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-7-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Histograms and Inversion
 
@@ -218,14 +178,7 @@ hist(
   main = "Original Image",
   xlab = "Pixel Intensity"
 )
-```
 
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 hist(
   as.vector(img_inv),
   main = "Inverted Image",
@@ -233,10 +186,7 @@ hist(
 )
 ```
 
-``` error
-Error:
-! object 'img_inv' not found
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 par(mfrow = c(1,1))
@@ -302,29 +252,17 @@ a brighter image.
 
 ``` r
 img_bright <- img * 2
-```
-
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 display(img_bright)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 range(img_bright)
 ```
 
-``` error
-Error:
-! object 'img_bright' not found
+``` output
+[1] 0 2
 ```
 
 But what happens to pixel intensity values that end up greater than 1 after the multiplication? 
@@ -345,20 +283,7 @@ We can visualise where the pixels with values greater than one are by thresholdi
 
 ``` r
 img_mask <- img >= 1.0
-```
-
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 img_bright_mask <- img_bright >= 1.0
-```
-
-``` error
-Error:
-! object 'img_bright' not found
 ```
 
 Display the original and brightened image and the two masks to see the effect of 
@@ -370,41 +295,21 @@ a red colour.
 red_img_mask <- rgbImage(
   red = img_mask
 )
-```
 
-``` error
-Error in `rgbImage()`:
-! could not find function "rgbImage"
-```
-
-``` r
 red_img_bright_mask <- rgbImage(
   red = img_bright_mask
 )
-```
 
-``` error
-Error in `rgbImage()`:
-! could not find function "rgbImage"
-```
-
-``` r
 display(EBImage::combine(img, img_bright), all = TRUE)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 display(EBImage::combine(red_img_mask, red_img_bright_mask), all = TRUE)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-11-2.png" alt="" style="display: block; margin: auto;" />
 
 Compare the intensity ranges.
 
@@ -413,9 +318,8 @@ Compare the intensity ranges.
 range(img)
 ```
 
-``` error
-Error:
-! object 'img' not found
+``` output
+[1] 0 1
 ```
 
 
@@ -423,9 +327,8 @@ Error:
 range(img_bright)
 ```
 
-``` error
-Error:
-! object 'img_bright' not found
+``` output
+[1] 0 2
 ```
 
 ## Saturation
@@ -503,11 +406,6 @@ We can create a binary image using:
 mask <- img > 0.2
 ```
 
-``` error
-Error:
-! object 'img' not found
-```
-
 This operation queries every pixel in the image and asks whether the intensity value is greater than 0.2. 
 Then it assigns either `TRUE` or `FALSE` to that location depending on the answer. 
 Our `mask` is an array of Boolean values with the same dimensions as the queried image object.
@@ -519,9 +417,21 @@ Display the object
 mask
 ```
 
-``` error
-Error:
-! object 'mask' not found
+``` output
+Image 
+  colorMode    : Grayscale 
+  storage.mode : logical 
+  dim          : 510 510 
+  frames.total : 1 
+  frames.render: 1 
+
+imageData(object)[1:5,1:6]
+      [,1]  [,2]  [,3]  [,4]  [,5]  [,6]
+[1,] FALSE FALSE FALSE FALSE FALSE FALSE
+[2,] FALSE FALSE FALSE FALSE FALSE FALSE
+[3,] FALSE FALSE FALSE FALSE FALSE FALSE
+[4,] FALSE FALSE FALSE FALSE FALSE FALSE
+[5,] FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 display the image and the binary mask:
@@ -531,10 +441,7 @@ display the image and the binary mask:
 display(EBImage::combine(img, mask), all = TRUE)
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-16-1.png" alt="" style="display: block; margin: auto;" />
 
 
 The resulting image mask contains only two values: `TRUE` & `FALSE`
@@ -550,29 +457,8 @@ Different threshold values produce different results.
 
 ``` r
 mask_1 <- img > 0.1
-```
-
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 mask_2 <- img > 0.2
-```
-
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 mask_3 <- img > 0.3
-```
-
-``` error
-Error:
-! object 'img' not found
 ```
 
 Display the three thresholded images.
@@ -584,10 +470,7 @@ display(
 )
 ```
 
-``` error
-Error in `display()`:
-! could not find function "display"
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-18-1.png" alt="" style="display: block; margin: auto;" />
 
 Notice how the detected objects change as the threshold increases.
 
@@ -631,14 +514,7 @@ hist(
   main = "Pixel Intensity Histogram",
   xlab = "Pixel Intensity"
 )
-```
 
-``` error
-Error:
-! object 'img' not found
-```
-
-``` r
 abline(
   v = 0.2,
   col = "red",
@@ -646,10 +522,7 @@ abline(
 )
 ```
 
-``` error
-Error in `int_abline()`:
-! plot.new has not been called yet
-```
+<img src="fig/07-image-enhancement-rendered-unnamed-chunk-19-1.png" alt="" style="display: block; margin: auto;" />
 
 The red line indicates the threshold value.
 
