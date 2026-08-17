@@ -755,78 +755,78 @@ image data and metadata.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">EBImage</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `library()`:
-! there is no package called 'EBImage'</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu">readImage</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">EBImage</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu">readImage</span><span class="op">(</span></span>
 <span>  <span class="st">"data/04-microscopy-metadata/Actin.ome.tif"</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in `readImage()`:
-! could not find function "readImage"</code></pre>
+<pre class="warning" tabindex="0"><code>Warning in readTIFF(x, all = all, ...): TIFFReadDirectory: Incorrect count for
+"ColorMap"; tag ignored</code></pre>
 </div>
 <p>Interrogate &amp; display the object and some of its parameters:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">img</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'img' not found</code></pre>
+<pre class="output" tabindex="0"><code>Image
+  colorMode    : Grayscale
+  storage.mode : double
+  dim          : 2560 2560
+  frames.total : 1
+  frames.render: 1
+
+imageData(object)[1:5,1:6]
+            [,1]        [,2]         [,3]         [,4]         [,5]
+[1,] 0.032379644 0.022171359 0.0080872816 0.0056305791 0.0065613794
+[2,] 0.021667811 0.014892805 0.0055695430 0.0043640803 0.0046997787
+[3,] 0.007522698 0.005325399 0.0021515221 0.0019684138 0.0017547875
+[4,] 0.002502480 0.001998932 0.0010833906 0.0005188067 0.0003814755
+[5,] 0.002090486 0.001586938 0.0007934691 0.0003204395 0.0001525902
+             [,6]
+[1,] 0.0055848020
+[2,] 0.0036926833
+[3,] 0.0012359808
+[4,] 0.0002288853
+[5,] 0.0001678492</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dim</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'img' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] 2560 2560</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">range</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'img' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0 1</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>The image can be analysed successfully.</p>
+<figure><img src="../fig/04-microscopy-metadata-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The image can be analysed successfully.</p>
 <p>However, the resulting object primarily represents <em>only</em> the
 image pixel data.</p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
@@ -845,81 +845,86 @@ environment file used when you created your conda environment. Provided
 you have a system wide java available, the following code
 <strong>should</strong> work.</p>
 <p>Try it to see if it works in your Jupyter environment:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">RBioFormats</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in `library()`:
-! there is no package called 'RBioFormats'</code></pre>
+<pre class="output" tabindex="0"><code>BioFormats library version 7.3.0</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bio_img</span> <span class="op">&lt;-</span> <span class="fu">read.image</span><span class="op">(</span></span>
 <span>  <span class="st">"data/04-microscopy-metadata/Actin.ome.tif"</span></span>
-<span><span class="op">)</span></span></code></pre>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bio_img</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in `read.image()`:
-! could not find function "read.image"</code></pre>
+<pre class="output" tabindex="0"><code>AnnotatedImage
+  colorMode    : Grayscale
+  storage.mode : double
+  dim          : 2560 2560
+  dimorder     : x y
+  frames.total : 1
+  frames.render: 1
+
+imageData(object)[1:5,1:6]
+      y
+x             [,1]        [,2]         [,3]         [,4]         [,5]
+  [1,] 0.032379644 0.022171359 0.0080872816 0.0056305791 0.0065613794
+  [2,] 0.021667811 0.014892805 0.0055695430 0.0043640803 0.0046997787
+  [3,] 0.007522698 0.005325399 0.0021515221 0.0019684138 0.0017547875
+  [4,] 0.002502480 0.001998932 0.0010833906 0.0005188067 0.0003814755
+  [5,] 0.002090486 0.001586938 0.0007934691 0.0003204395 0.0001525902
+      y
+x              [,6]
+  [1,] 0.0055848020
+  [2,] 0.0036926833
+  [3,] 0.0012359808
+  [4,] 0.0002288853
+  [5,] 0.0001678492
+
+metadata
+ $ coreMetadata:List of 18</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb26">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bio_img</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'bio_img' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dim</span><span class="op">(</span><span class="va">bio_img</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'bio_img' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] 2560 2560</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">range</span><span class="op">(</span><span class="va">bio_img</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'bio_img' not found</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0 1</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">bio_img</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-</div>
+<figure><img src="../fig/04-microscopy-metadata-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
@@ -954,7 +959,7 @@ created when you load an image using the
 <li>channel names</li>
 <li>microscope settings</li>
 </ul><p>It is loaded using:</p>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -967,7 +972,7 @@ object?</p>
 <li>Exposure time</li>
 <li>Channel metadata</li>
 </ol><p>Would it be different if we used the following command instead?</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">

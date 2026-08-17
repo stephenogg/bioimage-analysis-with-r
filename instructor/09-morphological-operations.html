@@ -450,15 +450,9 @@ surround the pixel.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">EBImage</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `library()`:
-! there is no package called 'EBImage'</code></pre>
-</div>
 <p>Load the example nuclei image provided with EBImage and select a
 single frame for exploration.</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -468,78 +462,38 @@ single frame for exploration.</p>
 <span>    <span class="st">"nuclei.tif"</span>,</span>
 <span>    package <span class="op">=</span> <span class="st">"EBImage"</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `readImage()`:
-! could not find function "readImage"</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb5">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">nuclei</span> <span class="op">&lt;-</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">1</span><span class="op">]</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'img' not found</code></pre>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nuclei</span> <span class="op">&lt;-</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">1</span><span class="op">]</span></span></code></pre>
 </div>
 <p>Display the image.</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">nuclei</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb9">
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mask</span> <span class="op">&lt;-</span> <span class="va">nuclei</span> <span class="op">&gt;</span> <span class="fl">0.175</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'nuclei' not found</code></pre>
 </div>
 <p>Create a binary mask.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mask</span> <span class="op">&lt;-</span> <span class="va">nuclei</span> <span class="op">&gt;</span> <span class="fl">0.175</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error:
-! object 'nuclei' not found</code></pre>
-</div>
 <p>Display the mask.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>Although the nuclei are obvious to a trained biologist, the
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Although the nuclei are obvious to a trained biologist, the
 segmentation is not perfect.</p>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
@@ -628,7 +582,7 @@ image.</p>
 <hr class="half-width"><p>Many morphological operations use a small template called a
 <strong>structuring element</strong>.</p>
 <p>Create a circular structuring element.</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -637,26 +591,14 @@ image.</p>
 <span>  shape <span class="op">=</span> <span class="st">"disc"</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `makeBrush()`:
-! could not find function "makeBrush"</code></pre>
-</div>
 <p>Display the brush.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">brush</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>The structuring element determines how neighbouring pixels influence
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-7-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The structuring element determines how neighbouring pixels influence
 the operation. The structuring element defines the size and shape of the
 neighbourhood used in the operation. Larger brushes produce larger
 changes to object boundaries, while smaller brushes produce more subtle
@@ -669,21 +611,15 @@ function creates.</p>
 </section><section><h2 class="section-heading" id="dilation">Dilation<a class="anchor" aria-label="anchor" href="#dilation"></a></h2>
 <hr class="half-width"><p>Dilation expands foreground objects. It adds pixels to the boundaries
 of objects.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dilated</span> <span class="op">&lt;-</span> <span class="fu">dilate</span><span class="op">(</span><span class="va">mask</span>, <span class="va">brush</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `dilate()`:
-! could not find function "dilate"</code></pre>
-</div>
 <p>Display the original and dilated masks to see how
 <code>dilation()</code> has changed the original mask.</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -695,13 +631,7 @@ of objects.</p>
 <span>  all <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>Notice that objects become larger.</p>
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Notice that objects become larger.</p>
 <p>Small gaps may also be filled.</p>
 <div id="challenge2" class="callout challenge">
 <div class="callout-square">
@@ -730,20 +660,14 @@ of objects.</p>
 </div>
 </section><section><h2 class="section-heading" id="erosion">Erosion<a class="anchor" aria-label="anchor" href="#erosion"></a></h2>
 <hr class="half-width"><p>Erosion removes pixels from object boundaries.</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">eroded</span> <span class="op">&lt;-</span> <span class="fu">erode</span><span class="op">(</span><span class="va">mask</span>, <span class="va">brush</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `erode()`:
-! could not find function "erode"</code></pre>
-</div>
 <p>Display the result.</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -755,13 +679,7 @@ of objects.</p>
 <span>  all <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>Objects become smaller.</p>
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Objects become smaller.</p>
 <p>Thin structures may disappear entirely.</p>
 <div id="challenge3" class="callout challenge">
 <div class="callout-square">
@@ -796,20 +714,14 @@ Closing fills small holes and joins broken parts. In contrast,
 Erosion/Dilation changes the size of objects.</p>
 <p>Opening is one erosion operation followed by one dilation
 operation.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">opened</span> <span class="op">&lt;-</span> <span class="fu">opening</span><span class="op">(</span><span class="va">mask</span>, <span class="va">brush</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `opening()`:
-! could not find function "opening"</code></pre>
-</div>
 <p>Display the comparison.</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -821,33 +733,21 @@ operation.</p>
 <span>  all <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>Opening is often used to remove small objects and noise.</p>
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Opening is often used to remove small objects and noise.</p>
 <div class="section level3">
 <h3 id="what-opening-does">What Opening Does<a class="anchor" aria-label="anchor" href="#what-opening-does"></a></h3>
 <pre class="text"><code>Small Artefacts -&gt; Removed</code></pre>
 <p>while larger objects are largely preserved.</p>
 <p>Closing is the opposite of Opening is one dilation followed by one
 erosion.</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">closed</span> <span class="op">&lt;-</span> <span class="fu">closing</span><span class="op">(</span><span class="va">mask</span>, <span class="va">brush</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `closing()`:
-! could not find function "closing"</code></pre>
-</div>
 <p>Display the result.</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -859,13 +759,7 @@ erosion.</p>
 <span>  all <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>Closing helps to:</p>
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-15-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Closing helps to:</p>
 <ul><li>fill small gaps</li>
 <li>smooth object boundaries</li>
 <li>connect nearby object regions</li>
@@ -917,21 +811,15 @@ holes</div>
 background.</p>
 <p>The <code>fillHull()</code> function can fill holes.</p>
 <figure><img src="../fig/09-morphological-operations/unholy_nuclei.png" width="512" alt="binary image without holes." class="figure mx-auto d-block"><div class="figcaption">Binary Image of Nuclei</div>
-</figure><div class="codewrapper sourceCode" id="cb41">
+</figure><div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">filled</span> <span class="op">&lt;-</span> <span class="fu">fillHull</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `fillHull()`:
-! could not find function "fillHull"</code></pre>
-</div>
 <p>Display the result. Note that this particular binary image already
 has no objects with holes.</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -943,13 +831,7 @@ has no objects with holes.</p>
 <span>  all <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>This operation is particularly useful when working with nuclei, as
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This operation is particularly useful when working with nuclei, as
 nucleoli are often less bright than the neighbouring nucleoplasm.</p>
 <div id="filling-holes-simplifies-measurement" class="callout">
 <div class="callout-square">
@@ -979,20 +861,14 @@ the pixel values indicate fow far each pixel is from the nearest
 background pixel. Because these matrixes have pixel values, we can
 visualise these images.</p>
 <p>Create a distance map.</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dmap</span> <span class="op">&lt;-</span> <span class="fu">distmap</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `distmap()`:
-! could not find function "distmap"</code></pre>
-</div>
 <p>Display the distance map.</p>
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1000,13 +876,7 @@ visualise these images.</p>
 <span>  <span class="fu">normalize</span><span class="op">(</span><span class="va">dmap</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>Bright regions correspond to pixels located near object centres.</p>
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-19-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Bright regions correspond to pixels located near object centres.</p>
 <div id="challenge5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -1089,20 +959,14 @@ centres.</p>
 neighbouring pools of water meet?”</p>
 </blockquote>
 <p>The watershed boundary is constructed at those meeting points.</p>
-<div class="codewrapper sourceCode" id="cb52">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ws</span> <span class="op">&lt;-</span> <span class="fu">watershed</span><span class="op">(</span><span class="va">dmap</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `watershed()`:
-! could not find function "watershed"</code></pre>
-</div>
 <p>Display the result.</p>
-<div class="codewrapper sourceCode" id="cb54">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1110,13 +974,7 @@ neighbouring pools of water meet?”</p>
 <span>  <span class="fu">colorLabels</span><span class="op">(</span><span class="va">ws</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>Each object receives a unique label. Notice that the
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-21-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each object receives a unique label. Notice that the
 <code>ws()</code> function also inlcudes the connected components
 analysis – in EBImage.</p>
 <p>Watershed segmentation often separates objects that were previously
@@ -1124,61 +982,24 @@ merged.</p>
 </section><section><h2 class="section-heading" id="visualising-watershed-results">Visualising Watershed Results<a class="anchor" aria-label="anchor" href="#visualising-watershed-results"></a></h2>
 <hr class="half-width"><p>Compare the watershed segmentation to the original image and the
 segmentation without the watershed algorithm.</p>
-<div class="codewrapper sourceCode" id="cb56">
+<div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu">bwlabel</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `bwlabel()`:
-! could not find function "bwlabel"</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb58">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">overlay_ws</span> <span class="op">&lt;-</span> <span class="fu">paintObjects</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu">bwlabel</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">overlay_ws</span> <span class="op">&lt;-</span> <span class="fu">paintObjects</span><span class="op">(</span></span>
 <span>  <span class="va">ws</span>,</span>
 <span>  <span class="fu">toRGB</span><span class="op">(</span><span class="fu">normalize</span><span class="op">(</span><span class="va">nuclei</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `paintObjects()`:
-! could not find function "paintObjects"</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb60">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">overlay_label</span> <span class="op">&lt;-</span> <span class="fu">paintObjects</span><span class="op">(</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">overlay_label</span> <span class="op">&lt;-</span> <span class="fu">paintObjects</span><span class="op">(</span></span>
 <span>  <span class="va">labels</span>,</span>
 <span>  <span class="fu">toRGB</span><span class="op">(</span><span class="fu">normalize</span><span class="op">(</span><span class="va">nuclei</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">display</span><span class="op">(</span><span class="fu">EBImage</span><span class="fu">::</span><span class="fu">combine</span><span class="op">(</span><span class="va">overlay_ws</span>, <span class="va">overlay_label</span><span class="op">)</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `paintObjects()`:
-! could not find function "paintObjects"</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb62">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="fu">EBImage</span><span class="fu">::</span><span class="fu">combine</span><span class="op">(</span><span class="va">overlay_ws</span>, <span class="va">overlay_label</span><span class="op">)</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `display()`:
-! could not find function "display"</code></pre>
-</div>
-<p>Overlay visualisation makes it easier to evaluate segmentation
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-22-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Overlay visualisation makes it easier to evaluate segmentation
 quality.</p>
 <div id="challenge6" class="callout challenge">
 <div class="callout-square">
