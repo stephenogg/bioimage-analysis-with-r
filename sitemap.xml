@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/01-why-image-processing-matters.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/02-digital-images.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/03-reading-bioimages.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/04-microscopy-metadata.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/05-visualising-bioimages.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/06-color-images.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/07-image-enhancement.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/08-segmentation.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/09-morphological-operations.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/10-measuring-biological-objects.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/11-capstone-project.html</loc>
+  </url>
+  <url>
     <loc>https://stephenogg.github.io/bioimage-analysis-with-r/404.html</loc>
   </url>
   <url>
@@ -20,6 +53,39 @@
   </url>
   <url>
     <loc>https://stephenogg.github.io/bioimage-analysis-with-r/index.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/01-why-image-processing-matters.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/02-digital-images.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/03-reading-bioimages.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/04-microscopy-metadata.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/05-visualising-bioimages.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/06-color-images.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/07-image-enhancement.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/08-segmentation.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/09-morphological-operations.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/10-measuring-biological-objects.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/11-capstone-project.html</loc>
   </url>
   <url>
     <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/404.html</loc>
@@ -52,6 +118,9 @@
     <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/key-points.html</loc>
   </url>
   <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/prereqs.html</loc>
+  </url>
+  <url>
     <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/profiles.html</loc>
   </url>
   <url>
@@ -65,6 +134,9 @@
   </url>
   <url>
     <loc>https://stephenogg.github.io/bioimage-analysis-with-r/key-points.html</loc>
+  </url>
+  <url>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/prereqs.html</loc>
   </url>
   <url>
     <loc>https://stephenogg.github.io/bioimage-analysis-with-r/profiles.html</loc>

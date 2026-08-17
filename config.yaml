@@ -10,20 +10,20 @@
 # incubator: The Carpentries Incubator
 # Note that you can also use a custom carpentry type. For more info,
 # see the documentation: https://carpentries.github.io/sandpaper-docs/editing.html
-carpentry: 'incubator'
+carpentry: 'kcl'
 
 # Custom carpentry description
 # This will be used as the alt text for the logo
-# carpentry_description: "Custom Carpentry"
+carpentry_description: 'Kings College London'
 
 # Overall title for pages.
-title: 'Lesson Title'
+title: 'BioImage Analysis With R'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
 created: '2026-07-21'
 
 # Comma-separated list of keywords for the lesson
-keywords: 'software, data, lesson, The Carpentries'
+keywords: 'software, data, lesson, bioimage, analysis, R'
 
 # Life cycle stage of the lesson
 # refer to <https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html> for details
@@ -40,7 +40,7 @@ source: 'https://github.com/stephenogg/bioimage-analysis-with-r'
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'team@carpentries.org'
+contact: 'stephen.ogg@kcl.ac.uk'
 
 # Navigation ------------------------------------------------
 #
@@ -65,21 +65,35 @@ contact: 'team@carpentries.org'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
-- introduction.Rmd
+episodes:
+- 01-why-image-processing-matters.Rmd
+- 02-digital-images.Rmd
+- 03-reading-bioimages.Rmd
+- 04-microscopy-metadata.Rmd
+- 05-visualising-bioimages.Rmd
+- 06-color-images.Rmd
+- 07-image-enhancement.Rmd
+- 08-segmentation.Rmd
+- 09-morphological-operations.Rmd
+- 10-measuring-biological-objects.Rmd
+- 11-capstone-project.Rmd
+
 
 # Information for Learners
-learners: 
+learners:
+- setup.md
+- prereqs.md
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #
 # This space below is where custom yaml items (e.g. pinning
 # sandpaper and varnish versions) should live
 
+varnish: 'stephenogg/varnish'
 
