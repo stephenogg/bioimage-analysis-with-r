@@ -23,33 +23,53 @@ notebook that will execute the R commands using an R kernel instead of a Python 
 
 ---------
 
-The example images and a description of the Python environment (`environment.yml`) 
-used in this lesson are available on Github. To download the data, 
-please visit the dataset page for this workshop and click the “Download all” button. 
-Unzip the downloaded file, and save the contents as a folder called *data* 
-somewhere you will easily find it again, e.g. your Desktop or a folder you have created 
-for use during this workshop. The name *data* is optional but recommended, 
-as this is the name we will use to refer to the folder throughout the lesson.
+:::: callout
+
+The example images and a description of the Python environment 
+used in this lesson are available using the links below. 
 
 
-### Download the environment file:
+### Download the conda environment file:
 
 The complete Conda environment specification is available at:
 
-- [environment.yaml](https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/environment.yaml)
+<p>
+  <a class="btn btn-primary"
+  href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/environment.yaml">
+  Download the Conda Environment File
+  </a>
+</p>
 
-- [data](https://raw.githubusercontent.com/stephenogg/bioimage-analysis-with-r/main/episodes/data.zip)
+### Download the Data folder
 
-and extract it into a folder named: `bioimage-r`
+<p>
+  <a class="btn btn-primary"
+  href="https://github.com/stephenogg/bioimage-analysis-with-r/releases/download/v1.0/data.zip">
+  Download course data (~144 MB)
+  </a>
+</p>
+
+::::
+
+
+click on the download button for the environment.yaml file and data folder. 
+Place the `environment.yaml` file inside the `bioimage-r` folder. 
+Unzip and extract the `data.zip` file into the `bioimage-r` folder. The data file
+shoud create a `data` folder inside the bioimage-r folder with several subfolders
+with episode names and the associated data for the episode in each of those subfolders.
 
 We recommend the following directory structure:
 
 ```text
 bioimage-r/
 |
-├── data/
-├── environment.yml
-└── notebooks/
+├── data
+      |
+      |-03-reading-bioimages
+      |-04-microscopy-metadata
+      |-etc.
+      |
+├── environment.yaml
 ```
 
 ## Software
@@ -108,7 +128,7 @@ You should see a Conda version number - e.g. `conda 26.1.1`
 environment.yml
 ```
 
-and place it in your working directory. (This file should already be downloaded, 
+and place it in your working directory (bioimage-r). (This file should already be downloaded, 
 if you followed the instructions above.)
 
 - Create the lesson environment.
@@ -151,6 +171,8 @@ and install:
 - IRkernel
 - tidyverse
 - EBImage
+- RBioFormats
+- other R packages reuired for the lessons or that are dependencies.
 
 The installation may take several minutes. Click *OK* if your computer asks you 
 to approve any installations.
@@ -186,6 +208,8 @@ environment in parentheses, e.g: `bioimage-r`.
 
 ::: tab
 
+Make sure you are in the bioimage-r directory, then
+
 ### Windows
 
 From Miniforge Prompt:
@@ -211,12 +235,13 @@ jupyter lab
 ```
 :::
 
-A bunch of text will start to appear in your terminal as the jupyther lab starts up. 
+A bunch of text will start to appear in your terminal and scroll down your screen
+as the jupyterLab starts up. 
 JupyterLab *should* open automatically in your web browser. 
 If it does not, you may see a link to click towards the end of the text that appears 
 in your terminal.
 
-## Step 5: Create an R Notebook
+## Step 5: Open an R Notebook
 
 In JupyterLab:
 
@@ -258,7 +283,7 @@ img <- Image(
 display(img)
 ```
 
-If a grayscale image appears and no error message is generated, your
+If a grayscale image of nothing appears and no error message is generated, your
 installation is working correctly.
 
 ### Test Required Packages
@@ -312,7 +337,8 @@ or pressing <kbd>Shift</kbd>\+<kbd>Enter</kbd>.
 
 If: <kbd>conda --version</kbd> returns an error, restart your terminal after installing Miniforge.
 
-Windows users should ensure they are using **Miniforge Prompt**.
+Windows users should ensure they are using **Miniforge Prompt**, **GitBash prompt** or using Linux 
+in the WSL environment.
 
 ### JupyterLab Will Not Start
 
