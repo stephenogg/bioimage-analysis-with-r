@@ -1,0 +1,623 @@
+---
+title: "Microscopy Metadata"
+teaching: 45
+exercises: 20
+---
+
+:::::::::::::::::::::::::::::::::::::: questions
+
+- What is metadata?
+- Why is metadata important in microscopy?
+- How do pixel measurements relate to physical measurements?
+- How can metadata be accessed in R?
+- What is the difference between an Image and an AnnotatedImage?
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: objectives
+
+- Define metadata and explain its importance.
+- Identify common microscopy metadata fields.
+- Explain the relationship between pixels and physical units.
+- Read an OME-TIFF image using RBioFormats.
+- Compare the Image and AnnotatedImage classes.
+- Recognise why metadata preservation is essential for reproducible research.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Introduction
+
+In the previous lesson we learned that microscopy images are stored in image
+files such as TIFF and OME-TIFF.
+
+The image pixels themselves are only part of the story.
+
+To interpret image data correctly we must also understand the information that
+describes how the image was acquired.
+
+This information is known as **metadata**.
+
+Metadata are often described as:
+
+`Data about data`
+
+In microscopy, metadata can be just as important as the pixel data.
+
+## What Is Metadata?
+
+Consider a digital photograph taken with a smartphone.
+
+The image consists of pixels, but the file may also contain information such as:
+
+- camera model
+- date and time
+- GPS location
+- exposure settings
+
+These are examples of metadata. Photos use a metadata model known as EXIF.
+
+Microscopy images are similar.
+
+The image contains pixel values, while metadata describe how those pixel values
+were acquired.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+Which of the following would typically be considered metadata?
+
+1. A pixel intensity value
+2. A microscope objective lens
+3. A detector exposure time
+4. A channel name
+
+:::::::::::::::::::::::: solution
+
+The correct answers are:
+
+```text
+2. A microscope objective lens
+3. A detector exposure time
+4. A channel name
+```
+
+Pixel intensities are image data rather than metadata.
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Common Microscopy Metadata
+
+Modern microscopes record large amounts of metadata during image acquisition.
+
+Examples include:
+
+### Image Information
+
+- image dimensions
+- bit depth
+- number of channels
+- number of z-planes
+- number of time points
+
+### Spatial Information
+
+- pixel size
+- voxel dimensions
+
+### Instrument Information
+
+- microscope type
+- objective magnification
+- numerical aperture
+- detector type
+
+### Acquisition Settings
+
+- exposure time
+- detector gain
+- laser wavelength
+- laser power
+
+### Experimental Information
+
+- sample identifier
+- treatment condition
+- acquisition date
+- operator
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## Metadata Enable Reproducibility
+
+Without metadata it is often impossible to determine precisely how an image was
+acquired.
+
+Good metadata are essential for reproducible and trustworthy image analysis.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Pixels Are Not Physical Units
+
+Suppose a nucleus occupies:
+
+```text
+5000 pixels
+```
+
+What is its area?
+
+The answer is:
+
+```text
+We do not know.
+```
+
+Pixels are not physical units.
+
+To convert pixels into measurements such as square micrometres we must know the
+pixel size.
+
+## Pixel Size
+
+Suppose an image has:
+
+```text
+Pixel size = 0.5 µm
+```
+
+Each pixel represents:
+
+```text
+0.5 µm × 0.5 µm
+```
+
+The area represented by a single pixel is:
+
+```{r}
+pixel_size <- 0.5
+
+pixel_area <- pixel_size^2
+
+pixel_area
+```
+
+## Converting Pixels to Physical Area
+
+Suppose a nucleus occupies:
+
+```text
+4000 pixels
+```
+
+and the pixel size is:
+
+```text
+0.5 µm
+```
+
+We can estimate its physical area.
+
+```{r}
+pixel_size <- 0.5
+
+n_pixels <- 4000
+
+area_um2 <- n_pixels * pixel_size^2
+
+area_um2
+```
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+An object occupies:
+
+```text
+2500 pixels
+```
+
+The image pixel size is:
+
+```text
+0.2 µm
+```
+
+Calculate the object's area in µm².
+
+:::::::::::::::::::::::: solution
+
+Area of one pixel:
+
+```text
+0.2 × 0.2 = 0.04 µm²
+```
+
+Total area:
+
+```text
+2500 × 0.04 = 100 µm²
+```
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Why Metadata Matter
+
+Consider two images.
+
+### Image A
+
+```text
+Pixel size = 1.0 µm
+```
+
+### Image B
+
+```text
+Pixel size = 0.1 µm
+```
+
+In both images a nucleus occupies:
+
+```text
+5000 pixels
+```
+
+The nuclei do not have the same physical area.
+
+Without metadata we cannot determine the real size of either object.
+
+## OME-TIFF: Images Plus Metadata
+
+The Open Microscopy Environment (OME) developed OME-TIFF to provide a
+standardised way of storing microscopy images together with their metadata.
+
+Conceptually an OME-TIFF file contains:
+
+```text
+Image Pixels
++
+Metadata
+```
+
+Metadata stored within an OME-TIFF file may include:
+
+- pixel size
+- voxel dimensions
+- objective information
+- channel names
+- detector settings
+- exposure times
+- acquisition dates
+
+Unlike JPEG, OME-TIFF was specifically designed for scientific imaging.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## Why OME-TIFF Matters
+
+OME-TIFF preserves both the image and the information required to interpret the
+image correctly.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Introducing Bio-Formats
+
+Modern microscopes use many proprietary file formats.
+
+Examples include:
+
+- Zeiss `.czi`
+- Nikon `.nd2`
+- Leica `.lif`
+- Olympus `.vsi`
+
+Reading these formats directly can be challenging because each stores image data
+and metadata differently.
+
+The Open Microscopy Environment developed **Bio-Formats** to solve this problem.
+
+Bio-Formats provides a common interface for reading image data and metadata from
+many microscopy formats.
+
+The R package **RBioFormats** provides access to Bio-Formats from within R.
+
+::::::::::::::::::::::::::::::::::::: callout
+
+## Why Bio-Formats Matters
+
+Bio-Formats allows scientists to work with images from many microscope vendors
+without requiring vendor-specific software.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Reading an OME-TIFF with RBioFormats
+
+Load RBioFormats:
+
+```{r}
+library(RBioFormats)
+```
+
+Read an OME-TIFF file.
+
+```{r}
+bf_img <- read.image(
+  "../data/04-microscopy-metadata/example.ome.tif"
+)
+```
+
+Determine the class of the returned object.
+
+```{r}
+class(bf_img)
+```
+
+Unlike EBImage, RBioFormats typically returns an **AnnotatedImage** object.
+
+## Exploring Metadata
+
+Because metadata remain associated with the image, we can inspect them directly.
+
+```{r}
+metadata(bf_img)
+```
+
+The exact information available depends on the original image file.
+
+Examples may include:
+
+- image dimensions
+- pixel sizes
+- channel names
+- acquisition timestamps
+- objective information
+- detector settings
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+Use:
+
+```{r}
+metadata(bf_img)
+```
+
+How many different kinds of metadata can you identify in your image?
+
+:::::::::::::::::::::::: solution
+
+The exact answer depends on the image used.
+
+Common examples include image dimensions, physical pixel sizes, acquisition
+settings, channel names, and microscope information.
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## AnnotatedImage versus Image
+
+Earlier in this course we used EBImage.
+
+```{r}
+library(EBImage)
+
+eb_img <- readImage(
+  "../data/04-microscopy-metadata/example.ome.tif"
+)
+```
+
+Determine its class.
+
+```{r}
+class(eb_img)
+```
+
+EBImage returns an object of class:
+
+```text
+Image
+```
+
+The Image object primarily represents image pixel data.
+
+In contrast:
+
+```{r}
+class(bf_img)
+```
+
+returns:
+
+```text
+AnnotatedImage
+```
+
+Conceptually:
+
+```text
+Image
+
+└── Pixel Array
+```
+
+while:
+
+```text
+AnnotatedImage
+
+├── Pixel Array
+└── Metadata
+```
+
+This distinction becomes increasingly important as image-analysis workflows grow
+in complexity.
+
+## What Happens When We Read an OME-TIFF with EBImage?
+
+Suppose we use EBImage to load the same OME-TIFF file.
+
+```{r}
+img <- readImage(
+  "../data/04-microscopy-metadata/example.ome.tif"
+)
+```
+
+We can inspect:
+
+```{r}
+dim(img)
+```
+
+```{r}
+range(img)
+```
+
+```{r}
+display(img)
+```
+
+The image data are available for analysis.
+
+However, the rich microscopy metadata contained in the original OME-TIFF file
+are not generally exposed through the EBImage Image object itself.
+
+## Image Data and Metadata Become Separated
+
+It is useful to think of this process as:
+
+```text
+OME-TIFF File
+
+├── Image Pixels
+└── Metadata
+
+    ├── Pixel Size
+    ├── Objective Lens
+    ├── Exposure Time
+    ├── Channel Names
+    └── Instrument Settings
+```
+
+↓
+
+```text
+EBImage Image Object
+
+└── Pixel Array
+```
+
+The image data have been loaded successfully, but the metadata are no longer
+directly associated with the image object.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+You receive an OME-TIFF image from a collaborator and wish to access:
+
+- image pixels
+- pixel size
+- channel names
+- acquisition metadata
+
+Which package is likely to be most useful?
+
+1. EBImage
+2. RBioFormats
+
+:::::::::::::::::::::::: solution
+
+```text
+2. RBioFormats
+```
+
+RBioFormats is designed to access both image data and associated microscopy
+metadata through Bio-Formats.
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Losing Metadata
+
+Metadata can be lost when images are:
+
+- exported to inappropriate formats
+- copied into presentation software
+- converted between file formats
+- separated from the original acquisition files
+
+Consider the workflow:
+
+```text
+Microscope Image
+        |
+        V
+     OME-TIFF
+        |
+        V
+      JPEG
+```
+
+The JPEG image may still be viewable.
+
+However, important metadata may no longer be available.
+
+The image remains.
+
+Critical scientific context may be lost.
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+Why might exporting a microscopy image to JPEG cause problems for future
+analysis?
+
+:::::::::::::::::::::::: solution
+
+JPEG files typically retain far less microscopy metadata than formats such as
+OME-TIFF.
+
+Important information including calibration, acquisition settings, and channel
+information may be lost.
+
+This makes reproducibility and quantitative analysis more difficult.
+
+:::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Looking Ahead
+
+Metadata provide the information required to interpret biological images
+correctly.
+
+Throughout the remainder of this course we will repeatedly combine:
+
+```text
+Image Data
++
+Metadata
+```
+
+to obtain meaningful biological measurements.
+
+In future lessons we will revisit OME-TIFF, Bio-Formats, and OMERO and explore
+how image data and metadata can be managed together throughout the image
+analysis lifecycle.
+
+## Key Points
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Metadata describe how an image was acquired.
+- Pixel measurements cannot be interpreted without calibration information.
+- Pixel size enables conversion from pixels to physical units.
+- OME-TIFF stores both image data and microscopy metadata.
+- Bio-Formats provides a common interface for reading microscopy image formats.
+- RBioFormats can access both image data and metadata.
+- EBImage primarily works with image pixel data.
+- AnnotatedImage objects retain metadata alongside image data.
+- Metadata are essential for reproducible microscopy.
+- Exporting images to inappropriate formats can result in metadata loss.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
