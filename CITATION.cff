@@ -1,22 +1,68 @@
-# This template CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to replace its contents
-# with information about your lesson.
-# Remember to update this file periodically, 
-# ensuring that the author list and other fields remain accurate.
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: FIXME
+title: BioImage Analysis with R
 message: >-
-  Please cite this lesson using the information in this file
-  when you refer to it in publications, and/or if you
-  re-use, adapt, or expand on the content in your own
-  training material.
+  If you use this dataset, please cite it using the metadata
+  from this file.
 type: dataset
 authors:
-  - given-names: FIXME
-    family-names: FIXME
+  - given-names: Stephen
+    family-names: Ogg
+    email: stephen.okk@kcl.ac.uk
+    affiliation: King's College London
+    orcid: 'https://orcid.org/0000-0003-4157-1654'
+repository-code: 'https://github.com/stephenogg/bioimage-anlysis-with-r.git'
+url: 'https://stephenogg.github.io/bioimage-analysis-with-r/'
 abstract: >-
-  FIXME Replace this with a short abstract describing the
-  lesson, e.g. its target audience and main intended
-  learning objectives.
+  Microscopy is one of the most important tools in
+  biological research.
+
+
+  Modern microscopes can rapidly generate enormous
+  quantities of image data. Researchers routinely acquire
+  hundreds, thousands, or even millions of images during a
+  single experiment.
+
+
+  As image datasets increase in size and complexity, manual
+  analysis becomes increasingly impractical.
+
+
+  Image processing provides tools that allow us to:
+
+
+  extract quantitative information
+
+  identify patterns
+
+  automate repetitive tasks
+
+  perform reproducible measurements
+
+  analyse large datasets efficiently
+
+  Throughout this lesson we will learn how images can be
+  treated as scientific data rather than simply as pictures
+  using R to extract quantitative information from image
+  data.
+keywords:
+  - Image Analysis
+  - Image Processing
+  - BioImage Analysis
+  - microscopy
+  - fluorescence microscopy
+  - image segmentation
+  - connected components analysis
+  - EBImage
+  - R
+  - RBioFormats
+  - reproducible research
+  - tidy data
+  - automated image analysis
+  - quantitative imaging
 license: CC-BY-4.0
+commit: cb10072f0aa2c15ee01ef6f5b21051e687eb2dc8
+version: 1.0.0
+date-released: '2026-09-01'
