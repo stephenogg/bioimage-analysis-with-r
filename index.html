@@ -203,7 +203,7 @@
 <li><a href="#step-2-create-the-virtual-lesson-environment">Step 2: Create the Virtual Lesson Environment</a></li>
 <li><a href="#step-3-activate-the-environment">Step 3: Activate the Environment</a></li>
 <li><a href="#step-4-launch-jupyterlab">Step 4: Launch JupyterLab</a></li>
-<li><a href="#step-5-create-an-r-notebook">Step 5: Create an R Notebook</a></li>
+<li><a href="#step-5-open-an-r-notebook">Step 5: Open an R Notebook</a></li>
 <li><a href="#testing-your-installation">Testing Your Installation</a></li>
 <li><a href="#troubleshooting">Troubleshooting</a></li>
         </ul></div><!--/div.accordion-body-->
@@ -406,28 +406,50 @@ will not use an R integrated development environment, like RStudio.
 Rather we will enter commands into a JuPyteR notebook that will execute
 the R commands using an R kernel instead of a Python kernel.</p>
 </section><section><h2 class="section-heading" id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a></h2>
-<hr class="half-width"><hr><p>The example images and a description of the Python environment
-(<code>environment.yml</code>) used in this lesson are available on
-Github. To download the data, please visit the dataset page for this
-workshop and click the “Download all” button. Unzip the downloaded file,
-and save the contents as a folder called <em>data</em> somewhere you
-will easily find it again, e.g. your Desktop or a folder you have
-created for use during this workshop. The name <em>data</em> is optional
-but recommended, as this is the name we will use to refer to the folder
-throughout the lesson.</p>
+<hr class="half-width"><hr><div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>The example images and a description of the Python environment used
+in this lesson are available using the links below.</p>
 <div class="section level3">
-<h3 id="download-the-environment-file">Download the environment file:<a class="anchor" aria-label="anchor" href="#download-the-environment-file"></a></h3>
+<h3 id="download-the-conda-environment-file">Download the conda environment file:<a class="anchor" aria-label="anchor" href="#download-the-conda-environment-file"></a></h3>
 <p>The complete Conda environment specification is available at:</p>
-<ul><li><p><a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/environment.yaml" class="external-link">environment.yaml</a></p></li>
-<li><p><a href="https://raw.githubusercontent.com/stephenogg/bioimage-analysis-with-r/main/episodes/data.zip" class="external-link">data</a></p></li>
-</ul><p>and extract it into a folder named: <code>bioimage-r</code></p>
+<p>
+<a class="external-link btn btn-primary" href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/environment.yaml">
+Download the Conda Environment File </a>
+</p>
+</div>
+<div class="section level3">
+<h3 id="download-the-data-folder">Download the Data folder<a class="anchor" aria-label="anchor" href="#download-the-data-folder"></a></h3>
+<p>
+<a class="external-link btn btn-primary" href="https://github.com/stephenogg/bioimage-analysis-with-r/releases/download/v1.0/data.zip">
+Download course data (~144 MB) </a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<p>click on the download button for the environment.yaml file and data
+folder. Place the <code>environment.yaml</code> file inside the
+<code>bioimage-r</code> folder. Unzip and extract the
+<code>data.zip</code> file into the <code>bioimage-r</code> folder. The
+data file shoud create a <code>data</code> folder inside the bioimage-r
+folder with several subfolders with episode names and the associated
+data for the episode in each of those subfolders.</p>
 <p>We recommend the following directory structure:</p>
 <pre class="text"><code>bioimage-r/
 |
-├── data/
-├── environment.yml
-└── notebooks/</code></pre>
-</div>
+├── data
+      |
+      |-03-reading-bioimages
+      |-04-microscopy-metadata
+      |-etc.
+      |
+├── environment.yaml</code></pre>
 </section><section><h2 class="section-heading" id="software">Software<a class="anchor" aria-label="anchor" href="#software"></a></h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="step-1-install-miniforge">Step 1: Install Miniforge<a class="anchor" aria-label="anchor" href="#step-1-install-miniforge"></a></h3>
@@ -457,7 +479,7 @@ available.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
 <p>Open:</p>
 <pre class="text"><code>Miniforge Prompt</code></pre>
 <p>Run:</p>
@@ -467,7 +489,7 @@ available.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
+<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
 <p>Open Terminal and run:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -475,7 +497,7 @@ available.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">conda</span> <span class="at">--version</span></span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-1-3" class="tab-pane" aria-labelledby="nav-tab-1-3" role="tabpanel">
+<div id="nav-tabpanel-1-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-3">
 <p>Open a terminal and run:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -491,8 +513,9 @@ e.g. <code>conda 26.1.1</code></p>
 </section><section><h2 class="section-heading" id="step-2-create-the-virtual-lesson-environment">Step 2: Create the Virtual Lesson Environment<a class="anchor" aria-label="anchor" href="#step-2-create-the-virtual-lesson-environment"></a></h2>
 <hr class="half-width"><ul><li>Download the environment description file:</li>
 </ul><pre class="text"><code><span><span class="va">environment.yml</span></span></code></pre>
-<p>and place it in your working directory. (This file should already be
-downloaded, if you followed the instructions above.)</p>
+<p>and place it in your working directory (bioimage-r). (This file
+should already be downloaded, if you followed the instructions
+above.)</p>
 <ul><li>Create the lesson environment.</li>
 </ul><div class="tabs">
 <nav><div id="nav-tab-2" class="nav nav-tabs" role="tablist">
@@ -513,7 +536,7 @@ downloaded, if you followed the instructions above.)</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-2" class="tab-content">
-<div id="nav-tabpanel-2-1" class="tab-pane show active" aria-labelledby="nav-tab-2-1" role="tabpanel">
+<div id="nav-tabpanel-2-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-1">
 <p>Open Miniforge Prompt and run:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -521,7 +544,7 @@ downloaded, if you followed the instructions above.)</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-2-2" class="tab-pane" aria-labelledby="nav-tab-2-2" role="tabpanel">
+<div id="nav-tabpanel-2-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-2">
 <p>Open Terminal and run:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -529,7 +552,7 @@ downloaded, if you followed the instructions above.)</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-2-3" class="tab-pane" aria-labelledby="nav-tab-2-3" role="tabpanel">
+<div id="nav-tabpanel-2-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-3">
 <p>Open a terminal and run:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -548,6 +571,9 @@ downloaded, if you followed the instructions above.)</p>
 <li>IRkernel</li>
 <li>tidyverse</li>
 <li>EBImage</li>
+<li>RBioFormats</li>
+<li>other R packages reuired for the lessons or that are
+dependencies.</li>
 </ul><p>The installation may take several minutes. Click <em>OK</em> if your
 computer asks you to approve any installations.</p>
 </section><section><h2 class="section-heading" id="step-3-activate-the-environment">Step 3: Activate the Environment<a class="anchor" aria-label="anchor" href="#step-3-activate-the-environment"></a></h2>
@@ -570,21 +596,21 @@ computer asks you to approve any installations.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-3" class="tab-content">
-<div id="nav-tabpanel-3-1" class="tab-pane show active" aria-labelledby="nav-tab-3-1" role="tabpanel">
+<div id="nav-tabpanel-3-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-3-1">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-3-2" class="tab-pane" aria-labelledby="nav-tab-3-2" role="tabpanel">
+<div id="nav-tabpanel-3-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-3-2">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">conda</span> activate bioimage-r</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-3-3" class="tab-pane" aria-labelledby="nav-tab-3-3" role="tabpanel">
+<div id="nav-tabpanel-3-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-3-3">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -617,24 +643,36 @@ parentheses, e.g: <code>bioimage-r</code>.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-4" class="tab-content">
-<div id="nav-tabpanel-4-1" class="tab-pane show active" aria-labelledby="nav-tab-4-1" role="tabpanel">
+<div id="nav-tabpanel-4-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-4-1">
+
+</div>
+<div id="nav-tabpanel-4-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-2">
+<p>Make sure you are in the bioimage-r directory, then</p>
+</div>
+<div id="nav-tabpanel-4-3" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-3">
 <p>From Miniforge Prompt:</p>
+</div>
+<div id="nav-tabpanel-4-4" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-4">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-4-2" class="tab-pane" aria-labelledby="nav-tab-4-2" role="tabpanel">
+<div id="nav-tabpanel-4-5" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-5">
 <p>From Terminal:</p>
+</div>
+<div id="nav-tabpanel-4-6" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-6">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1" aria-label="code-block-14-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-4-3" class="tab-pane" aria-labelledby="nav-tab-4-3" role="tabpanel">
+<div id="nav-tabpanel-4-7" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-7">
 <p>From Terminal:</p>
+</div>
+<div id="nav-tabpanel-4-8" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-4-8">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -643,11 +681,11 @@ parentheses, e.g: <code>bioimage-r</code>.</p>
 </div>
 </div>
 </div>
-<p>A bunch of text will start to appear in your terminal as the jupyther
-lab starts up. JupyterLab <em>should</em> open automatically in your web
-browser. If it does not, you may see a link to click towards the end of
-the text that appears in your terminal.</p>
-</section><section><h2 class="section-heading" id="step-5-create-an-r-notebook">Step 5: Create an R Notebook<a class="anchor" aria-label="anchor" href="#step-5-create-an-r-notebook"></a></h2>
+<p>A bunch of text will start to appear in your terminal and scroll down
+your screen as the jupyterLab starts up. JupyterLab <em>should</em> open
+automatically in your web browser. If it does not, you may see a link to
+click towards the end of the text that appears in your terminal.</p>
+</section><section><h2 class="section-heading" id="step-5-open-an-r-notebook">Step 5: Open an R Notebook<a class="anchor" aria-label="anchor" href="#step-5-open-an-r-notebook"></a></h2>
 <hr class="half-width"><p>In JupyterLab:</p>
 <p>The link should open to a <img src="fig/00-setup/JupyterLauncher.png" alt="launcher page from a newly deployed JuPyteR Lab" class="figure"></p>
 <ul><li>Click on the R button to open a new, untitled notebook running an R
@@ -683,8 +721,8 @@ below.</p>
 <span></span>
 <span><span class="fu">display</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code></pre>
 </div>
-<p>If a grayscale image appears and no error message is generated, your
-installation is working correctly.</p>
+<p>If a grayscale image of nothing appears and no error message is
+generated, your installation is working correctly.</p>
 </div>
 <div class="section level3">
 <h3 id="test-required-packages">Test Required Packages<a class="anchor" aria-label="anchor" href="#test-required-packages"></a></h3>
@@ -741,7 +779,8 @@ or pressing <kbd>Shift</kbd>+<kbd>Enter</kbd>.</p>
 <p>If: <kbd>conda –version</kbd> returns an error, restart your terminal
 after installing Miniforge.</p>
 <p>Windows users should ensure they are using <strong>Miniforge
-Prompt</strong>.</p>
+Prompt</strong>, <strong>GitBash prompt</strong> or using Linux in the
+WSL environment.</p>
 </div>
 <div class="section level3">
 <h3 id="jupyterlab-will-not-start">JupyterLab Will Not Start<a class="anchor" aria-label="anchor" href="#jupyterlab-will-not-start"></a></h3>
