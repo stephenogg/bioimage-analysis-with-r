@@ -149,7 +149,7 @@ A key goal of image analysis is not simply to work faster.
 
 It is to produce measurements that can be reproduced, inspected, and verified.
 
-See [this](https://rdcu.be/fAnXm) paper for an introduction to the reproducibility crisis.
+See [1,500 ScientistsLift teh Lid on Reproducibility](https://doi.org/10.1038/533452a) paper for an introduction to the reproducibility crisis.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
