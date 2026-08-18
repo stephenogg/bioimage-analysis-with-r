@@ -1,5 +1,3 @@
 ---
-title: FIXME
+title: There are no profiles
 ---
-
-This is a placeholder file. Please add content here.
