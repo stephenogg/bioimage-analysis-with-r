@@ -381,7 +381,7 @@
         <h1>Morphological Operations</h1>
         <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/09-morphological-operations.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/09-morphological-operations.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
 
 
@@ -513,7 +513,7 @@ segmentation?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Thresholding separates foreground from background but does not
 account for:</p>
@@ -603,14 +603,14 @@ the operation. The structuring element defines the size and shape of the
 neighbourhood used in the operation. Larger brushes produce larger
 changes to object boundaries, while smaller brushes produce more subtle
 effects. using a brush with a size = 3 is roughly equivalent to dilating
-or eroding by one pixel. In EBImage, the two operations are
-<code>erosion()</code> and <code>dilation()</code>. Each function takes
-two arguments, a binary image to refine and the structuring element (aka
-<code>brush</code>) that determines the size of the change that the
-function creates.</p>
+or eroding by one pixel. In EBImage, the two basic morphological
+operations are <code>erosion()</code> and <code>dilation()</code>. Each
+function takes two arguments,a binary image to refine and the
+structuring element (aka <code>brush</code>). The <code>brush</code>
+determines the size of the change that the function creates.</p>
 </section><section><h2 class="section-heading" id="dilation">Dilation<a class="anchor" aria-label="anchor" href="#dilation"></a></h2>
-<hr class="half-width"><p>Dilation expands foreground objects. It adds pixels to the boundaries
-of objects.</p>
+<hr class="half-width"><p>Dilation expands foreground objects. It adds pixels to the
+boundaries/perimeters of objects.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -650,7 +650,7 @@ of objects.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Increase.</p>
 <p>Dilation adds pixels to object boundaries, making objects larger.</p>
@@ -659,7 +659,8 @@ of objects.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="erosion">Erosion<a class="anchor" aria-label="anchor" href="#erosion"></a></h2>
-<hr class="half-width"><p>Erosion removes pixels from object boundaries.</p>
+<hr class="half-width"><p>Erosion does the opposite of dilation. Erosion removes pixels from
+object boundaries.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -698,7 +699,7 @@ of objects.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Very small objects may be reduced substantially or disappear
 completely.</p>
@@ -707,12 +708,14 @@ completely.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="opening-closing">Opening &amp; Closing<a class="anchor" aria-label="anchor" href="#opening-closing"></a></h2>
-<hr class="half-width"><p>Usually, you don’t want to significantly change the obect’s size.
-Opening and closing are used instead of basic erosion and dilation to
-maintain object size. Opening removes small dots and breaks thin lines.
-Closing fills small holes and joins broken parts. In contrast,
-Erosion/Dilation changes the size of objects.</p>
-<p>Opening is one erosion operation followed by one dilation
+<hr class="half-width"><p>Usually, you don’t want to significantly change an object’s size.
+<code>Opening</code> and <code>closing</code> are used instead of basic
+<code>erosion</code> and <code>dilation</code> to maintain object size.
+<code>Opening</code> removes small dots and breaks thin lines.
+<code>Closing</code> fills small holes and joins broken parts. In
+contrast, <code>erosion</code> and <code>dilation</code> change the size
+of objects.</p>
+<p>Opening is defined as one erosion operation followed by one dilation
 operation.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -733,13 +736,14 @@ operation.</p>
 <span>  all <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Opening is often used to remove small objects and noise.</p>
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Opening is often used to remove small objects and single pixel
+noise.</p>
 <div class="section level3">
 <h3 id="what-opening-does">What Opening Does<a class="anchor" aria-label="anchor" href="#what-opening-does"></a></h3>
 <pre class="text"><code>Small Artefacts -&gt; Removed</code></pre>
 <p>while larger objects are largely preserved.</p>
-<p>Closing is the opposite of Opening is one dilation followed by one
-erosion.</p>
+<p>Closing is the opposite of Opening. It is defined as one dilation
+followed by one erosion.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -787,7 +791,7 @@ isolated noise particles?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <pre class="text"><code>1. Opening</code></pre>
 <p>Opening is commonly used to remove small foreground artefacts. If the
@@ -798,9 +802,10 @@ useful.</p>
 </div>
 </div>
 <p>See this figure of a noisy thresholded image of a fingerprint.</p>
-<p><img src="../fig/09-morphological-operations/fingerprint_noisy.png" style="width:32.0%" alt="fingerprint binary image corupted with noise." class="figure"><img src="../fig/09-morphological-operations/fingerprint_open.png" style="width:32.0%" alt="fingerprint binary image corupted with noise." class="figure"><img src="../fig/09-morphological-operations/fingerprint_close.png" style="width:32.0%" alt="fingerprint binary image corupted with noise." class="figure"> Fingreprint
-Corrupted With Noise. Fingreprint Opened Fingerprint Opened &amp;
-Closed</p>
+<p><img src="../fig/09-morphological-operations/fingerprint_noisy.png" style="width:32.0%" alt="fingerprint binary image corupted with noise." class="figure"><img src="../fig/09-morphological-operations/fingerprint_open.png" alt="Opened Fingerprint" class="figure">{alt=” binary image, noise removed with
+opening.” width=“32%”} <img src="../fig/09-morphological-operations/fingerprint_close.png" style="width:32.0%" alt="binary image, noise removed with closing." class="figure">
+Fingreprint Corrupted With Noise. Fingreprint Opened Fingerprint Opened
+&amp; Closed</p>
 </div>
 </section><section><h2 class="section-heading" id="filling-holes">Filling Holes<a class="anchor" aria-label="anchor" href="#filling-holes"></a></h2>
 <hr class="half-width"><p>Objects may sometimes contain holes.</p>
@@ -832,7 +837,8 @@ has no objects with holes.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This operation is particularly useful when working with nuclei, as
-nucleoli are often less bright than the neighbouring nucleoplasm.</p>
+nucleoli are often less bright than the neighbouring nucleoplasm and
+often results in holes in the binary images.</p>
 <div id="filling-holes-simplifies-measurement" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -847,19 +853,21 @@ solid regions.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="the-problem-of-touching-objects">The Problem of Touching Objects<a class="anchor" aria-label="anchor" href="#the-problem-of-touching-objects"></a></h2>
-<hr class="half-width"><p>Thresholding often merges neighbouring nuclei into a single
+<hr class="half-width"><p>Thresholding often merges neighbouring objects into a single
 object.</p>
 <p>There are several examples of this issue in our binary image of
 nuclei.</p>
 <p>This phenomenon is called <strong>under-segmentation</strong>.</p>
 </section><section><h2 class="section-heading" id="distance-maps">Distance Maps<a class="anchor" aria-label="anchor" href="#distance-maps"></a></h2>
 <hr class="half-width"><p>One approach to separating touching objects involves calculating the
-distance from each foreground pixel to the nearest background pixel. The
-<code>distmap()</code> function from EBImage calculates this. Note that
-again, the input is a binary image and the ouput is another image where
-the pixel values indicate fow far each pixel is from the nearest
-background pixel. Because these matrixes have pixel values, we can
-visualise these images.</p>
+distance from each foreground pixel to the nearest background pixel,
+followed by the watershed operation. The <code>distmap()</code> function
+from EBImage calculates a euclidean distance map. Note that again, the
+input is a binary image and the ouput is another image where the pixel
+values indicate how far each pixel is from the nearest background pixel.
+pixels at the border get a value of 1. Each successive pixel distance is
+assigned an increased value. Because these matrices have pixel values,
+we can visualise them as images.</p>
 <p>Create a distance map.</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -877,31 +885,6 @@ visualise these images.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-19-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Bright regions correspond to pixels located near object centres.</p>
-<div id="challenge5" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div class="callout-inner">
-<h3 class="callout-title">Challenge</h3>
-<div class="callout-content">
-<p>Where do you expect the largest distance values to occur?</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
-</button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
-<div class="accordion-body">
-<p>Near the centres of objects.</p>
-<p>These pixels are furthest from the object boundaries.</p>
-</div>
-</div>
-</div>
-</div>
 </section><section><h2 class="section-heading" id="how-watershed-segmentation-works">How Watershed Segmentation Works<a class="anchor" aria-label="anchor" href="#how-watershed-segmentation-works"></a></h2>
 <hr class="half-width"><p>The idea behind watershed segmentation comes from imagining the image
 as a landscape.</p>
@@ -915,7 +898,7 @@ easier to visualise, imagine turning this landscape upside down.</p>
 
 Object Boundary
       ↓
-     Ridge</code></pre>
+    Ridge</code></pre>
 <p>For two touching nuclei, the inverted distance map might look
 something like:</p>
 <pre class="text"><code>\      __      /
@@ -958,7 +941,9 @@ centres.</p>
 <p>“If water were poured into each object centre, where would
 neighbouring pools of water meet?”</p>
 </blockquote>
-<p>The watershed boundary is constructed at those meeting points.</p>
+<p>The watershed boundary is constructed at those meeting points. In
+EBImage, the watershed algorithm (<code>watershed</code>) operates on a
+distance map.</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1001,7 +986,7 @@ segmentation without the watershed algorithm.</p>
 </div>
 <figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-22-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Overlay visualisation makes it easier to evaluate segmentation
 quality.</p>
-<div id="challenge6" class="callout challenge">
+<div id="challenge5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -1013,12 +998,12 @@ quality.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
-  <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Nuclei often touch or overlap.</p>
 <p>Thresholding may merge adjacent nuclei into a single object.</p>
@@ -1033,9 +1018,9 @@ individual objects.</p>
 <p>A typical workflow might be:</p>
 <pre class="text"><code>Image
   ↓
-Threshold
+Explore Different Thresholds
   ↓
-Morphological Operations
+Iteratively Apply Morphological Operations
   ↓
 Distance Map
   ↓
@@ -1043,8 +1028,8 @@ Watershed Segmentation
   ↓
 Labelled Objects</code></pre>
 <p>Each stage improves the quality of the final segmentation. Note that
-in some watershed implementations (e.g. Fiji) includes the distance map
-operation as part of the watershed.</p>
+in some watershed implementations (e.g. Fiji) the distance map operation
+is part of the watershed function.</p>
 <div id="there-is-no-perfect-segmentation" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1118,11 +1103,11 @@ any links that you are not going to use.
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/09-morphological-operations.Rmd" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/09-morphological-operations.Rmd" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/" class="external-link">Source</a></p>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/" class="external-link">Source</a></p>
         <p>
         <a href="../citation.html">Cite</a>
         | <a href="mailto:stephen.ogg@kcl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
@@ -1132,7 +1117,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/a34637b65a09c4823187751256076b403db3bf4a" class="external-link">varnish (1.1.2.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/06b722638165e6b88961de8b5b88f686132ddb70" class="external-link">varnish (1.1.2.9000)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1144,15 +1129,15 @@ any links that you are not going to use.
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/09-morphological-operations.html",
+  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/09-morphological-operations.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, bioimage, analysis, R",
   "name": "Morphological Operations",
   "creativeWorkStatus": "active",
-  "url": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/09-morphological-operations.html",
-  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/09-morphological-operations.html",
+  "url": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/09-morphological-operations.html",
+  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/09-morphological-operations.html",
   "dateCreated": "2026-07-21",
   "dateModified": "2026-08-18",
   "datePublished": "2026-08-18"

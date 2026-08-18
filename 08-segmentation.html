@@ -380,7 +380,7 @@
         <h1>Image Segmentation</h1>
         <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/08-segmentation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/08-segmentation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
 
 
@@ -423,7 +423,8 @@
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
 <hr class="half-width"><p>In the previous lesson we used thresholding to create binary
 images.</p>
-<p>Thresholding allows us to separate pixels into two classes:</p>
+<p>Binary image have only two values. Thresholding allows us to separate
+pixels into two classes:</p>
 <pre class="text"><code>Foreground (These pixels are those you care about - objects)</code></pre>
 <p>and</p>
 <pre class="text"><code>Background (These are the pixels you don't care about)</code></pre>
@@ -431,9 +432,9 @@ images.</p>
 identifying foreground pixels.</p>
 <p>For example, we may wish to:</p>
 <ul><li>count nuclei</li>
-<li>measure cell size</li>
+<li>measure cell or nuclear size</li>
 <li>quantify fluorescence intensity</li>
-<li>compare object shape descriptors</li>
+<li>compare object shapes</li>
 </ul><p>To perform these measurements, we must first identify individual
 objects.</p>
 <p>This process is known as <strong>image segmentation</strong>.</p>
@@ -483,7 +484,7 @@ Step</h3>
 <span>  <span class="va">img</span> <span class="op">&lt;-</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">1</span><span class="op">]</span></span></code></pre>
 </div>
 <p>If you want, display the image with <code>display(img)</code>. By
-now, you probably knwo what this image looks like.</p>
+now, you probably know what this image looks like.</p>
 </section><section><h2 class="section-heading" id="creating-a-binary-mask">Creating a Binary Mask<a class="anchor" aria-label="anchor" href="#creating-a-binary-mask"></a></h2>
 <hr class="half-width"><p>A common segmentation workflow begins with thresholding.</p>
 <p>Create a binary mask.</p>
@@ -500,7 +501,8 @@ now, you probably knwo what this image looks like.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/08-segmentation-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The resulting image contains only two classes:</p>
+<figure><img src="fig/08-segmentation-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The resulting image contains only two pixel values (0/1) often termed
+classes:</p>
 <pre class="text"><code>Foreground (things you care about, your 'objects')
 Background (things you don't care about)</code></pre>
 <p>or equivalently:</p>
@@ -523,7 +525,7 @@ Background (things you don't care about)</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Pixels with intensities greater than the threshold value become
 foreground pixels. In some software (e.g. Fiji) you can specify which
@@ -583,7 +585,7 @@ regions?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <pre class="text"><code><span><span class="fl">0.1</span></span></code></pre>
 <p>Lower thresholds classify more pixels as foreground. Not necessarily
@@ -608,8 +610,9 @@ pixel with a value of 0 — remember, at this point, there are only 0s and
 1s. It then traverses the entire matrix. Every time it encounters a
 pixel with a value of 1, it assigns it to the next value in turn. I.e.
 the first object gets that value 1, the second object gets the value 2
-and so on, until every pixel has been visited. All the pixels that had a
-value of 0 remain 0, but every pixel that was 1 is now assigned to a
+and so on, until every pixel has been visited and all pixels that used
+to have a value of 1 now have different values. All the pixels that had
+a value of 0 remain 0, but every pixel that was 1 is now assigned to a
 unique number depending on the position of the object in relation to the
 starting point of the labeller. Every pixel that has value 1 is first
 checked to see whether it is connected to another pixel of value &gt; 0
@@ -650,7 +653,16 @@ objects are visually distinct.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="fu">colorLabels</span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/08-segmentation-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each colour represents a different object.</p>
+<figure><img src="fig/08-segmentation-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each colour represents a different object. We can also use R’s pipe
+operator (<code>|&gt;</code>) to make this a bit easier to read.</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">labels</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">colorLabels</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">display</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
 <div id="colours-represent-labels" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -668,7 +680,7 @@ values.</p>
 </section><section><h2 class="section-heading" id="counting-objects">Counting Objects<a class="anchor" aria-label="anchor" href="#counting-objects"></a></h2>
 <hr class="half-width"><p>How many objects were detected?</p>
 <p>Inspect the labels.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -700,7 +712,7 @@ objects in the image.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <pre class="text"><code>17 objects</code></pre>
 <p>Each object receives a unique label.</p>
@@ -713,7 +725,7 @@ objects in the image.</p>
 <p>Visualising the labelled objects, as above, is helpful, but
 segmentation results are often easier to assess when displayed alongside
 the original image.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -734,7 +746,7 @@ highlights and marks segmented objects in an image. It outlines object
 boundaries and/or fills their interiors using specified colors and
 opacities, working closely with labeled masks from functions like
 <code>bwlabel()</code>.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -764,7 +776,7 @@ together.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Overlays allow us to compare the segmentation directly with the
 original image.</p>
@@ -835,7 +847,7 @@ area?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Area measurements require the pixels belonging to each nucleus to be
 identified.</p>
@@ -846,12 +858,12 @@ identified.</p>
 </div>
 </section><section><h2 class="section-heading" id="looking-ahead">Looking Ahead<a class="anchor" aria-label="anchor" href="#looking-ahead"></a></h2>
 <hr class="half-width"><p>In this lesson we transformed image pixels into labelled objects. As
-welearned, a single threshold is often only the first step of creating a
-biologically meaningful segmentation. In the next lesson we will explore
-tools refine these masks, to make them more relevant. Only after we have
-a reasonable segmentation and labelling strategy, does it make sense to
-make measurements and extract quantitative information from biological
-images.</p>
+we learned, a single threshold is often only the first step of creating
+a biologically meaningful segmentation. In the next lesson we will
+explore tools refine these masks, to make them more relevant. Only after
+we have a reasonable segmentation and labelling strategy, does it make
+sense to make measurements and extract quantitative information from
+biological images.</p>
 </section><section><h2 class="section-heading" id="key-points">Key Points<a class="anchor" aria-label="anchor" href="#key-points"></a></h2>
 <hr class="half-width"><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -900,11 +912,11 @@ any links that you are not going to use.
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/08-segmentation.Rmd" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/08-segmentation.Rmd" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/" class="external-link">Source</a></p>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/" class="external-link">Source</a></p>
         <p>
         <a href="citation.html">Cite</a>
         | <a href="mailto:stephen.ogg@kcl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
@@ -914,7 +926,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/a34637b65a09c4823187751256076b403db3bf4a" class="external-link">varnish (1.1.2.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/06b722638165e6b88961de8b5b88f686132ddb70" class="external-link">varnish (1.1.2.9000)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -926,15 +938,15 @@ any links that you are not going to use.
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r/08-segmentation.html",
+  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r.git/08-segmentation.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, bioimage, analysis, R",
   "name": "Image Segmentation",
   "creativeWorkStatus": "active",
-  "url": "https://stephenogg.github.io/bioimage-analysis-with-r/08-segmentation.html",
-  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r/08-segmentation.html",
+  "url": "https://stephenogg.github.io/bioimage-analysis-with-r.git/08-segmentation.html",
+  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r.git/08-segmentation.html",
   "dateCreated": "2026-07-21",
   "dateModified": "2026-08-18",
   "datePublished": "2026-08-18"

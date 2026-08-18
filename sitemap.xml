@@ -1,147 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/01-why-image-processing-matters.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/01-why-image-processing-matters.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/02-digital-images.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/02-digital-images.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/03-reading-bioimages.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/03-reading-bioimages.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/04-microscopy-metadata.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/04-microscopy-metadata.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/05-visualising-bioimages.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/05-visualising-bioimages.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/06-color-images.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/06-color-images.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/07-image-enhancement.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/07-image-enhancement.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/08-segmentation.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/08-segmentation.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/09-morphological-operations.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/09-morphological-operations.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/10-measuring-biological-objects.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/10-measuring-biological-objects.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/11-capstone-project.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/11-capstone-project.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/404.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/404.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/CODE_OF_CONDUCT.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/LICENSE.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/aio.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/aio.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/citation.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/citation.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/images.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/images.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/index.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/index.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/01-why-image-processing-matters.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/01-why-image-processing-matters.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/02-digital-images.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/02-digital-images.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/03-reading-bioimages.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/03-reading-bioimages.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/04-microscopy-metadata.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/04-microscopy-metadata.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/05-visualising-bioimages.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/05-visualising-bioimages.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/06-color-images.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/06-color-images.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/07-image-enhancement.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/07-image-enhancement.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/08-segmentation.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/08-segmentation.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/09-morphological-operations.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/09-morphological-operations.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/10-measuring-biological-objects.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/10-measuring-biological-objects.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/11-capstone-project.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/11-capstone-project.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/404.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/404.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/LICENSE.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/aio.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/aio.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/citation.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/citation.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/images.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/images.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/index.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/index.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/instructor-notes.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/instructor-notes.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/introduction.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/introduction.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/key-points.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/key-points.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/prereqs.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/prereqs.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/profiles.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/profiles.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor/reference.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/reference.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/instructor-notes.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor-notes.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/introduction.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/introduction.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/key-points.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/key-points.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/prereqs.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/prereqs.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/profiles.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/profiles.html</loc>
   </url>
   <url>
-    <loc>https://stephenogg.github.io/bioimage-analysis-with-r/reference.html</loc>
+    <loc>https://stephenogg.github.io/bioimage-analysis-with-r.git/reference.html</loc>
   </url>
 </urlset>

@@ -291,10 +291,10 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#introduction">Introduction</a></li>
-<li><a href="#reading-the-image-stack">Reading the Image Stack</a></li>
+<li><a href="#reading-the-image-stack-and-recap-of-the-previous-lessons">Reading the Image Stack and Recap of the previous lessons</a></li>
 <li><a href="#starting-with-one-image">Starting With One Image</a></li>
 <li><a href="#segmenting-the-nuclei">Segmenting the Nuclei</a></li>
-<li><a href="#counting-objects">Counting Objects</a></li>
+<li><a href="#measuring-objects">Measuring Objects</a></li>
 <li><a href="#measuring-object-shape">Measuring Object Shape</a></li>
 <li><a href="#creating-tidy-data">Creating Tidy Data</a></li>
 <li><a href="#measuring-nuclear-area">Measuring Nuclear Area</a></li>
@@ -310,6 +310,7 @@
 <li><a href="#applying-the-workflow-to-multiple-images">Applying the Workflow to Multiple Images</a></li>
 <li><a href="#creating-a-measurement-function">Creating a Measurement Function</a></li>
 <li><a href="#measuring-every-frame">Measuring Every Frame</a></li>
+<li><a href="#comparing-measurements-from-different-images">Comparing Measurements from different images</a></li>
 <li><a href="#exporting-measurements">Exporting Measurements</a></li>
 <li><a href="#looking-ahead">Looking Ahead</a></li>
 <li><a href="#key-points">Key Points</a></li>
@@ -388,7 +389,7 @@
         <h1>Measuring Biological Objects</h1>
         <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/10-measuring-biological-objects.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/10-measuring-biological-objects.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
 
 
@@ -438,27 +439,28 @@ Enhance Images
 Segment Objects
      ↓
 Refine Segmentations</code></pre>
-<p>The goal of image analysis is usually not to create better
-images.</p>
+<p>The goal of image analysis is usually not to create better images or
+refine masks.</p>
 <p>Instead, the goal is to generate quantitative measurements that can
 be used to answer biological questions.</p>
 <p>In this lesson we will measure properties of segmented nuclei and
 convert image data into a table of measurements that can be analysed
 using the broader R ecosystem.</p>
-<div id="from-images-to-data" class="callout">
+<div id="from-images-to-data-to-visualisation" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="from-images-to-data" class="callout-inner">
-<h3 class="callout-title">From Images to Data</h3>
+<div id="from-images-to-data-to-visualisation" class="callout-inner">
+<h3 class="callout-title">From Images to Data to visualisation</h3>
 <div class="callout-content">
-<p>Segmentation identifies objects.</p>
-<p>Measurement converts those objects into quantitative data.</p>
+<p>Image Segmentation identifies objects.</p>
+<p>Measurement converts those objects into quantitative data tables;</p>
+<p>Graphs of the talbes convey biological meaning.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="reading-the-image-stack">Reading the Image Stack<a class="anchor" aria-label="anchor" href="#reading-the-image-stack"></a></h2>
+</section><section><h2 class="section-heading" id="reading-the-image-stack-and-recap-of-the-previous-lessons">Reading the Image Stack and Recap of the previous lessons<a class="anchor" aria-label="anchor" href="#reading-the-image-stack-and-recap-of-the-previous-lessons"></a></h2>
 <hr class="half-width"><p>Load the required packages.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -568,7 +570,7 @@ using the broader R ecosystem.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-12-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each segmented nucleus has now been assigned a unique label.</p>
-</section><section><h2 class="section-heading" id="counting-objects">Counting Objects<a class="anchor" aria-label="anchor" href="#counting-objects"></a></h2>
+</section><section><h2 class="section-heading" id="measuring-objects">Measuring Objects<a class="anchor" aria-label="anchor" href="#measuring-objects"></a></h2>
 <hr class="half-width"><p>The simplest measurement is object count.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -614,7 +616,7 @@ using the broader R ecosystem.</p>
 <p>Each column represents a measurement.</p>
 </section><section><h2 class="section-heading" id="creating-tidy-data">Creating Tidy Data<a class="anchor" aria-label="anchor" href="#creating-tidy-data"></a></h2>
 <hr class="half-width"><p>Many R packages work most naturally with data frames.</p>
-<p>Creaet a data fram of the measurements.</p>
+<p>Create a data frame of the measurements.</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -722,13 +724,44 @@ objects.</p>
 <span>    y <span class="op">=</span> <span class="st">"Perimeter (pixels)"</span></span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-20-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each point represents a single nucleus.</p>
+<figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-20-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each point represents a single nucleus. We might use either of the
+graphs above to filter the data to remove objects that are too small to
+be nuclei or are too big and likely to be merged objects.</p>
+<p>Perhaps something like this:</p>
+<div class="codewrapper sourceCode" id="cb27">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> </span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ lubridate 1.9.5     ✔ tibble    3.3.1
+✔ purrr     1.2.2     ✔ tidyr     1.3.2
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::combine()   masks EBImage::combine()
+✖ dplyr::filter()    masks stats::filter()
+✖ dplyr::lag()       masks stats::lag()
+✖ purrr::transpose() masks EBImage::transpose()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb29">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">filtered_df</span> <span class="op">&lt;-</span> <span class="va">shape_df</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">s.area</span> <span class="op">&gt;</span> <span class="fl">250</span> <span class="op">&amp;</span> <span class="va">s.area</span> <span class="op">&lt;</span> <span class="fl">1000</span><span class="op">)</span></span></code></pre>
+</div>
 </section><section><h2 class="section-heading" id="measuring-intensity">Measuring Intensity<a class="anchor" aria-label="anchor" href="#measuring-intensity"></a></h2>
 <hr class="half-width"><p>Object shape is not the only quantity that can be measured.</p>
 <p>We can also measure pixel intensities inside each segmented
 nucleus.</p>
 <p>Calculate intensity measurements.</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -740,7 +773,7 @@ nucleus.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <p>Inspect the results.</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -759,7 +792,7 @@ nucleus.</p>
 </div>
 </section><section><h2 class="section-heading" id="mean-intensity">Mean Intensity<a class="anchor" aria-label="anchor" href="#mean-intensity"></a></h2>
 <hr class="half-width"><p>One useful measurement is mean intensity.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -793,7 +826,7 @@ Nucleus B = 0.38</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <pre class="text"><code>Nucleus B</code></pre>
 <p>The larger mean intensity indicates a stronger signal.</p>
@@ -803,7 +836,7 @@ Nucleus B = 0.38</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="combining-measurements">Combining Measurements<a class="anchor" aria-label="anchor" href="#combining-measurements"></a></h2>
 <hr class="half-width"><p>Combine shape and intensity measurements.</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -813,7 +846,7 @@ Nucleus B = 0.38</code></pre>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <p>Inspect the combined table.</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -843,7 +876,7 @@ Nucleus B = 0.38</code></pre>
 <li>intensity measurements</li>
 </ul></section><section><h2 class="section-heading" id="exploring-relationships-between-measurements">Exploring Relationships Between Measurements<a class="anchor" aria-label="anchor" href="#exploring-relationships-between-measurements"></a></h2>
 <hr class="half-width"><p>Compare area and mean intensity.</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -860,7 +893,7 @@ Nucleus B = 0.38</code></pre>
 <span>    y <span class="op">=</span> <span class="st">"Mean Intensity"</span></span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-26-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Plots such as this can help identify biological relationships between
+<figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Plots such as this can help identify biological relationships between
 measurements.</p>
 <div id="images-become-data" class="callout">
 <div class="callout-square">
@@ -879,7 +912,7 @@ directly.</p>
 </section><section><h2 class="section-heading" id="visualising-nuclear-intensity-measurements">Visualising Nuclear Intensity Measurements<a class="anchor" aria-label="anchor" href="#visualising-nuclear-intensity-measurements"></a></h2>
 <hr class="half-width"><p>Earlier we measured the mean intensity of each segmented nucleus.</p>
 <p>We can visualise those measurements using a histogram.</p>
-<div class="codewrapper sourceCode" id="cb38">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -896,7 +929,7 @@ directly.</p>
 <span>    y <span class="op">=</span> <span class="st">"Count"</span></span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The histogram summarises the intensity measurements for every
+<figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-28-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The histogram summarises the intensity measurements for every
 segmented nucleus.</p>
 <p>Notice that not all nuclei have the same intensity.</p>
 <p>Some nuclei have relatively low mean intensities, while others have
@@ -939,20 +972,10 @@ G2 Phase
     ↓
 Higher DNA Content</code></pre>
 <p>If fluorescence intensity is proportional to DNA content, a histogram
-of nuclear intensities may reveal distinct populations of cells.</p>
-<p>Conceptually:</p>
-<pre class="text"><code>Number of Cells
-      ^
-      |
-      |       /\            /\
-      |      /  \          /  \
-      |     /    \___ ____/    \
-      +----------------------------&gt;
-
-          G1      S       G2
-
-             DNA Content</code></pre>
-<p>In an experiment designed to measure DNA content, such a distribution
+of nuclear intensities may reveal distinct populations of cells. This is
+very common in flow cytometry measurements.</p>
+<figure><img src="fig/10-measuring-biological-objects/cell_cycle.png" alt="cell cycle DNA content Vs Cell Number" class="figure mx-auto d-block"><div class="figcaption">Call Cycle Analysis in Flow Cytometry</div>
+</figure><p>In an experiment designed to measure DNA content, such a distribution
 could be used to investigate:</p>
 <ul><li>cell-cycle progression</li>
 <li>responses to drug treatment</li>
@@ -979,7 +1002,7 @@ original image?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The image allows us to see individual nuclei, but it can be difficult
 to judge overall patterns by eye.</p>
@@ -1029,7 +1052,7 @@ Same Workflow
 One Dataset</code></pre>
 </section><section><h2 class="section-heading" id="creating-a-measurement-function">Creating a Measurement Function<a class="anchor" aria-label="anchor" href="#creating-a-measurement-function"></a></h2>
 <hr class="half-width"><p>Create a function that performs segmentation and measurement.</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1058,8 +1081,8 @@ One Dataset</code></pre>
 <span>  <span class="va">shape_df</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<p>Apply the function to the first image.</p>
-<div class="codewrapper sourceCode" id="cb44">
+<p>Apply the function to the first image to validate functionality.</p>
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1149,14 +1172,14 @@ One Dataset</code></pre>
 <p>Rather than analysing each image manually, we can repeat the same
 workflow for every frame.</p>
 <p>Create an empty data frame to store the results.</p>
-<div class="codewrapper sourceCode" id="cb46">
+<div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">all_measurements</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Loop through each frame in the image stack.</p>
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1175,7 +1198,7 @@ workflow for every frame.</p>
 <span><span class="op">}</span></span></code></pre>
 </div>
 <p>Inspect the first few rows.</p>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1196,9 +1219,10 @@ workflow for every frame.</p>
 images.</p>
 <p>Each row represents a nucleus.</p>
 <p>The <code>frame</code> column records which image the nucleus
-originated from. ## Comparing Images</p>
-<p>Create a boxplot of nuclear areas by frame.</p>
-<div class="codewrapper sourceCode" id="cb50">
+originated from.</p>
+</section><section><h2 class="section-heading" id="comparing-measurements-from-different-images">Comparing Measurements from different images<a class="anchor" aria-label="anchor" href="#comparing-measurements-from-different-images"></a></h2>
+<hr class="half-width"><p>Create a boxplot of nuclear areas by frame.</p>
+<div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1216,7 +1240,7 @@ originated from. ## Comparing Images</p>
 <span>    title <span class="op">=</span> <span class="st">"Nuclear Areas Across Frames"</span></span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-33-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>A single workflow has now produced measurements from four separate
+<figure><img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-34-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>A single workflow has now produced measurements from four separate
 images.</p>
 <div id="challenge3" class="callout challenge">
 <div class="callout-square">
@@ -1235,7 +1259,7 @@ images.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Each box summarises the distribution of nuclear areas detected in one
 frame of the image stack.</p>
@@ -1245,7 +1269,7 @@ frame of the image stack.</p>
 </div>
 </section><section><h2 class="section-heading" id="exporting-measurements">Exporting Measurements<a class="anchor" aria-label="anchor" href="#exporting-measurements"></a></h2>
 <hr class="half-width"><p>Measurement tables can be exported for downstream analysis.</p>
-<div class="codewrapper sourceCode" id="cb51">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1337,11 +1361,11 @@ any links that you are not going to use.
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/10-measuring-biological-objects.Rmd" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/10-measuring-biological-objects.Rmd" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/" class="external-link">Source</a></p>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/" class="external-link">Source</a></p>
         <p>
         <a href="citation.html">Cite</a>
         | <a href="mailto:stephen.ogg@kcl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
@@ -1351,7 +1375,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/a34637b65a09c4823187751256076b403db3bf4a" class="external-link">varnish (1.1.2.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/06b722638165e6b88961de8b5b88f686132ddb70" class="external-link">varnish (1.1.2.9000)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1363,15 +1387,15 @@ any links that you are not going to use.
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r/10-measuring-biological-objects.html",
+  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r.git/10-measuring-biological-objects.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, bioimage, analysis, R",
   "name": "Measuring Biological Objects",
   "creativeWorkStatus": "active",
-  "url": "https://stephenogg.github.io/bioimage-analysis-with-r/10-measuring-biological-objects.html",
-  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r/10-measuring-biological-objects.html",
+  "url": "https://stephenogg.github.io/bioimage-analysis-with-r.git/10-measuring-biological-objects.html",
+  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r.git/10-measuring-biological-objects.html",
   "dateCreated": "2026-07-21",
   "dateModified": "2026-08-18",
   "datePublished": "2026-08-18"

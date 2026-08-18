@@ -425,7 +425,7 @@
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/01-why-image-processing-matters.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/01-why-image-processing-matters.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -525,7 +525,7 @@ performed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>There is no single correct answer.</p>
 <p>Any quantitative property that can be measured from image pixels may
@@ -591,6 +591,8 @@ Requirement</h3>
 <p>A key goal of image analysis is not simply to work faster.</p>
 <p>It is to produce measurements that can be reproduced, inspected, and
 verified.</p>
+<p>See <a href="https://rdcu.be/fAnXm" class="external-link">this</a> paper for an
+introduction to the reproducibility crisis.</p>
 </div>
 </div>
 </div>
@@ -599,38 +601,34 @@ verified.</p>
 <hr class="half-width">
 <p>Image processing is used throughout the life sciences.</p>
 <p>Examples include:</p>
-<div class="section level3">
-<h3 id="cell-counting">Cell Counting<a class="anchor" aria-label="anchor" href="#cell-counting"></a>
-</h3>
+<ul>
+<li>
+<h3 id="cell-counting">Cell Counting</h3>
 <p>Determining the number of cells in a field of view.</p>
-</div>
-<div class="section level3">
-<h3 id="cell-segmentation">Cell Segmentation<a class="anchor" aria-label="anchor" href="#cell-segmentation"></a>
-</h3>
+</li>
+<li>
+<h3 id="cell-segmentation">Cell Segmentation</h3>
 <p>Identifying individual cells or nuclei.</p>
-</div>
-<div class="section level3">
-<h3 id="fluorescence-quantification">Fluorescence Quantification<a class="anchor" aria-label="anchor" href="#fluorescence-quantification"></a>
-</h3>
+</li>
+<li>
+<h3 id="fluorescence-quantification">Fluorescence
+Quantification</h3>
 <p>Measuring gene expression or protein localisation.</p>
-</div>
-<div class="section level3">
-<h3 id="time-lapse-imaging">Time-Lapse Imaging<a class="anchor" aria-label="anchor" href="#time-lapse-imaging"></a>
-</h3>
+</li>
+<li>
+<h3 id="time-lapse-imaging">Time-Lapse Imaging</h3>
 <p>Tracking cell movement over time.</p>
-</div>
-<div class="section level3">
-<h3 id="high-content-screening">High-Content Screening<a class="anchor" aria-label="anchor" href="#high-content-screening"></a>
-</h3>
+</li>
+<li>
+<h3 id="high-content-screening">High-Content Screening</h3>
 <p>Analysing thousands of images generated during drug-discovery
 experiments.</p>
-</div>
-<div class="section level3">
-<h3 id="spatial-biology">Spatial Biology<a class="anchor" aria-label="anchor" href="#spatial-biology"></a>
-</h3>
+</li>
+<li>
+<h3 id="spatial-biology">Spatial Biology</h3>
 <p>Measuring the organisation of cells and tissues.</p>
-</div>
-</section><section><h2 class="section-heading" id="example-measuring-cell-size">Example: Measuring Cell Size<a class="anchor" aria-label="anchor" href="#example-measuring-cell-size"></a>
+</li>
+</ul></section><section><h2 class="section-heading" id="example-measuring-cell-size">Example: Measuring Cell Size<a class="anchor" aria-label="anchor" href="#example-measuring-cell-size"></a>
 </h2>
 <hr class="half-width">
 <p>Imagine we wish to compare cell size between two experimental
@@ -693,7 +691,7 @@ analysis?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The correct answer is:</p>
 <pre class="text"><code>4. All of the above</code></pre>
@@ -705,8 +703,11 @@ size.</p>
 </div>
 </section><section><h2 class="section-heading" id="discussion">Discussion<a class="anchor" aria-label="anchor" href="#discussion"></a>
 </h2>
+<hr class="half-width"></section><section><h2 class="section-heading" id="human-cellsphase-contrast-human-cellsdic">
+<img src="../fig/01-why-image-processing-matters/DIC_cheekcellspc.jpg" style="width:45.0%" alt="Images of human cheek cells with phase contrast" class="figure"><img src="../fig/01-why-image-processing-matters/DIC_cheekcellsdic.jpg" style="width:45.0%" alt="Images of human cheek cells with DIC" class="figure"><a class="anchor" aria-label="anchor" href="#human-cellsphase-contrast-human-cellsdic"></a>
+</h2>
 <hr class="half-width">
-<p><img src="../fig/01-why-image-processing-matters/DIC_cheekcellspc.jpg" style="width:45.0%" alt="Images of human cheek cells with phase contrast" class="figure"><img src="../fig/01-why-image-processing-matters/DIC_cheekcellsdic.jpg" style="width:45.0%" alt="Images of human cheek cells with DIC" class="figure"><strong>Human Cells viewed with Phase and differential Interference
+<p><strong>Human Cells viewed with Phase and differential Interference
 Contrast</strong></p>
 <hr>
 <p>Image analysis is sometimes viewed as a purely computational
@@ -762,7 +763,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/02-digital-images.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/02-digital-images.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 65 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -864,12 +865,12 @@ equivalent, a cuboid, or have even more dimensions, but always keeping
 the evenly spaced arrangement of numbers. In computing, an array refers
 to a structure in the computer’s memory where data is stored in evenly
 spaced elements. This is strongly analogous to a matrix. An R matrix is
-a type of variable (an example of a simple type is an integer). For our
-purposes, the distinction between matrices and arrays is not important,
-we don’t really care how the computer arranges our data in its memory.
-The important thing is that the computer stores values describing the
-pixels in images, as arrays. We will use the terms matrix and array
-interchangeably.</p>
+a variable type. Variables can have many types, e.g. one type is:
+integer). For our purposes, the distinction between matrices and arrays
+is not important, we don’t really care how the computer arranges our
+data in its memory. The important thing is that the computer stores
+values describing the pixels in images, as arrays. We will use the terms
+matrix and array interchangeably.</p>
 </div>
 </div>
 </div>
@@ -913,7 +914,8 @@ to see what happens.</p>
 <p>you may have noticed something surprising.</p>
 <p>The pixel value at <code>img[1,1]</code> doesn’t appear in the
 top-left corner of the plot.</p>
-<p>Many learners expect it to appear in the upper-left corner.</p>
+<p>Many bioimage analysts expect it to appear in the upper-left
+corner.</p>
 <p>Why?</p>
 <p>The answer is that different fields use different coordinate
 systems.</p>
@@ -1043,7 +1045,7 @@ colors before it renders them in HTML.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The correct answer is:</p>
 <pre class="text"><code>2. Upper-right</code></pre>
@@ -1217,7 +1219,7 @@ values from a poisson distribution with a <span class="math inline">\(\lambda\)<
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1390,7 +1392,7 @@ comparable for quantitative analysis?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ol start="2" style="list-style-type: decimal">
 <li>Images are stored as numerical arrays.</li>
@@ -1422,7 +1424,7 @@ comparable for quantitative analysis?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol start="3" style="list-style-type: decimal">
 <li>65536</li>
@@ -1463,7 +1465,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/03-reading-bioimages.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/03-reading-bioimages.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 70 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -1976,6 +1978,112 @@ are identical, the images are completely different.</p>
 </div>
 </div>
 </div>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Looking Beyond OME-TIFF: NGFF and OME-Zarr </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
+<p>For many years, <strong>OME-TIFF</strong> has been the preferred open
+format for quantitative microscopy. It is portable, reproducible, and
+easy to analyse across different software packages.</p>
+<p>However, microscopy datasets are becoming increasingly large. Modern
+imaging experiments can generate hundreds of gigabytes or even terabytes
+of data, particularly for applications such as light-sheet microscopy,
+whole-slide imaging, high-content screening, and large 3D or time-lapse
+experiments. Traditional image formats were not designed with these
+scales or with modern cloud-based workflows in mind.</p>
+<p>To address these challenges, the bioimaging community launched the
+<strong>Next Generation File Formats (NGFF)</strong> initiative. NGFF is
+a community-driven effort led by the Open Microscopy Environment (OME)
+and collaborators to develop standards that improve the scalability,
+accessibility, interoperability, and reusability of bioimaging data.</p>
+<p>The file format that has emerged from this effort is called
+<strong>OME-Zarr</strong>. In practice, when people discuss NGFF today,
+they are often referring to OME-Zarr. NGFF is the broader community
+initiative, while OME-Zarr is the implementation of those ideas as a
+usable file format.</p>
+<div class="section level3">
+<h3 id="why-is-ome-zarr-different">Why is OME-Zarr Different?<a class="anchor" aria-label="anchor" href="#why-is-ome-zarr-different"></a>
+</h3>
+<p>Instead of storing an entire dataset as a single large file, OME-Zarr
+stores image data as many smaller chunks together with standardized
+metadata. This offers several advantages:</p>
+<ul>
+<li>Only the portion of an image required for viewing or analysis needs
+to be loaded.</li>
+<li>Large datasets can be streamed efficiently across networks or from
+cloud storage.</li>
+<li>Multiple users or software processes can access different parts of a
+dataset simultaneously.</li>
+<li>Multi-resolution image pyramids are built into the format, making
+visualization and zooming much faster.</li>
+</ul>
+<p>A useful analogy is that OME-TIFF is like downloading an entire book
+before reading a page, whereas OME-Zarr allows you to retrieve only the
+pages you need at that moment.</p>
+</div>
+<div class="section level3">
+<h3 id="does-this-mean-ome-tiff-is-obsolete">Does This Mean OME-TIFF Is Obsolete?<a class="anchor" aria-label="anchor" href="#does-this-mean-ome-tiff-is-obsolete"></a>
+</h3>
+<p>No. OME-TIFF remains widely supported and is still an excellent
+choice for many microscopy workflows, particularly when datasets fit
+comfortably on local storage and need to be opened by a broad range of
+software packages.</p>
+<p>Rather than replacing OME-TIFF, OME-Zarr should be viewed as a
+complementary format that is particularly useful when:</p>
+<ul>
+<li>Datasets are very large.</li>
+<li>Data are stored remotely or in cloud infrastructure.</li>
+<li>Analysis is performed on high-performance computing systems.</li>
+<li>Data need to be shared with collaborators or public
+repositories.</li>
+<li>Multiple tools need efficient access to different regions of the
+same dataset.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="what-should-learners-use-today">What Should Learners Use Today?<a class="anchor" aria-label="anchor" href="#what-should-learners-use-today"></a>
+</h3>
+<p>For introductory image processing and analysis, <strong>OME-TIFF
+remains an excellent recommendation</strong> because it is mature,
+stable, easy to share, and supported by most microscopy software.</p>
+<p>At the same time, learners should be aware that <strong>OME-Zarr is
+rapidly becoming an important format for large-scale and cloud-enabled
+bioimaging workflows</strong>. Major bioimaging repositories and
+community resources are increasingly adopting OME-Zarr, and support is
+continuing to grow across the bioimaging software ecosystem.</p>
+</div>
+<div class="section level3">
+<h3 id="key-takeaway">Key Takeaway<a class="anchor" aria-label="anchor" href="#key-takeaway"></a>
+</h3>
+<blockquote>
+<p>OME-TIFF is currently the standard open microscopy format and is
+suitable for most image analysis workflows. However, OME-Zarr, developed
+through the NGFF initiative, represents the next generation of
+bioimaging formats and is designed to handle the increasingly large,
+multidimensional, and cloud-hosted datasets produced by modern
+microscopy.</p>
+</blockquote>
+</div>
+<div class="section level3">
+<h3 id="further-reading">Further Reading<a class="anchor" aria-label="anchor" href="#further-reading"></a>
+</h3>
+<ul>
+<li><a href="https://ngff.openmicroscopy.org/" class="external-link">NGFF
+Documentation</a></li>
+<li><a href="https://ome-zarr.readthedocs.io/" class="external-link">OME-Zarr
+Documentation</a></li>
+<li><a href="https://www.openmicroscopy.org/ome-model/ome-tiff/" class="external-link">OME
+File Formats</a></li>
+<li><a href="https://doi.org/10.1038/s41592-021-01326-w" class="external-link">OME-NGFF</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="looking-ahead">Looking Ahead<a class="anchor" aria-label="anchor" href="#looking-ahead"></a>
 </h2>
 <hr class="half-width">
@@ -2015,7 +2123,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/04-microscopy-metadata.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/04-microscopy-metadata.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 65 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -2124,7 +2232,7 @@ those measurements were acquired.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="common-microscopy-metadata">Common Microscopy Metadata<a class="anchor" aria-label="anchor" href="#common-microscopy-metadata"></a>
+</section><section><h2 class="section-heading" id="common-microscopy-metadata---rembi">Common Microscopy Metadata - REMBI<a class="anchor" aria-label="anchor" href="#common-microscopy-metadata---rembi"></a>
 </h2>
 <hr class="half-width">
 <p>Modern imaging experiments generate large amounts of metadata.</p>
@@ -2339,10 +2447,12 @@ Bio-Formats from within R.</p>
 <p>Unlike EBImage, which focuses primarily on the image data for image
 processing and analysis, RBioFormats was designed to provide access to
 microscopy image metadata as well as image data.</p>
-<p>Throughout this lesson we will continue to use EBImage because it
-provides a simple and accessible environment for learning image-analysis
-concepts.</p>
-</section><section><h2 class="section-heading" id="image-versus-annotatedimage">Image versus AnnotatedImage<a class="anchor" aria-label="anchor" href="#image-versus-annotatedimage"></a>
+<p>Throughout <em>this</em> lesson though, we will continue to use
+EBImage because it provides a simple and accessible environment for
+learning image-analysis concepts.</p>
+</section><section><h2 class="section-heading" id="image-versus-annotatedimage">
+<code>Image</code> versus <code>AnnotatedImage</code>
+<a class="anchor" aria-label="anchor" href="#image-versus-annotatedimage"></a>
 </h2>
 <hr class="half-width">
 <p>Images can be represented in different ways by different software
@@ -2373,7 +2483,8 @@ imageData(object)[1:5,1:6,1,1]
 <pre class="text"><code>Image
 |
 └── Pixel Array</code></pre>
-<p>The object primarily stores image data.</p>
+<p>The object stores primarily image data and minimal metadata
+(colorMode and array dimensions)</p>
 <p>In contrast, when an image is loaded using RBioFormats in R it is
 represented as an <code>AnnotatedImage</code> object:</p>
 <pre class="text"><code>AnnotatedImage
@@ -2405,12 +2516,16 @@ metadata
 <pre class="text"><code>AnnotatedImage
 |
 ├── Pixel Array
-└── Metadata
-    |
-    ├── Pixel Size
-    ├── Channel Names
-    ├── Acquisition Settings
-    └── Instrument Information</code></pre>
+├── coreMetadata
+|   |
+|   ├── Pixel Size
+|   ├── Channel Names
+|   ├── Acquisition Settings
+|   └── Instrument Information
+|
+├── globalMetadata
+|
+├── xeriesMetadata</code></pre>
 <p><code>AnnotatedImage</code> objects preserve the relationship between
 image data and metadata.</p>
 <div id="image-data-and-metadata" class="callout">
@@ -2507,8 +2622,8 @@ imageData(object)[1:5,1:6]
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/04-microscopy-metadata-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The image can be analysed successfully.</p>
-<p>However, the resulting object primarily represents <em>only</em> the
-image pixel data.</p>
+<p>However, the resulting object represents <em>only</em> the image
+pixel data.</p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
@@ -2518,7 +2633,8 @@ image pixel data.</p>
 <div class="accordion-body">
 <p>The <code>RBioFromats</code> library provides an equivalent function
 to the <code>EBImage readImage()</code> function:
-<code>read.image()</code>.</p>
+<code>read.image()</code>. This function reads pixel data and metadat
+from file types that containt metadata.</p>
 <p>We don’t use it here due to RBioFormats dependence on Java and the
 resulting headaches this can cause. I have included it in the
 environment file used when you created your conda environment. Provided
@@ -2540,7 +2656,9 @@ you have a system wide java available, the following code
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bio_img</span> <span class="op">&lt;-</span> <span class="fu">read.image</span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">EBImage</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bio_img</span> <span class="op">&lt;-</span> <span class="fu">read.image</span><span class="op">(</span></span>
 <span>  <span class="st">"data/04-microscopy-metadata/Actin.ome.tif"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -2780,7 +2898,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/05-visualising-bioimages.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/05-visualising-bioimages.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -2946,7 +3064,7 @@ ignore the pixel values?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The displayed image shows a visual representation of the data.</p>
 <p>The underlying numerical pixel values, which are used for
@@ -2962,14 +3080,15 @@ pixel values, not the displayed image.</p>
 <hr class="half-width">
 <p>Many microscopy images contain useful information across a relatively
 narrow range of intensities. The mitochondrial image (dimMito.ome.tif)
-you displayed earlier is a good example. In our mitochondrial image, the
+you displayed earlier is an example. In our mitochondrial image, the
 data range from 0 to 0.68</p>
 <pre class="text"><code><span><span class="fl">0.00</span> <span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span> <span class="fl">0.68</span></span></code></pre>
 <p>A computer display often expects values spanning:</p>
 <pre class="text"><code><span><span class="fl">0.00</span> <span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span> <span class="fl">1.00</span></span></code></pre>
 <p>As a result, many scientific images initially appear dark or low
 contrast. Our mitochondrial image only uses 2/3 of the total dynamic
-range that the screen can show.</p>
+range that the screen can show. You will see in later episodes, there
+are images that use only 6% of the total.</p>
 <p>Display software sometimes compensates for this by adjusting how
 pixel values are mapped to screen brightness. Usually without explicitly
 mentioning how the values in the image are mapped to brightness on the
@@ -2977,9 +3096,10 @@ screen. But sometimes not. Jupyter Lab does not.</p>
 </section><section><h2 class="section-heading" id="histograms">Histograms<a class="anchor" aria-label="anchor" href="#histograms"></a>
 </h2>
 <hr class="half-width">
-<p>Another way to visualise the same data is to look at the distribution
-of the data. Histograms show us the pixel intensity distributions within
-an image, leaving out any spatial information.</p>
+<p>Another way to visualise the same data is to look at the shape of the
+distribution of the data, disregarding any spatial location information.
+Histograms show us the pixel intensity distributions within an image,
+leaving out the location information.</p>
 <p>Create a histogram of the image pixels.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2998,14 +3118,13 @@ an image, leaving out any spatial information.</p>
 <li>whether intensities occupy a small or large fraction of the
 available range</li>
 </ul>
-<div id="histograms-describe-data" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="histograms-describe-data" class="callout-inner">
-<h3 class="callout-title">Histograms Describe Data</h3>
-<div class="callout-content">
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> How Histograms are generated </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
 <p>A histogram provides information about the image data itself.</p>
 <p>Unlike image display settings, histograms are independent of the
 brightness/contrast settings used to visualise the image. The following
@@ -3013,6 +3132,7 @@ image briefly describes how an image histogram is created from the
 underlying data.</p>
 <figure><img src="../fig/05-visualising-bioimages/histo_explanation.png" alt="flowchart showing image histogram constsruction" class="figure mx-auto d-block"><div class="figcaption">Histogram Construction</div>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -3026,16 +3146,18 @@ equalization.</p>
 <p>EBImage provides the <code>normalize()</code> and
 <code>equalize()</code> functions.</p>
 <p><strong>Important</strong> — This does NOT change the underlying
-pixel values in most software. In R, we could change the pixel values by
-assigning the new object to the old object. Therefore, a common way to
-do this is to normalize the original image data and assign this to a new
-object. You rarely want to change your raw data!</p>
+pixel values in most software. In R, we could change the pixel values if
+we assig the new object to the same initial object. Therefore, a common
+way to do this is to normalize the original image data and assign this
+to a new object. You rarely want to change your raw data!</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">img_stretched</span> <span class="op">&lt;-</span> <span class="fu">normalize</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span>
-<span><span class="va">img_equalized</span> <span class="op">&lt;-</span> <span class="fu">equalize</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code></pre>
+<span><span class="va">img_equalized</span> <span class="op">&lt;-</span> <span class="fu">equalize</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span>
+<span><span class="co">#Don't do this</span></span>
+<span><span class="co"># img &lt;- normalize(img)</span></span></code></pre>
 </div>
 <p>Display the enhanced images.</p>
 <div class="codewrapper sourceCode" id="cb16">
@@ -3092,7 +3214,7 @@ structures remain the same.</p>
 </section><section><h2 class="section-heading" id="has-the-data-changed">Has the Data Changed?<a class="anchor" aria-label="anchor" href="#has-the-data-changed"></a>
 </h2>
 <hr class="half-width">
-<p>Let’s compare the original and stretched images.</p>
+<p>Let’s compare the original and stretched image histograms:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -3124,8 +3246,9 @@ structures remain the same.</p>
 <code class="sourceCode R"><span><span class="fu">par</span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Contrast enhancement changes how intensities are distributed across
-the display range.</p>
-<p>Importantly, it does not create new biological structures.</p>
+the display range. The new image objects have different histograms,
+<em>the image data has changed!</em></p>
+<p>Importantly, it does not create new biological information.</p>
 <div id="challenge2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -3145,7 +3268,7 @@ original image.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>No. but new biological insights may be gained with new
 visualisations.</p>
@@ -3163,15 +3286,15 @@ biological features.</p>
 <hr class="half-width">
 <p>It is useful to think about image visualisation as a mapping
 process.</p>
-<pre class="text"><code>Pixel Values in the image -&gt; Display Mapping -&gt; Visible Image on the screen</code></pre>
+<pre class="text"><code>Pixel Values in the image -&gt; Display Mapping Function -&gt; Visible Image on the screen</code></pre>
 <p>Different display mappings can produce very different visual
 appearances while using exactly the same image data.</p>
 </section><section><h2 class="section-heading" id="lookup-tables">Lookup Tables<a class="anchor" aria-label="anchor" href="#lookup-tables"></a>
 </h2>
 <hr class="half-width">
-<p>A lookup table (LUT) defines how pixel intensities are displayed. It
-is the mapping function alluded to above that takes in a pixel intensity
-value and produces a display value.</p>
+<p>A lookup table (LUT) defines how pixel intensities from the image are
+displayed on the screen. It is the mapping function alluded to above
+that takes in a pixel intensity value and produces a display value.</p>
 <p>For example:</p>
 <p><code>Low Intensity → Black ....... High Intensity → White</code></p>
 <p>produces a grayscale image.</p>
@@ -3240,7 +3363,7 @@ to different colours.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>All three displays contain exactly the same intensity values.</p>
 <p>Only the mapping between intensity and colour has changed.</p>
@@ -3334,7 +3457,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/06-color-images.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/06-color-images.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -3380,8 +3503,8 @@ channels.</li>
 <hr class="half-width">
 <p>In the previous lesson we learned that the same image data can be
 displayed in many different ways.</p>
-<p>We used lookup tables (LUTs) to assign colours to grayscale images
-without changing the underlying pixel values.</p>
+<p>We used lookup tables (LUTs) to assign <em>colours</em> to grayscale
+images without changing the underlying pixel values.</p>
 <p>This raises an important question:</p>
 <pre class="text"><code>Where do the colours come from?</code></pre>
 <p>To answer this question we must first understand the difference
@@ -3394,7 +3517,11 @@ fundamentally different kinds of data.</p>
 <hr class="half-width">
 <p>Most microscopy images begin as grayscale images. Detectors on most
 advanced acquisition systems only detect photons, not their wavelengths.
-Load an example image from EBImage.</p>
+<em>By convention</em>, we assign the color black to low values and the
+color white to high values. The EBImage package contains some example
+images. Let’s Load an example. This is an example of a fluorescence
+micrograph of cells growing in culture fixed and stained with the DNA
+binding dye - DAPI.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -3403,7 +3530,7 @@ Load an example image from EBImage.</p>
 <span></span>
 <span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu">readImage</span><span class="op">(</span></span>
 <span>  <span class="fu">system.file</span><span class="op">(</span><span class="st">"images"</span>, <span class="st">"nuclei.tif"</span>, package <span class="op">=</span> <span class="st">"EBImage"</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="co">#Select a single frame for demonstration purposes.</span></span>
+<span>  <span class="co">#Select a single frame for demonstration purposes. The dataset contains four images</span></span>
 <span>  <span class="va">img</span> <span class="op">&lt;-</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">1</span><span class="op">]</span></span></code></pre>
 </div>
 <p>Display the image.</p>
@@ -3498,20 +3625,15 @@ are different ways of creating colour.</p>
 <li><em>fluorescence probes</em></li>
 </ul>
 <p>The additive colour model uses:</p>
-<pre class="text"><code><span><span class="va">Red</span></span>
-<span><span class="va">Green</span></span>
-<span><span class="va">Blue</span></span></code></pre>
+<p><span style="color: red;">Red</span> <span style="color: green;">Green</span> <span style="color: blue;">Blue</span></p>
 <p>light sources.</p>
 <p>Colours are created by adding different amounts of red, green, and
 blue light together.</p>
 <p>For example:</p>
-<pre class="text"><code><span><span class="va">Red</span> <span class="op">+</span> <span class="va">Green</span> <span class="op">=</span> <span class="va">Yellow</span></span>
-<span></span>
-<span><span class="va">Red</span> <span class="op">+</span> <span class="va">Blue</span> <span class="op">=</span> <span class="va">Magenta</span></span>
-<span></span>
-<span><span class="va">Green</span> <span class="op">+</span> <span class="va">Blue</span> <span class="op">=</span> <span class="va">Cyan</span></span>
-<span></span>
-<span><span class="va">Red</span> <span class="op">+</span> <span class="va">Green</span> <span class="op">+</span> <span class="va">Blue</span> <span class="op">=</span> <span class="va">White</span></span></code></pre>
+<p><span style="color: red;">Red</span> + <span style="color: green;">Green</span> = <span style="color: yellow;">Yellow</span></p>
+<p><span style="color: red;">Red</span> + <span style="color: blue;">Blue</span> = <span style="color: magenta;">Magenta</span></p>
+<p><span style="color: green;">Green</span> + <span style="color: blue;">Blue</span> = <span style="color: cyan;">Cyan</span></p>
+<p><span style="color: red;">Red</span> + <span style="color: green;">Green</span> + <span style="color: blue;">Blue</span> = <span style="color: white;">White</span></p>
 <p>The more light that is added, the brighter the resulting colour
 becomes.</p>
 <p>This is why RGB is known as an <strong>additive colour
@@ -3529,18 +3651,14 @@ than emit it, such as:</p>
 <li>posters</li>
 </ul>
 <p>The subtractive colour model uses:</p>
-<pre class="text"><code><span><span class="va">Cyan</span></span>
-<span><span class="va">Magenta</span></span>
-<span><span class="va">Yellow</span></span></code></pre>
+<p><span style="color: cyan;">Cyan</span> <span style="color: magenta;">Magenta</span> <span style="color: yellow;">Yellow</span></p>
 <p>pigments or inks.</p>
 <p>Instead of adding light, these colours work by absorbing
 (subtracting) different wavelengths from white light.</p>
 <p>For example:</p>
-<pre class="text"><code><span><span class="va">Cyan</span> <span class="op">+</span> <span class="va">Magenta</span> <span class="op">=</span> <span class="va">Blue</span></span>
-<span></span>
-<span><span class="va">Cyan</span> <span class="op">+</span> <span class="va">Yellow</span> <span class="op">=</span> <span class="va">Green</span></span>
-<span></span>
-<span><span class="va">Magenta</span> <span class="op">+</span> <span class="va">Yellow</span> <span class="op">=</span> <span class="va">Red</span></span></code></pre>
+<p><span style="color: cyan;">Cyan</span> + <span style="color: magenta;">Magenta</span> = <span style="color: blue;">Blue</span></p>
+<p><span style="color: cyan;">Cyan</span> + <span style="color: yellow;">Yellow</span> = <span style="color: green;">Green</span></p>
+<p><span style="color: magenta;">Magenta</span> + <span style="color: yellow;">Yellow</span> = <span style="color: red;">Red</span></p>
 <p>Combining all colours produces a very dark colour or black.</p>
 <p>Because colours are created by removing light, this is known as a
 <strong>subtractive colour model</strong>.</p>
@@ -3554,9 +3672,7 @@ than emit it, such as:</p>
 the additive RGB colour model.</p>
 <p>As a result, colour images in software such as EBImage are typically
 represented using three channels:</p>
-<pre class="text"><code><span><span class="va">Red</span></span>
-<span><span class="va">Green</span></span>
-<span><span class="va">Blue</span></span></code></pre>
+<p><span style="color: red;">Red</span> <span style="color: green;">Green</span> <span style="color: blue;">Blue</span></p>
 <p>These channels control the brightness of the red, green, and blue
 elements of the display and together produce the colours that we see on
 screen.</p>
@@ -3565,7 +3681,7 @@ screen.</p>
 </h2>
 <hr class="half-width">
 <p>We can create an RGB image by combining three grayscale images.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3576,14 +3692,14 @@ screen.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <p>Display the result.</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">rgb_img</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/06-color-images-rendered-unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Determine its colour mode.</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3594,7 +3710,7 @@ screen.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 2</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3602,7 +3718,7 @@ screen.</p>
 </div>
 <p>Compare the dimensions between the greyscale and colour versions of
 the image.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3613,7 +3729,7 @@ the image.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 510 510</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3678,7 +3794,7 @@ full-colour image that we see on screen.</p>
                    ↓
                 RGB Image</code></pre>
 <p>Load a colour image supplied with EBImage.</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3691,7 +3807,7 @@ full-colour image that we see on screen.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <p>Display the image.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3701,14 +3817,14 @@ full-colour image that we see on screen.</p>
 for each of the colour channels. The base R graphics version of the
 histogram function will sum all the values from each of the
 channels.</p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">hist</span><span class="op">(</span><span class="va">colour_img</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/06-color-images-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Inspect its dimensions and colorMode.</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3732,7 +3848,7 @@ imageData(object)[1:5,1:6,1]
 [4,] 0.4666667 0.4745098 0.5058824 0.5137255 0.5450980 0.5647059
 [5,] 0.4705882 0.4705882 0.4901961 0.5137255 0.5372549 0.5647059</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3745,7 +3861,7 @@ channels.</p>
 <hr class="half-width">
 <p>Extract the individual colour channels. EBImage’s
 <code>channel()</code> function.</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3756,7 +3872,7 @@ channels.</p>
 <span><span class="va">blue_channel</span> <span class="op">&lt;-</span> <span class="fu">channel</span><span class="op">(</span><span class="va">colour_img</span>, <span class="st">"blue"</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Display the channels separately.</p>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3774,12 +3890,13 @@ channels.</p>
 channel at that location.</p>
 <p>We can turn each image back into a color image and display those as
 well:</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">red_col_channel</span> <span class="op">&lt;-</span> <span class="fu">rgbImage</span><span class="op">(</span></span>
-<span>  red <span class="op">=</span> <span class="va">red_channel</span><span class="op">)</span></span>
+<span>  red <span class="op">=</span> <span class="va">red_channel</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">green_col_channel</span> <span class="op">&lt;-</span> <span class="fu">rgbImage</span><span class="op">(</span></span>
 <span>  green <span class="op">=</span> <span class="va">green_channel</span></span>
@@ -3898,7 +4015,7 @@ channels.</p>
 <hr class="half-width">
 <p>Consider a DAPI image.</p>
 <p>It might be displayed as:</p>
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3915,7 +4032,7 @@ channels.</p>
 DAPI fluorescence should be blue. — <strong>BUT</strong> They don’t have
 to be.</p>
 <p>The same image could equally be displayed as:</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3944,7 +4061,7 @@ to be.</p>
 hue to represent intensity. EBImage has a function -
 <code>colormap()</code> that maps a grayscale image using a
 colormap.</p>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3967,7 +4084,7 @@ GFP      → Green
 mCherry  → Red</code></pre>
 <p>↓</p>
 <pre class="text"><code>Composite Image</code></pre>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3994,8 +4111,8 @@ the different biological structures.</p>
 <div class="callout-inner">
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<p>Why must we create an RGB image before colouring saturated pixels
-red?</p>
+<p>Why must we create an RGB image before displaying multiple
+fluorescence channels?</p>
 </div>
 </div>
 </div>
@@ -4089,7 +4206,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/07-image-enhancement.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/07-image-enhancement.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -4174,7 +4291,7 @@ image.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="va">img</span> <span class="op">&lt;-</span> <span class="fu">readImage</span><span class="op">(</span><span class="fu">system.file</span><span class="op">(</span><span class="st">'images'</span>, <span class="st">'cells.tif'</span>, package<span class="op">=</span><span class="st">'EBImage'</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co"># cells.tif contains 4 frames, let's subset the data so that our image object contains on ly the first frame.</span></span>
+<span><span class="co"># cells.tif contains 4 frames, let's subset the data so that our image object contains only the first frame.</span></span>
 <span>  <span class="va">img</span><span class="op">&lt;-</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">1</span><span class="op">]</span></span></code></pre>
 </div>
 <p>Display the image.</p>
@@ -4221,19 +4338,18 @@ image.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">par</span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p>The histogram describes the distribution of pixel values that
-comprise the image. NB when we call the histogram function on a vector
-as above, R uses the base graphics version of the histogram function.
-When we call it on an image object, the EBImage version of hist() is
-used. If you prefer one or the other, you can specify it in the function
-call – <code>graphics::hist()</code> or <code>EBImage::hist()</code></p>
+<p>N.B. when we call the histogram function on a vector object, R uses
+the base graphics version of the histogram function. When we call it on
+an image object, the EBImage version of hist() is used. If you prefer
+one or the other, you can specify it in the function call –
+<code>graphics::hist()</code> or <code>EBImage::hist()</code></p>
 </section><section><h2 class="section-heading" id="point-operations">Point Operations<a class="anchor" aria-label="anchor" href="#point-operations"></a>
 </h2>
 <hr class="half-width">
 <p>Many image enhancement methods are known as <strong>point
 operations</strong>.</p>
 <p>A point operation calculates each output pixel value using only the
-corresponding input pixel value.</p>
+input pixel value.</p>
 <p>Conceptually:</p>
 <pre class="text"><code>Input Pixel Value -&gt; Operation -&gt; Output Pixel Value</code></pre>
 <p>Examples include:</p>
@@ -4293,7 +4409,9 @@ inversion.</p>
 <p>The pixel values have changed.</p>
 <p>Consequently, the histogram has also changed.</p>
 <p>Unlike some of the display operations in the previous lesson,
-inversion modifies the underlying image data.</p>
+inversion modifies the underlying image data. Note that because we saved
+this data to a new object, we did <em>NOT</em> overwrite our original
+data.</p>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -4302,9 +4420,9 @@ inversion modifies the underlying image data.</p>
 <div class="callout-inner">
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<p>A pixel has an intensity value of:</p>
-<pre class="text"><code><span><span class="fl">0.8</span></span></code></pre>
-<p>What value will it have after inversion?</p>
+<p>If a pixel has an intensity value of: <code>0.8</code></p>
+<p>If a pixel has an intensity value of: <code>0.2</code></p>
+<p>What values will they have after inversion?</p>
 </div>
 </div>
 </div>
@@ -4313,12 +4431,13 @@ inversion modifies the underlying image data.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Inversion calculates:</p>
-<pre class="text"><code><span><span class="fl">1</span> <span class="op">-</span> <span class="fl">0.8</span></span></code></pre>
+<pre class="text"><code><span><span class="fl">1</span> <span class="op">-</span> <span class="fl">0.8</span> <span class="op">=</span> <span class="fl">0.2</span></span>
+<span><span class="fl">1</span> <span class="op">-</span> <span class="fl">0.2</span> <span class="op">=</span> <span class="fl">0.8</span></span></code></pre>
 <p>giving:</p>
-<pre class="text"><code><span><span class="fl">0.2</span></span></code></pre>
+<pre class="text"><code><span><span class="fl">0.2</span> <span class="op">&amp;</span> <span class="fl">0.8</span></span></code></pre>
 <p>Bright pixels become dark and dark pixels become bright.</p>
 <p>NB - we can invert the LUT too. In that case the image would
 <em>look</em> the same as if we had performed the inversion operation on
@@ -4343,14 +4462,14 @@ brightness and contrast changes, usually by operating on a copy of the
 data.</p>
 <p>Suppose we wish to make the image brighter. We can multiply every
 pixel value to get a brighter image.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">img_bright</span> <span class="op">&lt;-</span> <span class="va">img</span> <span class="op">*</span> <span class="fl">2</span></span>
 <span><span class="fu">display</span><span class="op">(</span><span class="va">img_bright</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/07-image-enhancement-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb17">
+<figure><img src="../fig/07-image-enhancement-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4365,16 +4484,16 @@ pixel value to get a brighter image.</p>
 after the multiplication? Remember that when the data are read into an
 image object by EBImage’s <code>readImage()</code> function, the integer
 values are scaled between 0 and 1. While multiplying will make these
-values bigger (and therefore brigther), There is a potential for a pixel
+values bigger (and therefore brighter), There is a potential for a pixel
 to have a value greater than 1. In our example above, any pixel with a
-value of &gt; 0.5 in the original image will have a value &gt; 1 in
-img_bright. Pixel values greater than 1 will be clipped because an image
-display expects an image to have values between 0 and 1. The display
-will silently map any values that are greater than 1 to the brightest
-intensity available — 1.0</p>
+value of &gt; 0.5 in <code>img</code> will have a value &gt; 1 in
+<code>img_bright</code>. Pixel values greater than 1 will be clipped
+because an image display expects an image to have a range of 0 to 1. The
+display may silently map any values that are greater than 1 to the
+brightest intensity available — 1.0.</p>
 <p>We can visualise where the pixels with values greater than one are by
 thresholding (see below).</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4384,7 +4503,7 @@ thresholding (see below).</p>
 <p>Display the original and brightened image and the two masks to see
 the effect of image multiplication. Let’s put the mask into the red
 channel to give the saturated pixels a red colour.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4398,14 +4517,14 @@ channel to give the saturated pixels a red colour.</p>
 <span></span>
 <span><span class="fu">display</span><span class="op">(</span><span class="fu">EBImage</span><span class="fu">::</span><span class="fu">combine</span><span class="op">(</span><span class="va">img</span>, <span class="va">img_bright</span><span class="op">)</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/07-image-enhancement-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb21">
+<figure><img src="../fig/07-image-enhancement-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="fu">EBImage</span><span class="fu">::</span><span class="fu">combine</span><span class="op">(</span><span class="va">red_img_mask</span>, <span class="va">red_img_bright_mask</span><span class="op">)</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/07-image-enhancement-rendered-unnamed-chunk-11-2.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Compare the intensity ranges.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4416,7 +4535,7 @@ channel to give the saturated pixels a red colour.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 0 1</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4461,7 +4580,7 @@ enhancement has been performed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The new value becomes:</p>
 <pre class="text"><code>0.7 × 2 = 1.4</code></pre>
@@ -4483,7 +4602,7 @@ analysis.</p>
 <pre class="text"><code>Pixels above threshold (usually those that you care about)
 Pixels below threshold (usuaully those that you don't care about)</code></pre>
 <p>We can create a binary image using:</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4495,7 +4614,7 @@ intensity value is greater than 0.2. Then it assigns either
 the answer. Our <code>mask</code> is an array of Boolean values with the
 same dimensions as the queried image object.</p>
 <p>Display the object</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4520,7 +4639,7 @@ imageData(object)[1:5,1:6]
 [5,] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 <p>display the image and the binary mask:</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4535,7 +4654,7 @@ workflows.</p>
 </h2>
 <hr class="half-width">
 <p>Different threshold values produce different results.</p>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4544,7 +4663,7 @@ workflows.</p>
 <span><span class="va">mask_3</span> <span class="op">&lt;-</span> <span class="va">img</span> <span class="op">&gt;</span> <span class="fl">0.3</span></span></code></pre>
 </div>
 <p>Display the three thresholded images.</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4574,7 +4693,7 @@ increases.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The threshold:</p>
 <pre class="text"><code><span><span class="fl">0.3</span></span></code></pre>
@@ -4590,7 +4709,7 @@ value.</p>
 <hr class="half-width">
 <p>Histograms can help us choose thresholds.</p>
 <p>Display the histogram again.</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -4661,7 +4780,7 @@ pixel values rather than image appearance.</p>
 <div class="callout-content">
 <p>Which of the following modify image data?</p>
 <ol style="list-style-type: decimal">
-<li>Changing a lookup table</li>
+<li>Inverting a lookup table</li>
 <li>Adjusting display contrast</li>
 <li>Inverting an image</li>
 <li>Thresholding an image</li>
@@ -4675,7 +4794,7 @@ pixel values rather than image appearance.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>The correct answers are:</p>
 <pre class="text"><code>3. Inverting an image
@@ -4761,7 +4880,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/08-segmentation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/08-segmentation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -4805,7 +4924,8 @@ any links that you are not going to use.
 <hr class="half-width">
 <p>In the previous lesson we used thresholding to create binary
 images.</p>
-<p>Thresholding allows us to separate pixels into two classes:</p>
+<p>Binary image have only two values. Thresholding allows us to separate
+pixels into two classes:</p>
 <pre class="text"><code>Foreground (These pixels are those you care about - objects)</code></pre>
 <p>and</p>
 <pre class="text"><code>Background (These are the pixels you don't care about)</code></pre>
@@ -4814,9 +4934,9 @@ identifying foreground pixels.</p>
 <p>For example, we may wish to:</p>
 <ul>
 <li>count nuclei</li>
-<li>measure cell size</li>
+<li>measure cell or nuclear size</li>
 <li>quantify fluorescence intensity</li>
-<li>compare object shape descriptors</li>
+<li>compare object shapes</li>
 </ul>
 <p>To perform these measurements, we must first identify individual
 objects.</p>
@@ -4873,7 +4993,7 @@ Step</h3>
 <span>  <span class="va">img</span> <span class="op">&lt;-</span> <span class="va">img</span><span class="op">[</span>,,<span class="fl">1</span><span class="op">]</span></span></code></pre>
 </div>
 <p>If you want, display the image with <code>display(img)</code>. By
-now, you probably knwo what this image looks like.</p>
+now, you probably know what this image looks like.</p>
 </section><section><h2 class="section-heading" id="creating-a-binary-mask">Creating a Binary Mask<a class="anchor" aria-label="anchor" href="#creating-a-binary-mask"></a>
 </h2>
 <hr class="half-width">
@@ -4892,7 +5012,8 @@ now, you probably knwo what this image looks like.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-segmentation-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The resulting image contains only two classes:</p>
+<figure><img src="../fig/08-segmentation-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The resulting image contains only two pixel values (0/1) often termed
+classes:</p>
 <pre class="text"><code>Foreground (things you care about, your 'objects')
 Background (things you don't care about)</code></pre>
 <p>or equivalently:</p>
@@ -4915,7 +5036,7 @@ Background (things you don't care about)</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Pixels with intensities greater than the threshold value become
 foreground pixels. In some software (e.g. Fiji) you can specify which
@@ -4977,7 +5098,7 @@ regions?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <pre class="text"><code><span><span class="fl">0.1</span></span></code></pre>
 <p>Lower thresholds classify more pixels as foreground. Not necessarily
@@ -5006,8 +5127,9 @@ pixel with a value of 0 — remember, at this point, there are only 0s and
 1s. It then traverses the entire matrix. Every time it encounters a
 pixel with a value of 1, it assigns it to the next value in turn. I.e.
 the first object gets that value 1, the second object gets the value 2
-and so on, until every pixel has been visited. All the pixels that had a
-value of 0 remain 0, but every pixel that was 1 is now assigned to a
+and so on, until every pixel has been visited and all pixels that used
+to have a value of 1 now have different values. All the pixels that had
+a value of 0 remain 0, but every pixel that was 1 is now assigned to a
 unique number depending on the position of the object in relation to the
 starting point of the labeller. Every pixel that has value 1 is first
 checked to see whether it is connected to another pixel of value &gt; 0
@@ -5050,7 +5172,16 @@ objects are visually distinct.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="fu">colorLabels</span><span class="op">(</span><span class="va">labels</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/08-segmentation-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each colour represents a different object.</p>
+<figure><img src="../fig/08-segmentation-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each colour represents a different object. We can also use R’s pipe
+operator (<code>|&gt;</code>) to make this a bit easier to read.</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">labels</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">colorLabels</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">display</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
 <div id="colours-represent-labels" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -5070,7 +5201,7 @@ values.</p>
 <hr class="half-width">
 <p>How many objects were detected?</p>
 <p>Inspect the labels.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -5102,7 +5233,7 @@ objects in the image.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <pre class="text"><code>17 objects</code></pre>
 <p>Each object receives a unique label.</p>
@@ -5117,7 +5248,7 @@ objects in the image.</p>
 <p>Visualising the labelled objects, as above, is helpful, but
 segmentation results are often easier to assess when displayed alongside
 the original image.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -5140,7 +5271,7 @@ highlights and marks segmented objects in an image. It outlines object
 boundaries and/or fills their interiors using specified colors and
 opacities, working closely with labeled masks from functions like
 <code>bwlabel()</code>.</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -5170,7 +5301,7 @@ together.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Overlays allow us to compare the segmentation directly with the
 original image.</p>
@@ -5257,7 +5388,7 @@ area?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Area measurements require the pixels belonging to each nucleus to be
 identified.</p>
@@ -5270,12 +5401,12 @@ identified.</p>
 </h2>
 <hr class="half-width">
 <p>In this lesson we transformed image pixels into labelled objects. As
-welearned, a single threshold is often only the first step of creating a
-biologically meaningful segmentation. In the next lesson we will explore
-tools refine these masks, to make them more relevant. Only after we have
-a reasonable segmentation and labelling strategy, does it make sense to
-make measurements and extract quantitative information from biological
-images.</p>
+we learned, a single threshold is often only the first step of creating
+a biologically meaningful segmentation. In the next lesson we will
+explore tools refine these masks, to make them more relevant. Only after
+we have a reasonable segmentation and labelling strategy, does it make
+sense to make measurements and extract quantitative information from
+biological images.</p>
 </section><section><h2 class="section-heading" id="key-points">Key Points<a class="anchor" aria-label="anchor" href="#key-points"></a>
 </h2>
 <hr class="half-width">
@@ -5308,7 +5439,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/09-morphological-operations.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/09-morphological-operations.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -5443,7 +5574,7 @@ segmentation?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Thresholding separates foreground from background but does not
 account for:</p>
@@ -5544,16 +5675,16 @@ the operation. The structuring element defines the size and shape of the
 neighbourhood used in the operation. Larger brushes produce larger
 changes to object boundaries, while smaller brushes produce more subtle
 effects. using a brush with a size = 3 is roughly equivalent to dilating
-or eroding by one pixel. In EBImage, the two operations are
-<code>erosion()</code> and <code>dilation()</code>. Each function takes
-two arguments, a binary image to refine and the structuring element (aka
-<code>brush</code>) that determines the size of the change that the
-function creates.</p>
+or eroding by one pixel. In EBImage, the two basic morphological
+operations are <code>erosion()</code> and <code>dilation()</code>. Each
+function takes two arguments,a binary image to refine and the
+structuring element (aka <code>brush</code>). The <code>brush</code>
+determines the size of the change that the function creates.</p>
 </section><section><h2 class="section-heading" id="dilation">Dilation<a class="anchor" aria-label="anchor" href="#dilation"></a>
 </h2>
 <hr class="half-width">
-<p>Dilation expands foreground objects. It adds pixels to the boundaries
-of objects.</p>
+<p>Dilation expands foreground objects. It adds pixels to the
+boundaries/perimeters of objects.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -5593,7 +5724,7 @@ of objects.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Increase.</p>
 <p>Dilation adds pixels to object boundaries, making objects larger.</p>
@@ -5604,7 +5735,8 @@ of objects.</p>
 </section><section><h2 class="section-heading" id="erosion">Erosion<a class="anchor" aria-label="anchor" href="#erosion"></a>
 </h2>
 <hr class="half-width">
-<p>Erosion removes pixels from object boundaries.</p>
+<p>Erosion does the opposite of dilation. Erosion removes pixels from
+object boundaries.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -5643,7 +5775,7 @@ of objects.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Very small objects may be reduced substantially or disappear
 completely.</p>
@@ -5654,12 +5786,14 @@ completely.</p>
 </section><section><h2 class="section-heading" id="opening-closing">Opening &amp; Closing<a class="anchor" aria-label="anchor" href="#opening-closing"></a>
 </h2>
 <hr class="half-width">
-<p>Usually, you don’t want to significantly change the obect’s size.
-Opening and closing are used instead of basic erosion and dilation to
-maintain object size. Opening removes small dots and breaks thin lines.
-Closing fills small holes and joins broken parts. In contrast,
-Erosion/Dilation changes the size of objects.</p>
-<p>Opening is one erosion operation followed by one dilation
+<p>Usually, you don’t want to significantly change an object’s size.
+<code>Opening</code> and <code>closing</code> are used instead of basic
+<code>erosion</code> and <code>dilation</code> to maintain object size.
+<code>Opening</code> removes small dots and breaks thin lines.
+<code>Closing</code> fills small holes and joins broken parts. In
+contrast, <code>erosion</code> and <code>dilation</code> change the size
+of objects.</p>
+<p>Opening is defined as one erosion operation followed by one dilation
 operation.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5680,14 +5814,15 @@ operation.</p>
 <span>  all <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Opening is often used to remove small objects and noise.</p>
+<figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Opening is often used to remove small objects and single pixel
+noise.</p>
 <div class="section level3">
 <h3 id="what-opening-does">What Opening Does<a class="anchor" aria-label="anchor" href="#what-opening-does"></a>
 </h3>
 <pre class="text"><code>Small Artefacts -&gt; Removed</code></pre>
 <p>while larger objects are largely preserved.</p>
-<p>Closing is the opposite of Opening is one dilation followed by one
-erosion.</p>
+<p>Closing is the opposite of Opening. It is defined as one dilation
+followed by one erosion.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -5740,7 +5875,7 @@ isolated noise particles?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <pre class="text"><code>1. Opening</code></pre>
 <p>Opening is commonly used to remove small foreground artefacts. If the
@@ -5751,9 +5886,10 @@ useful.</p>
 </div>
 </div>
 <p>See this figure of a noisy thresholded image of a fingerprint.</p>
-<p><img src="../fig/09-morphological-operations/fingerprint_noisy.png" style="width:32.0%" alt="fingerprint binary image corupted with noise." class="figure"><img src="../fig/09-morphological-operations/fingerprint_open.png" style="width:32.0%" alt="fingerprint binary image corupted with noise." class="figure"><img src="../fig/09-morphological-operations/fingerprint_close.png" style="width:32.0%" alt="fingerprint binary image corupted with noise." class="figure"> Fingreprint
-Corrupted With Noise. Fingreprint Opened Fingerprint Opened &amp;
-Closed</p>
+<p><img src="../fig/09-morphological-operations/fingerprint_noisy.png" style="width:32.0%" alt="fingerprint binary image corupted with noise." class="figure"><img src="../fig/09-morphological-operations/fingerprint_open.png" alt="Opened Fingerprint" class="figure">{alt=” binary image, noise removed with
+opening.” width=“32%”} <img src="../fig/09-morphological-operations/fingerprint_close.png" style="width:32.0%" alt="binary image, noise removed with closing." class="figure">
+Fingreprint Corrupted With Noise. Fingreprint Opened Fingerprint Opened
+&amp; Closed</p>
 </div>
 </section><section><h2 class="section-heading" id="filling-holes">Filling Holes<a class="anchor" aria-label="anchor" href="#filling-holes"></a>
 </h2>
@@ -5787,7 +5923,8 @@ has no objects with holes.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This operation is particularly useful when working with nuclei, as
-nucleoli are often less bright than the neighbouring nucleoplasm.</p>
+nucleoli are often less bright than the neighbouring nucleoplasm and
+often results in holes in the binary images.</p>
 <div id="filling-holes-simplifies-measurement" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -5804,7 +5941,7 @@ solid regions.</p>
 </section><section><h2 class="section-heading" id="the-problem-of-touching-objects">The Problem of Touching Objects<a class="anchor" aria-label="anchor" href="#the-problem-of-touching-objects"></a>
 </h2>
 <hr class="half-width">
-<p>Thresholding often merges neighbouring nuclei into a single
+<p>Thresholding often merges neighbouring objects into a single
 object.</p>
 <p>There are several examples of this issue in our binary image of
 nuclei.</p>
@@ -5813,12 +5950,14 @@ nuclei.</p>
 </h2>
 <hr class="half-width">
 <p>One approach to separating touching objects involves calculating the
-distance from each foreground pixel to the nearest background pixel. The
-<code>distmap()</code> function from EBImage calculates this. Note that
-again, the input is a binary image and the ouput is another image where
-the pixel values indicate fow far each pixel is from the nearest
-background pixel. Because these matrixes have pixel values, we can
-visualise these images.</p>
+distance from each foreground pixel to the nearest background pixel,
+followed by the watershed operation. The <code>distmap()</code> function
+from EBImage calculates a euclidean distance map. Note that again, the
+input is a binary image and the ouput is another image where the pixel
+values indicate how far each pixel is from the nearest background pixel.
+pixels at the border get a value of 1. Each successive pixel distance is
+assigned an increased value. Because these matrices have pixel values,
+we can visualise them as images.</p>
 <p>Create a distance map.</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5836,31 +5975,6 @@ visualise these images.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-19-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Bright regions correspond to pixels located near object centres.</p>
-<div id="challenge5" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div class="callout-inner">
-<h3 class="callout-title">Challenge</h3>
-<div class="callout-content">
-<p>Where do you expect the largest distance values to occur?</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
-</button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
-<div class="accordion-body">
-<p>Near the centres of objects.</p>
-<p>These pixels are furthest from the object boundaries.</p>
-</div>
-</div>
-</div>
-</div>
 </section><section><h2 class="section-heading" id="how-watershed-segmentation-works">How Watershed Segmentation Works<a class="anchor" aria-label="anchor" href="#how-watershed-segmentation-works"></a>
 </h2>
 <hr class="half-width">
@@ -5876,7 +5990,7 @@ easier to visualise, imagine turning this landscape upside down.</p>
 
 Object Boundary
       ↓
-     Ridge</code></pre>
+    Ridge</code></pre>
 <p>For two touching nuclei, the inverted distance map might look
 something like:</p>
 <pre class="text"><code>\      __      /
@@ -5919,7 +6033,9 @@ centres.</p>
 <p>“If water were poured into each object centre, where would
 neighbouring pools of water meet?”</p>
 </blockquote>
-<p>The watershed boundary is constructed at those meeting points.</p>
+<p>The watershed boundary is constructed at those meeting points. In
+EBImage, the watershed algorithm (<code>watershed</code>) operates on a
+distance map.</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -5964,7 +6080,7 @@ segmentation without the watershed algorithm.</p>
 </div>
 <figure><img src="../fig/09-morphological-operations-rendered-unnamed-chunk-22-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Overlay visualisation makes it easier to evaluate segmentation
 quality.</p>
-<div id="challenge6" class="callout challenge">
+<div id="challenge5" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -5976,12 +6092,12 @@ quality.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
-  <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Nuclei often touch or overlap.</p>
 <p>Thresholding may merge adjacent nuclei into a single object.</p>
@@ -5998,9 +6114,9 @@ individual objects.</p>
 <p>A typical workflow might be:</p>
 <pre class="text"><code>Image
   ↓
-Threshold
+Explore Different Thresholds
   ↓
-Morphological Operations
+Iteratively Apply Morphological Operations
   ↓
 Distance Map
   ↓
@@ -6008,8 +6124,8 @@ Watershed Segmentation
   ↓
 Labelled Objects</code></pre>
 <p>Each stage improves the quality of the final segmentation. Note that
-in some watershed implementations (e.g. Fiji) includes the distance map
-operation as part of the watershed.</p>
+in some watershed implementations (e.g. Fiji) the distance map operation
+is part of the watershed function.</p>
 <div id="there-is-no-perfect-segmentation" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -6070,7 +6186,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/10-measuring-biological-objects.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/10-measuring-biological-objects.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 75 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -6121,27 +6237,28 @@ Enhance Images
 Segment Objects
      ↓
 Refine Segmentations</code></pre>
-<p>The goal of image analysis is usually not to create better
-images.</p>
+<p>The goal of image analysis is usually not to create better images or
+refine masks.</p>
 <p>Instead, the goal is to generate quantitative measurements that can
 be used to answer biological questions.</p>
 <p>In this lesson we will measure properties of segmented nuclei and
 convert image data into a table of measurements that can be analysed
 using the broader R ecosystem.</p>
-<div id="from-images-to-data" class="callout">
+<div id="from-images-to-data-to-visualisation" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="from-images-to-data" class="callout-inner">
-<h3 class="callout-title">From Images to Data</h3>
+<div id="from-images-to-data-to-visualisation" class="callout-inner">
+<h3 class="callout-title">From Images to Data to visualisation</h3>
 <div class="callout-content">
-<p>Segmentation identifies objects.</p>
-<p>Measurement converts those objects into quantitative data.</p>
+<p>Image Segmentation identifies objects.</p>
+<p>Measurement converts those objects into quantitative data tables;</p>
+<p>Graphs of the talbes convey biological meaning.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="reading-the-image-stack">Reading the Image Stack<a class="anchor" aria-label="anchor" href="#reading-the-image-stack"></a>
+</section><section><h2 class="section-heading" id="reading-the-image-stack-and-recap-of-the-previous-lessons">Reading the Image Stack and Recap of the previous lessons<a class="anchor" aria-label="anchor" href="#reading-the-image-stack-and-recap-of-the-previous-lessons"></a>
 </h2>
 <hr class="half-width">
 <p>Load the required packages.</p>
@@ -6257,7 +6374,7 @@ using the broader R ecosystem.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-12-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each segmented nucleus has now been assigned a unique label.</p>
-</section><section><h2 class="section-heading" id="counting-objects">Counting Objects<a class="anchor" aria-label="anchor" href="#counting-objects"></a>
+</section><section><h2 class="section-heading" id="measuring-objects">Measuring Objects<a class="anchor" aria-label="anchor" href="#measuring-objects"></a>
 </h2>
 <hr class="half-width">
 <p>The simplest measurement is object count.</p>
@@ -6309,7 +6426,7 @@ using the broader R ecosystem.</p>
 </h2>
 <hr class="half-width">
 <p>Many R packages work most naturally with data frames.</p>
-<p>Creaet a data fram of the measurements.</p>
+<p>Create a data frame of the measurements.</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -6425,7 +6542,38 @@ objects.</p>
 <span>    y <span class="op">=</span> <span class="st">"Perimeter (pixels)"</span></span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-20-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each point represents a single nucleus.</p>
+<figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-20-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each point represents a single nucleus. We might use either of the
+graphs above to filter the data to remove objects that are too small to
+be nuclei or are too big and likely to be merged objects.</p>
+<p>Perhaps something like this:</p>
+<div class="codewrapper sourceCode" id="cb27">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span> </span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ lubridate 1.9.5     ✔ tibble    3.3.1
+✔ purrr     1.2.2     ✔ tidyr     1.3.2
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::combine()   masks EBImage::combine()
+✖ dplyr::filter()    masks stats::filter()
+✖ dplyr::lag()       masks stats::lag()
+✖ purrr::transpose() masks EBImage::transpose()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb29">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">filtered_df</span> <span class="op">&lt;-</span> <span class="va">shape_df</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">s.area</span> <span class="op">&gt;</span> <span class="fl">250</span> <span class="op">&amp;</span> <span class="va">s.area</span> <span class="op">&lt;</span> <span class="fl">1000</span><span class="op">)</span></span></code></pre>
+</div>
 </section><section><h2 class="section-heading" id="measuring-intensity">Measuring Intensity<a class="anchor" aria-label="anchor" href="#measuring-intensity"></a>
 </h2>
 <hr class="half-width">
@@ -6433,7 +6581,7 @@ objects.</p>
 <p>We can also measure pixel intensities inside each segmented
 nucleus.</p>
 <p>Calculate intensity measurements.</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6445,7 +6593,7 @@ nucleus.</p>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <p>Inspect the results.</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6466,7 +6614,7 @@ nucleus.</p>
 </h2>
 <hr class="half-width">
 <p>One useful measurement is mean intensity.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6500,7 +6648,7 @@ Nucleus B = 0.38</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <pre class="text"><code>Nucleus B</code></pre>
 <p>The larger mean intensity indicates a stronger signal.</p>
@@ -6512,7 +6660,7 @@ Nucleus B = 0.38</code></pre>
 </h2>
 <hr class="half-width">
 <p>Combine shape and intensity measurements.</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6522,7 +6670,7 @@ Nucleus B = 0.38</code></pre>
 <span><span class="op">)</span></span></code></pre>
 </div>
 <p>Inspect the combined table.</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6555,7 +6703,7 @@ Nucleus B = 0.38</code></pre>
 </h2>
 <hr class="half-width">
 <p>Compare area and mean intensity.</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6572,7 +6720,7 @@ Nucleus B = 0.38</code></pre>
 <span>    y <span class="op">=</span> <span class="st">"Mean Intensity"</span></span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-26-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Plots such as this can help identify biological relationships between
+<figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Plots such as this can help identify biological relationships between
 measurements.</p>
 <div id="images-become-data" class="callout">
 <div class="callout-square">
@@ -6593,7 +6741,7 @@ directly.</p>
 <hr class="half-width">
 <p>Earlier we measured the mean intensity of each segmented nucleus.</p>
 <p>We can visualise those measurements using a histogram.</p>
-<div class="codewrapper sourceCode" id="cb38">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6610,7 +6758,7 @@ directly.</p>
 <span>    y <span class="op">=</span> <span class="st">"Count"</span></span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The histogram summarises the intensity measurements for every
+<figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-28-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The histogram summarises the intensity measurements for every
 segmented nucleus.</p>
 <p>Notice that not all nuclei have the same intensity.</p>
 <p>Some nuclei have relatively low mean intensities, while others have
@@ -6655,20 +6803,10 @@ G2 Phase
     ↓
 Higher DNA Content</code></pre>
 <p>If fluorescence intensity is proportional to DNA content, a histogram
-of nuclear intensities may reveal distinct populations of cells.</p>
-<p>Conceptually:</p>
-<pre class="text"><code>Number of Cells
-      ^
-      |
-      |       /\            /\
-      |      /  \          /  \
-      |     /    \___ ____/    \
-      +----------------------------&gt;
-
-          G1      S       G2
-
-             DNA Content</code></pre>
-<p>In an experiment designed to measure DNA content, such a distribution
+of nuclear intensities may reveal distinct populations of cells. This is
+very common in flow cytometry measurements.</p>
+<figure><img src="../fig/10-measuring-biological-objects/cell_cycle.png" alt="cell cycle DNA content Vs Cell Number" class="figure mx-auto d-block"><div class="figcaption">Call Cycle Analysis in Flow Cytometry</div>
+</figure><p>In an experiment designed to measure DNA content, such a distribution
 could be used to investigate:</p>
 <ul>
 <li>cell-cycle progression</li>
@@ -6697,7 +6835,7 @@ original image?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The image allows us to see individual nuclei, but it can be difficult
 to judge overall patterns by eye.</p>
@@ -6755,7 +6893,7 @@ One Dataset</code></pre>
 </h2>
 <hr class="half-width">
 <p>Create a function that performs segmentation and measurement.</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6784,8 +6922,8 @@ One Dataset</code></pre>
 <span>  <span class="va">shape_df</span></span>
 <span><span class="op">}</span></span></code></pre>
 </div>
-<p>Apply the function to the first image.</p>
-<div class="codewrapper sourceCode" id="cb44">
+<p>Apply the function to the first image to validate functionality.</p>
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6877,14 +7015,14 @@ One Dataset</code></pre>
 <p>Rather than analysing each image manually, we can repeat the same
 workflow for every frame.</p>
 <p>Create an empty data frame to store the results.</p>
-<div class="codewrapper sourceCode" id="cb46">
+<div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">all_measurements</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Loop through each frame in the image stack.</p>
-<div class="codewrapper sourceCode" id="cb47">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6903,7 +7041,7 @@ workflow for every frame.</p>
 <span><span class="op">}</span></span></code></pre>
 </div>
 <p>Inspect the first few rows.</p>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6924,9 +7062,12 @@ workflow for every frame.</p>
 images.</p>
 <p>Each row represents a nucleus.</p>
 <p>The <code>frame</code> column records which image the nucleus
-originated from. ## Comparing Images</p>
+originated from.</p>
+</section><section><h2 class="section-heading" id="comparing-measurements-from-different-images">Comparing Measurements from different images<a class="anchor" aria-label="anchor" href="#comparing-measurements-from-different-images"></a>
+</h2>
+<hr class="half-width">
 <p>Create a boxplot of nuclear areas by frame.</p>
-<div class="codewrapper sourceCode" id="cb50">
+<div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -6944,7 +7085,7 @@ originated from. ## Comparing Images</p>
 <span>    title <span class="op">=</span> <span class="st">"Nuclear Areas Across Frames"</span></span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-33-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>A single workflow has now produced measurements from four separate
+<figure><img src="../fig/10-measuring-biological-objects-rendered-unnamed-chunk-34-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>A single workflow has now produced measurements from four separate
 images.</p>
 <div id="challenge3" class="callout challenge">
 <div class="callout-square">
@@ -6963,7 +7104,7 @@ images.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Each box summarises the distribution of nuclear areas detected in one
 frame of the image stack.</p>
@@ -6975,7 +7116,7 @@ frame of the image stack.</p>
 </h2>
 <hr class="half-width">
 <p>Measurement tables can be exported for downstream analysis.</p>
-<div class="codewrapper sourceCode" id="cb51">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7053,7 +7194,7 @@ any links that you are not going to use.
 <hr>
 <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/11-capstone-project.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/11-capstone-project.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 90 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -7163,22 +7304,18 @@ cells treated with three different compounds:</p>
 <p>The image filenames contain the treatment information.</p>
 <p>Examples:</p>
 <pre class="text"><code><span><span class="va">DAPI_untreated01_R3D.ome.tif</span></span>
-<span><span class="va">DAPI_untreated02_R3D.ome.tif</span></span>
 <span></span>
-<span><span class="va">DAPI_aphidicolin01_R3D.ome.tif</span></span>
 <span><span class="va">DAPI_aphidicolin02_R3D.ome.tif</span></span>
 <span></span>
-<span><span class="va">DAPI_camptothecin01_R3D.ome.tif</span></span>
 <span><span class="va">DAPI_camptothecin02_R3D.ome.tif</span></span>
 <span></span>
-<span><span class="va">DAPI_etoposide01_R3D.ome.tif</span></span>
 <span><span class="va">DAPI_etoposide02_R3D.ome.tif</span></span></code></pre>
 <p>Rather than analysing files manually, we will create a workflow that
 discovers and processes all images automatically. First we develop the
 workflow step-by-step, iteratively, tesing on one image. Then we create
 a function that incorporates each of the individual steps of the
-workdflow, for reproducibility. We finally apply the function to all the
-images in our dataset to create metrics that could support our
+workflow. Finally, we apply the function to all the images in our
+dataset to create reproducible metrics that we can use to test our
 hypothesis.</p>
 </section><section><h2 class="section-heading" id="listing-the-image-files">Listing the Image Files<a class="anchor" aria-label="anchor" href="#listing-the-image-files"></a>
 </h2>
@@ -7275,38 +7412,13 @@ after another.</p>
 <p>This approach is flexible and reproducible.</p>
 <p>If additional images are added later, the analysis will automatically
 include them.</p>
-<div id="challenge1" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div class="callout-inner">
-<h3 class="callout-title">Challenge</h3>
-<div class="callout-content">
-<p>Why is it preferable to generate a file list automatically rather
-than typing individual filenames into a script?</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
 <p>Automatically generating a file list:</p>
 <ul>
 <li>reduces typing errors</li>
 <li>accommodates changing datasets</li>
 <li>improves reproducibility</li>
 <li>requires less maintenance</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="dna-content-and-the-cell-cycle">DNA Content and the Cell Cycle<a class="anchor" aria-label="anchor" href="#dna-content-and-the-cell-cycle"></a>
+</ul></section><section><h2 class="section-heading" id="dna-content-and-the-cell-cycle">DNA Content and the Cell Cycle<a class="anchor" aria-label="anchor" href="#dna-content-and-the-cell-cycle"></a>
 </h2>
 <hr class="half-width">
 <p>The amount of DNA present in a cell changes as the cell progresses
@@ -7338,13 +7450,14 @@ with 4096 gray levels. Computers allocate memory in bytes (1-byte =
 be stored in a single byte but the largest intensity value (4095) is
 only 6% of the total range that could be stored in a 2-byte pixel
 (65,536 intensity values). Consequently, we store them in a 16-bit file
-format and when EBImage reads them into memory and converts the integers
-into the range between 0 and 1, the largest possible value is 0.0624856.
-This leads to images that are very dark when displayed on the screen,
-unless we change the display. We could set the <code>inputRange</code>
-in the normalize function so that the min is 0 and the max = 4095, but I
-used the min and max from the image. Remember, these are not the values
-that will be used for calculations.</p>
+format to preserve the data and when EBImage reads them into memory and
+converts the integers into the range between 0 and 1, the largest
+possible value is 0.0624856. This leads to images that are very dark
+when displayed on the screen, unless we change the display. We could set
+the <code>inputRange</code> in the normalize function so that the min is
+0 and the max = 4095, but I used the min and max from the image.
+Remember, these are not the values that will be used for
+calculations.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -7367,9 +7480,9 @@ that will be used for calculations.</p>
 <span><span class="op">)</span></span>
 <span><span class="va">mask</span> <span class="op">&lt;-</span> <span class="fu">fillHull</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu">watershed</span><span class="op">(</span></span>
-<span>  <span class="fu">distmap</span><span class="op">(</span><span class="va">mask</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre>
+<span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="va">mask</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">distmap</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">watershed</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="why-use-otsus-thresholding-method">Why Use Otsu’s Thresholding Method?<a class="anchor" aria-label="anchor" href="#why-use-otsus-thresholding-method"></a>
 </h2>
@@ -7522,7 +7635,7 @@ Integrated DAPI Intensity</code></pre>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/11-capstone-project-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each bar represents nuclei with similar DNA content.</p>
-<div id="challenge2" class="callout challenge">
+<div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -7534,12 +7647,12 @@ Integrated DAPI Intensity</code></pre>
 </div>
 </div>
 </div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Each observation corresponds to one nucleus and its measured
 integrated DAPI intensity.</p>
@@ -7593,7 +7706,7 @@ function.</p>
 <span>  <span class="va">features</span> <span class="op">&lt;-</span> <span class="fu">cbind</span><span class="op">(</span><span class="va">basic_features</span>, <span class="va">shape_features</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">features</span> <span class="op">&lt;-</span> <span class="va">features</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span> integrated_intensity <span class="op">=</span> <span class="va">b.mean</span> <span class="op">*</span> <span class="va">s.area</span><span class="op">)</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>integrated_intensity <span class="op">=</span> <span class="va">b.mean</span> <span class="op">*</span> <span class="va">s.area</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="va">features</span></span>
 <span></span>
@@ -8236,8 +8349,43 @@ same workflow and parameters.</p>
 </section><section><h2 class="section-heading" id="dna-content-histograms-by-treatment">DNA Content Histograms by Treatment<a class="anchor" aria-label="anchor" href="#dna-content-histograms-by-treatment"></a>
 </h2>
 <hr class="half-width">
-<p>Visualise the DNA-content distributions.</p>
+<p>Visualise the DNA-content distributions. First - let’s see how many
+nuclei we’ve counted in each condition. The <code>table()</code>
+function creates a contingency table for a single column. Alternatively
+we can use dplyr functions to summarise the data.</p>
 <div class="codewrapper sourceCode" id="cb30">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">table</span><span class="op">(</span><span class="va">all_measurements</span><span class="op">$</span><span class="va">treatment</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+ aphidicolin camptothecin    etoposide    untreated
+        2005         1778         1788         3355 </code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb32">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all_measurements</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">summarise</span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 4 × 2
+  treatment    `n()`
+  &lt;chr&gt;        &lt;int&gt;
+1 aphidicolin   2005
+2 camptothecin  1778
+3 etoposide     1788
+4 untreated     3355</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -8258,7 +8406,7 @@ same workflow and parameters.</p>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
 <figure><img src="../fig/11-capstone-project-rendered-unnamed-chunk-15-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Each panel represents one treatment condition.</p>
-<div id="challenge3" class="callout challenge">
+<div id="challenge2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -8271,12 +8419,12 @@ histograms?</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Some treatments alter cell-cycle progression.</p>
 <p>As cells accumulate in particular cell-cycle stages, the distribution
@@ -8302,9 +8450,11 @@ Higher DNA Content
       ↓
 G2/M</code></pre>
 <p>The exact thresholds depend on the experiment and are typically
-chosen by examining the DNA-content histogram. 【1-0cef45】</p>
+chosen by examining the DNA-content histogram. We can add a
+“phase”variable to our table to classify the nuclei based on the value
+of the integrated_intensity column.</p>
 <p>Example gates:</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -8318,13 +8468,11 @@ chosen by examining the DNA-content histogram. 【1-0cef45】</p>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
 <p>Inspect the results.</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">table</span><span class="op">(</span></span>
-<span>  <span class="va">all_measurements</span><span class="op">$</span><span class="va">phase</span></span>
-<span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">table</span><span class="op">(</span><span class="va">all_measurements</span><span class="op">$</span><span class="va">phase</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8332,6 +8480,24 @@ chosen by examining the DNA-content histogram. 【1-0cef45】</p>
 <pre class="output" tabindex="0"><code>
   G1 G2/M    S
 4458 1827 2641 </code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all_measurements</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">phase</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">summarise</span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 3 × 2
+  phase `n()`
+  &lt;chr&gt; &lt;int&gt;
+1 G1     4458
+2 G2/M   1827
+3 S      2641</code></pre>
 </div>
 <div id="biological-interpretation" class="callout">
 <div class="callout-square">
@@ -8351,40 +8517,58 @@ DNA-content distributions.</p>
 </h2>
 <hr class="half-width">
 <p>Calculate the percentage of cells in each phase. This table is in the
-tidy format, but it’s hard to see and summarise. We can also create a
-visually appealing summary table.</p>
-<div class="codewrapper sourceCode" id="cb35">
+tidy format, with one case per row and one variable per column. But this
+makes it hard to see trends and summarise. We can also create a visually
+appealing summary table using the dplyr’s <code>group_by()</code>
+function</p>
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">phase_summary</span> <span class="op">&lt;-</span> <span class="fu">aggregate</span><span class="op">(</span></span>
-<span>  <span class="va">integrated_intensity</span> <span class="op">~</span> <span class="va">treatment</span> <span class="op">+</span> <span class="va">phase</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">all_measurements</span>,</span>
-<span>  FUN <span class="op">=</span> <span class="va">length</span></span>
-<span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">phase_summary</span> <span class="op">&lt;-</span> <span class="va">all_measurements</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">phase</span>, <span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">summarise</span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by phase and treatment.
+ℹ Output is grouped by phase.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(phase, treatment))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb43">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">names</span><span class="op">(</span><span class="va">phase_summary</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"phase"</span>,<span class="st">"treatment"</span>,<span class="st">"count"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">names</span><span class="op">(</span><span class="va">phase_summary</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"count"</span></span>
 <span><span class="va">phase_summary</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>      treatment phase count
-1   aphidicolin    G1   967
-2  camptothecin    G1   729
-3     etoposide    G1   353
-4     untreated    G1  2409
-5   aphidicolin  G2/M   220
-6  camptothecin  G2/M   213
-7     etoposide  G2/M  1154
-8     untreated  G2/M   240
-9   aphidicolin     S   818
-10 camptothecin     S   836
-11    etoposide     S   281
-12    untreated     S   706</code></pre>
+<pre class="output" tabindex="0"><code># A tibble: 12 × 3
+# Groups:   phase [3]
+   phase treatment    count
+   &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;
+ 1 G1    aphidicolin    967
+ 2 G1    camptothecin   729
+ 3 G1    etoposide      353
+ 4 G1    untreated     2409
+ 5 G2/M  aphidicolin    220
+ 6 G2/M  camptothecin   213
+ 7 G2/M  etoposide     1154
+ 8 G2/M  untreated      240
+ 9 S     aphidicolin    818
+10 S     camptothecin   836
+11 S     etoposide      281
+12 S     untreated      706</code></pre>
 </div>
 <p>Calculate percentages within each treatment.</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -8437,37 +8621,40 @@ visually appealing summary table.</p>
 3 camptothecin  41     12    47
 4 etoposide     19.7   64.5  15.7</code></pre>
 </div>
-<p>Inspect the summary table.</p>
-<div class="codewrapper sourceCode" id="cb39">
+<p>Change “untreated” to “control” and Inspect the summary table.</p>
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">phase_summary</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">phase_summary</span> <span class="op">&lt;-</span> <span class="va">phase_summary</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu">ifelse</span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span> <span class="st">"untreated"</span>, <span class="st">"control"</span>,<span class="va">treatment</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">phase_summary</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 12 × 4
-   treatment    phase count percentage
-   &lt;chr&gt;        &lt;chr&gt; &lt;int&gt;      &lt;dbl&gt;
- 1 aphidicolin  G1      967      48.2
- 2 camptothecin G1      729      41.0
- 3 etoposide    G1      353      19.7
- 4 untreated    G1     2409      71.8
- 5 aphidicolin  G2/M    220      11.0
- 6 camptothecin G2/M    213      12.0
- 7 etoposide    G2/M   1154      64.5
- 8 untreated    G2/M    240       7.15
- 9 aphidicolin  S       818      40.8
-10 camptothecin S       836      47.0
-11 etoposide    S       281      15.7
-12 untreated    S       706      21.0 </code></pre>
+   phase treatment    count percentage
+   &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;      &lt;dbl&gt;
+ 1 G1    aphidicolin    967      48.2
+ 2 G1    camptothecin   729      41.0
+ 3 G1    etoposide      353      19.7
+ 4 G1    control       2409      71.8
+ 5 G2/M  aphidicolin    220      11.0
+ 6 G2/M  camptothecin   213      12.0
+ 7 G2/M  etoposide     1154      64.5
+ 8 G2/M  control        240       7.15
+ 9 S     aphidicolin    818      40.8
+10 S     camptothecin   836      47.0
+11 S     etoposide      281      15.7
+12 S     control        706      21.0 </code></pre>
 </div>
 </section><section><h2 class="section-heading" id="visualising-cell-cycle-distributions">Visualising Cell-Cycle Distributions<a class="anchor" aria-label="anchor" href="#visualising-cell-cycle-distributions"></a>
 </h2>
 <hr class="half-width">
 <p>Create a stacked bar chart.</p>
-<div class="codewrapper sourceCode" id="cb41">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -8483,7 +8670,7 @@ visually appealing summary table.</p>
 </div>
 <figure><img src="../fig/11-capstone-project-rendered-unnamed-chunk-21-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This plot summarises the cell-cycle composition of each treatment
 group.</p>
-<div id="challenge4" class="callout challenge">
+<div id="challenge3" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -8496,12 +8683,12 @@ untreated sample, what might this indicate?</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The treatment may be delaying or arresting cells in G2/M, causing
 cells to accumulate in that phase of the cell cycle.</p>
@@ -8623,11 +8810,11 @@ any links that you are not going to use.
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/README.md" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/README.md" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/" class="external-link">Source</a></p>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/" class="external-link">Source</a></p>
         <p>
         <a href="../citation.html">Cite</a>
         | <a href="mailto:stephen.ogg@kcl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
@@ -8637,7 +8824,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/a34637b65a09c4823187751256076b403db3bf4a" class="external-link">varnish (1.1.2.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/06b722638165e6b88961de8b5b88f686132ddb70" class="external-link">varnish (1.1.2.9000)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -8650,15 +8837,15 @@ any links that you are not going to use.
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/aio.html",
+  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/aio.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, bioimage, analysis, R",
   "name": "All in One View",
   "creativeWorkStatus": "active",
-  "url": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/aio.html",
-  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/aio.html",
+  "url": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/aio.html",
+  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/aio.html",
   "dateCreated": "2026-07-21",
   "dateModified": "2026-08-18",
   "datePublished": "2026-08-18"

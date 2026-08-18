@@ -217,6 +217,7 @@
 <li><a href="#example-measuring-cell-size">Example: Measuring Cell Size</a></li>
 <li><a href="#a-first-look-at-automation">A First Look At Automation</a></li>
 <li><a href="#discussion">Discussion</a></li>
+<li><a href="#human-cellsphase-contrast-human-cellsdic"><img src="fig/01-why-image-processing-matters/DIC_cheekcellspc.jpg" style="width:45.0%" alt="Images of human cheek cells with phase contrast" class="figure"><img src="fig/01-why-image-processing-matters/DIC_cheekcellsdic.jpg" style="width:45.0%" alt="Images of human cheek cells with DIC" class="figure"></a></li>
 <li><a href="#looking-ahead">Looking Ahead</a></li>
 <li><a href="#key-points">Key Points</a></li>
         </ul></div><!--/div.accordion-body-->
@@ -375,7 +376,7 @@
         <h1>Why Image Processing Matters</h1>
         <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/01-why-image-processing-matters.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/01-why-image-processing-matters.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
 
 
@@ -466,7 +467,7 @@ performed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>There is no single correct answer.</p>
 <p>Any quantitative property that can be measured from image pixels may
@@ -520,38 +521,41 @@ Requirement</h3>
 <p>A key goal of image analysis is not simply to work faster.</p>
 <p>It is to produce measurements that can be reproduced, inspected, and
 verified.</p>
+<p>See <a href="https://rdcu.be/fAnXm" class="external-link">this</a> paper for an
+introduction to the reproducibility crisis.</p>
 </div>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="common-applications-of-bioimage-analysis">Common Applications of Bioimage Analysis<a class="anchor" aria-label="anchor" href="#common-applications-of-bioimage-analysis"></a></h2>
 <hr class="half-width"><p>Image processing is used throughout the life sciences.</p>
 <p>Examples include:</p>
-<div class="section level3">
-<h3 id="cell-counting">Cell Counting<a class="anchor" aria-label="anchor" href="#cell-counting"></a></h3>
+<ul><li>
+<h3 id="cell-counting">Cell Counting</h3>
 <p>Determining the number of cells in a field of view.</p>
-</div>
-<div class="section level3">
-<h3 id="cell-segmentation">Cell Segmentation<a class="anchor" aria-label="anchor" href="#cell-segmentation"></a></h3>
+</li>
+<li>
+<h3 id="cell-segmentation">Cell Segmentation</h3>
 <p>Identifying individual cells or nuclei.</p>
-</div>
-<div class="section level3">
-<h3 id="fluorescence-quantification">Fluorescence Quantification<a class="anchor" aria-label="anchor" href="#fluorescence-quantification"></a></h3>
+</li>
+<li>
+<h3 id="fluorescence-quantification">Fluorescence
+Quantification</h3>
 <p>Measuring gene expression or protein localisation.</p>
-</div>
-<div class="section level3">
-<h3 id="time-lapse-imaging">Time-Lapse Imaging<a class="anchor" aria-label="anchor" href="#time-lapse-imaging"></a></h3>
+</li>
+<li>
+<h3 id="time-lapse-imaging">Time-Lapse Imaging</h3>
 <p>Tracking cell movement over time.</p>
-</div>
-<div class="section level3">
-<h3 id="high-content-screening">High-Content Screening<a class="anchor" aria-label="anchor" href="#high-content-screening"></a></h3>
+</li>
+<li>
+<h3 id="high-content-screening">High-Content Screening</h3>
 <p>Analysing thousands of images generated during drug-discovery
 experiments.</p>
-</div>
-<div class="section level3">
-<h3 id="spatial-biology">Spatial Biology<a class="anchor" aria-label="anchor" href="#spatial-biology"></a></h3>
+</li>
+<li>
+<h3 id="spatial-biology">Spatial Biology</h3>
 <p>Measuring the organisation of cells and tissues.</p>
-</div>
-</section><section><h2 class="section-heading" id="example-measuring-cell-size">Example: Measuring Cell Size<a class="anchor" aria-label="anchor" href="#example-measuring-cell-size"></a></h2>
+</li>
+</ul></section><section><h2 class="section-heading" id="example-measuring-cell-size">Example: Measuring Cell Size<a class="anchor" aria-label="anchor" href="#example-measuring-cell-size"></a></h2>
 <hr class="half-width"><p>Imagine we wish to compare cell size between two experimental
 conditions.</p>
 <p>One approach might be:</p>
@@ -602,7 +606,7 @@ analysis?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The correct answer is:</p>
 <pre class="text"><code>4. All of the above</code></pre>
@@ -613,7 +617,9 @@ size.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="discussion">Discussion<a class="anchor" aria-label="anchor" href="#discussion"></a></h2>
-<hr class="half-width"><p><img src="fig/01-why-image-processing-matters/DIC_cheekcellspc.jpg" style="width:45.0%" alt="Images of human cheek cells with phase contrast" class="figure"><img src="fig/01-why-image-processing-matters/DIC_cheekcellsdic.jpg" style="width:45.0%" alt="Images of human cheek cells with DIC" class="figure"><strong>Human Cells viewed with Phase and differential Interference
+<hr class="half-width"></section><section><h2 class="section-heading" id="human-cellsphase-contrast-human-cellsdic">
+<img src="fig/01-why-image-processing-matters/DIC_cheekcellspc.jpg" style="width:45.0%" alt="Images of human cheek cells with phase contrast" class="figure"><img src="fig/01-why-image-processing-matters/DIC_cheekcellsdic.jpg" style="width:45.0%" alt="Images of human cheek cells with DIC" class="figure"><a class="anchor" aria-label="anchor" href="#human-cellsphase-contrast-human-cellsdic"></a></h2>
+<hr class="half-width"><p><strong>Human Cells viewed with Phase and differential Interference
 Contrast</strong></p>
 <hr><p>Image analysis is sometimes viewed as a purely computational
 discipline.</p>
@@ -680,11 +686,11 @@ any links that you are not going to use.
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/01-why-image-processing-matters.Rmd" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/01-why-image-processing-matters.Rmd" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/" class="external-link">Source</a></p>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/" class="external-link">Source</a></p>
         <p>
         <a href="citation.html">Cite</a>
         | <a href="mailto:stephen.ogg@kcl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
@@ -694,7 +700,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/a34637b65a09c4823187751256076b403db3bf4a" class="external-link">varnish (1.1.2.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/06b722638165e6b88961de8b5b88f686132ddb70" class="external-link">varnish (1.1.2.9000)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -706,15 +712,15 @@ any links that you are not going to use.
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r/01-why-image-processing-matters.html",
+  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r.git/01-why-image-processing-matters.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, bioimage, analysis, R",
   "name": "Why Image Processing Matters",
   "creativeWorkStatus": "active",
-  "url": "https://stephenogg.github.io/bioimage-analysis-with-r/01-why-image-processing-matters.html",
-  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r/01-why-image-processing-matters.html",
+  "url": "https://stephenogg.github.io/bioimage-analysis-with-r.git/01-why-image-processing-matters.html",
+  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r.git/01-why-image-processing-matters.html",
   "dateCreated": "2026-07-21",
   "dateModified": "2026-08-18",
   "datePublished": "2026-08-18"

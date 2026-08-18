@@ -378,7 +378,7 @@
         <h1>Visualising Bioimages</h1>
         <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/05-visualising-bioimages.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/05-visualising-bioimages.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
 
 
@@ -539,7 +539,7 @@ ignore the pixel values?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The displayed image shows a visual representation of the data.</p>
 <p>The underlying numerical pixel values, which are used for
@@ -553,22 +553,24 @@ pixel values, not the displayed image.</p>
 </section><section><h2 class="section-heading" id="why-some-images-look-dark">Why Some Images Look Dark<a class="anchor" aria-label="anchor" href="#why-some-images-look-dark"></a></h2>
 <hr class="half-width"><p>Many microscopy images contain useful information across a relatively
 narrow range of intensities. The mitochondrial image (dimMito.ome.tif)
-you displayed earlier is a good example. In our mitochondrial image, the
+you displayed earlier is an example. In our mitochondrial image, the
 data range from 0 to 0.68</p>
 <pre class="text"><code><span><span class="fl">0.00</span> <span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span> <span class="fl">0.68</span></span></code></pre>
 <p>A computer display often expects values spanning:</p>
 <pre class="text"><code><span><span class="fl">0.00</span> <span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span><span class="op">-</span> <span class="fl">1.00</span></span></code></pre>
 <p>As a result, many scientific images initially appear dark or low
 contrast. Our mitochondrial image only uses 2/3 of the total dynamic
-range that the screen can show.</p>
+range that the screen can show. You will see in later episodes, there
+are images that use only 6% of the total.</p>
 <p>Display software sometimes compensates for this by adjusting how
 pixel values are mapped to screen brightness. Usually without explicitly
 mentioning how the values in the image are mapped to brightness on the
 screen. But sometimes not. Jupyter Lab does not.</p>
 </section><section><h2 class="section-heading" id="histograms">Histograms<a class="anchor" aria-label="anchor" href="#histograms"></a></h2>
-<hr class="half-width"><p>Another way to visualise the same data is to look at the distribution
-of the data. Histograms show us the pixel intensity distributions within
-an image, leaving out any spatial information.</p>
+<hr class="half-width"><p>Another way to visualise the same data is to look at the shape of the
+distribution of the data, disregarding any spatial location information.
+Histograms show us the pixel intensity distributions within an image,
+leaving out the location information.</p>
 <p>Create a histogram of the image pixels.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -585,14 +587,13 @@ an image, leaving out any spatial information.</p>
 <li>how frequently each value occurs</li>
 <li>whether intensities occupy a small or large fraction of the
 available range</li>
-</ul><div id="histograms-describe-data" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="histograms-describe-data" class="callout-inner">
-<h3 class="callout-title">Histograms Describe Data</h3>
-<div class="callout-content">
+</ul><div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> How Histograms are generated </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
 <p>A histogram provides information about the image data itself.</p>
 <p>Unlike image display settings, histograms are independent of the
 brightness/contrast settings used to visualise the image. The following
@@ -600,6 +601,7 @@ image briefly describes how an image histogram is created from the
 underlying data.</p>
 <figure><img src="fig/05-visualising-bioimages/histo_explanation.png" alt="flowchart showing image histogram constsruction" class="figure mx-auto d-block"><div class="figcaption">Histogram Construction</div>
 </figure></div>
+</div>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="contrast-stretching">Contrast Stretching<a class="anchor" aria-label="anchor" href="#contrast-stretching"></a></h2>
@@ -610,16 +612,18 @@ equalization.</p>
 <p>EBImage provides the <code>normalize()</code> and
 <code>equalize()</code> functions.</p>
 <p><strong>Important</strong> — This does NOT change the underlying
-pixel values in most software. In R, we could change the pixel values by
-assigning the new object to the old object. Therefore, a common way to
-do this is to normalize the original image data and assign this to a new
-object. You rarely want to change your raw data!</p>
+pixel values in most software. In R, we could change the pixel values if
+we assig the new object to the same initial object. Therefore, a common
+way to do this is to normalize the original image data and assign this
+to a new object. You rarely want to change your raw data!</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">img_stretched</span> <span class="op">&lt;-</span> <span class="fu">normalize</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span>
-<span><span class="va">img_equalized</span> <span class="op">&lt;-</span> <span class="fu">equalize</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code></pre>
+<span><span class="va">img_equalized</span> <span class="op">&lt;-</span> <span class="fu">equalize</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span>
+<span><span class="co">#Don't do this</span></span>
+<span><span class="co"># img &lt;- normalize(img)</span></span></code></pre>
 </div>
 <p>Display the enhanced images.</p>
 <div class="codewrapper sourceCode" id="cb16">
@@ -674,7 +678,7 @@ object. You rarely want to change your raw data!</p>
 <p>The image appearance changes dramatically, but the biological
 structures remain the same.</p>
 </section><section><h2 class="section-heading" id="has-the-data-changed">Has the Data Changed?<a class="anchor" aria-label="anchor" href="#has-the-data-changed"></a></h2>
-<hr class="half-width"><p>Let’s compare the original and stretched images.</p>
+<hr class="half-width"><p>Let’s compare the original and stretched image histograms:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -706,8 +710,9 @@ structures remain the same.</p>
 <code class="sourceCode R"><span><span class="fu">par</span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Contrast enhancement changes how intensities are distributed across
-the display range.</p>
-<p>Importantly, it does not create new biological structures.</p>
+the display range. The new image objects have different histograms,
+<em>the image data has changed!</em></p>
+<p>Importantly, it does not create new biological information.</p>
 <div id="challenge2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -727,7 +732,7 @@ original image.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>No. but new biological insights may be gained with new
 visualisations.</p>
@@ -743,13 +748,13 @@ biological features.</p>
 </section><section><h2 class="section-heading" id="image-data-versus-image-display">Image Data versus Image Display<a class="anchor" aria-label="anchor" href="#image-data-versus-image-display"></a></h2>
 <hr class="half-width"><p>It is useful to think about image visualisation as a mapping
 process.</p>
-<pre class="text"><code>Pixel Values in the image -&gt; Display Mapping -&gt; Visible Image on the screen</code></pre>
+<pre class="text"><code>Pixel Values in the image -&gt; Display Mapping Function -&gt; Visible Image on the screen</code></pre>
 <p>Different display mappings can produce very different visual
 appearances while using exactly the same image data.</p>
 </section><section><h2 class="section-heading" id="lookup-tables">Lookup Tables<a class="anchor" aria-label="anchor" href="#lookup-tables"></a></h2>
-<hr class="half-width"><p>A lookup table (LUT) defines how pixel intensities are displayed. It
-is the mapping function alluded to above that takes in a pixel intensity
-value and produces a display value.</p>
+<hr class="half-width"><p>A lookup table (LUT) defines how pixel intensities from the image are
+displayed on the screen. It is the mapping function alluded to above
+that takes in a pixel intensity value and produces a display value.</p>
 <p>For example:</p>
 <p><code>Low Intensity → Black ....... High Intensity → White</code></p>
 <p>produces a grayscale image.</p>
@@ -798,7 +803,7 @@ to different colours.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>All three displays contain exactly the same intensity values.</p>
 <p>Only the mapping between intensity and colour has changed.</p>
@@ -898,11 +903,11 @@ any links that you are not going to use.
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/05-visualising-bioimages.Rmd" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/05-visualising-bioimages.Rmd" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/" class="external-link">Source</a></p>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/" class="external-link">Source</a></p>
         <p>
         <a href="citation.html">Cite</a>
         | <a href="mailto:stephen.ogg@kcl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
@@ -912,7 +917,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/a34637b65a09c4823187751256076b403db3bf4a" class="external-link">varnish (1.1.2.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/06b722638165e6b88961de8b5b88f686132ddb70" class="external-link">varnish (1.1.2.9000)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -924,15 +929,15 @@ any links that you are not going to use.
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r/05-visualising-bioimages.html",
+  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r.git/05-visualising-bioimages.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, bioimage, analysis, R",
   "name": "Visualising Bioimages",
   "creativeWorkStatus": "active",
-  "url": "https://stephenogg.github.io/bioimage-analysis-with-r/05-visualising-bioimages.html",
-  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r/05-visualising-bioimages.html",
+  "url": "https://stephenogg.github.io/bioimage-analysis-with-r.git/05-visualising-bioimages.html",
+  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r.git/05-visualising-bioimages.html",
   "dateCreated": "2026-07-21",
   "dateModified": "2026-08-18",
   "datePublished": "2026-08-18"

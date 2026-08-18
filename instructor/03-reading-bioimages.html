@@ -376,7 +376,7 @@
         <h1>Reading Bioimages</h1>
         <p>Last updated on 2026-08-18 |
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/03-reading-bioimages.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/03-reading-bioimages.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
 
 
@@ -849,6 +849,101 @@ are identical, the images are completely different.</p>
 </div>
 </div>
 </div>
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Looking Beyond OME-TIFF: NGFF and OME-Zarr </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
+<p>For many years, <strong>OME-TIFF</strong> has been the preferred open
+format for quantitative microscopy. It is portable, reproducible, and
+easy to analyse across different software packages.</p>
+<p>However, microscopy datasets are becoming increasingly large. Modern
+imaging experiments can generate hundreds of gigabytes or even terabytes
+of data, particularly for applications such as light-sheet microscopy,
+whole-slide imaging, high-content screening, and large 3D or time-lapse
+experiments. Traditional image formats were not designed with these
+scales or with modern cloud-based workflows in mind.</p>
+<p>To address these challenges, the bioimaging community launched the
+<strong>Next Generation File Formats (NGFF)</strong> initiative. NGFF is
+a community-driven effort led by the Open Microscopy Environment (OME)
+and collaborators to develop standards that improve the scalability,
+accessibility, interoperability, and reusability of bioimaging data.</p>
+<p>The file format that has emerged from this effort is called
+<strong>OME-Zarr</strong>. In practice, when people discuss NGFF today,
+they are often referring to OME-Zarr. NGFF is the broader community
+initiative, while OME-Zarr is the implementation of those ideas as a
+usable file format.</p>
+<div class="section level3">
+<h3 id="why-is-ome-zarr-different">Why is OME-Zarr Different?<a class="anchor" aria-label="anchor" href="#why-is-ome-zarr-different"></a></h3>
+<p>Instead of storing an entire dataset as a single large file, OME-Zarr
+stores image data as many smaller chunks together with standardized
+metadata. This offers several advantages:</p>
+<ul><li>Only the portion of an image required for viewing or analysis needs
+to be loaded.</li>
+<li>Large datasets can be streamed efficiently across networks or from
+cloud storage.</li>
+<li>Multiple users or software processes can access different parts of a
+dataset simultaneously.</li>
+<li>Multi-resolution image pyramids are built into the format, making
+visualization and zooming much faster.</li>
+</ul><p>A useful analogy is that OME-TIFF is like downloading an entire book
+before reading a page, whereas OME-Zarr allows you to retrieve only the
+pages you need at that moment.</p>
+</div>
+<div class="section level3">
+<h3 id="does-this-mean-ome-tiff-is-obsolete">Does This Mean OME-TIFF Is Obsolete?<a class="anchor" aria-label="anchor" href="#does-this-mean-ome-tiff-is-obsolete"></a></h3>
+<p>No. OME-TIFF remains widely supported and is still an excellent
+choice for many microscopy workflows, particularly when datasets fit
+comfortably on local storage and need to be opened by a broad range of
+software packages.</p>
+<p>Rather than replacing OME-TIFF, OME-Zarr should be viewed as a
+complementary format that is particularly useful when:</p>
+<ul><li>Datasets are very large.</li>
+<li>Data are stored remotely or in cloud infrastructure.</li>
+<li>Analysis is performed on high-performance computing systems.</li>
+<li>Data need to be shared with collaborators or public
+repositories.</li>
+<li>Multiple tools need efficient access to different regions of the
+same dataset.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="what-should-learners-use-today">What Should Learners Use Today?<a class="anchor" aria-label="anchor" href="#what-should-learners-use-today"></a></h3>
+<p>For introductory image processing and analysis, <strong>OME-TIFF
+remains an excellent recommendation</strong> because it is mature,
+stable, easy to share, and supported by most microscopy software.</p>
+<p>At the same time, learners should be aware that <strong>OME-Zarr is
+rapidly becoming an important format for large-scale and cloud-enabled
+bioimaging workflows</strong>. Major bioimaging repositories and
+community resources are increasingly adopting OME-Zarr, and support is
+continuing to grow across the bioimaging software ecosystem.</p>
+</div>
+<div class="section level3">
+<h3 id="key-takeaway">Key Takeaway<a class="anchor" aria-label="anchor" href="#key-takeaway"></a></h3>
+<blockquote>
+<p>OME-TIFF is currently the standard open microscopy format and is
+suitable for most image analysis workflows. However, OME-Zarr, developed
+through the NGFF initiative, represents the next generation of
+bioimaging formats and is designed to handle the increasingly large,
+multidimensional, and cloud-hosted datasets produced by modern
+microscopy.</p>
+</blockquote>
+</div>
+<div class="section level3">
+<h3 id="further-reading">Further Reading<a class="anchor" aria-label="anchor" href="#further-reading"></a></h3>
+<ul><li><a href="https://ngff.openmicroscopy.org/" class="external-link">NGFF
+Documentation</a></li>
+<li><a href="https://ome-zarr.readthedocs.io/" class="external-link">OME-Zarr
+Documentation</a></li>
+<li><a href="https://www.openmicroscopy.org/ome-model/ome-tiff/" class="external-link">OME
+File Formats</a></li>
+<li><a href="https://doi.org/10.1038/s41592-021-01326-w" class="external-link">OME-NGFF</a></li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="looking-ahead">Looking Ahead<a class="anchor" aria-label="anchor" href="#looking-ahead"></a></h2>
 <hr class="half-width"><p>We can now read image files into R and understand some of the
 strengths and limitations of common image formats.</p>
@@ -902,11 +997,11 @@ any links that you are not going to use.
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/stephenogg/bioimage-analysis-with-r/edit/main/episodes/03-reading-bioimages.Rmd" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/edit/main/episodes/03-reading-bioimages.Rmd" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r/" class="external-link">Source</a></p>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/stephenogg/bioimage-analysis-with-r.git/" class="external-link">Source</a></p>
         <p>
         <a href="../citation.html">Cite</a>
         | <a href="mailto:stephen.ogg@kcl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
@@ -916,7 +1011,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/a34637b65a09c4823187751256076b403db3bf4a" class="external-link">varnish (1.1.2.9000)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/stephenogg/varnish/tree/06b722638165e6b88961de8b5b88f686132ddb70" class="external-link">varnish (1.1.2.9000)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -928,15 +1023,15 @@ any links that you are not going to use.
     {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/03-reading-bioimages.html",
+  "@id": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/03-reading-bioimages.html",
   "inLanguage": "en",
   "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, bioimage, analysis, R",
   "name": "Reading Bioimages",
   "creativeWorkStatus": "active",
-  "url": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/03-reading-bioimages.html",
-  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r/instructor/03-reading-bioimages.html",
+  "url": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/03-reading-bioimages.html",
+  "identifier": "https://stephenogg.github.io/bioimage-analysis-with-r.git/instructor/03-reading-bioimages.html",
   "dateCreated": "2026-07-21",
   "dateModified": "2026-08-18",
   "datePublished": "2026-08-18"
