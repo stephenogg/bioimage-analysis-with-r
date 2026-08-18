@@ -73,7 +73,7 @@ Or it could be a three-dimensional equivalent, a cuboid, or have even more dimen
 but always keeping the evenly spaced arrangement of numbers. 
 In computing, an array refers to a structure in the computer's memory 
 where data is stored in evenly spaced elements. This is strongly analogous to a matrix. 
-An R matrix is a type of variable (an example of a simple type is an integer). 
+An R matrix is a variable type. Variables can have many types, e.g. one type is: integer). 
 For our purposes, the distinction between matrices and arrays is not important, 
 we don't really care how the computer arranges our data in its memory. 
 The important thing is that the computer stores values describing the pixels in images, as arrays. 
@@ -116,7 +116,7 @@ you may have noticed something surprising.
 
 The pixel value at `img[1,1]` doesn't appear in the top-left corner of the plot.
 
-Many learners expect it to appear in the upper-left corner.
+Many bioimage analysts expect it to appear in the upper-left corner.
 
 Why?
 

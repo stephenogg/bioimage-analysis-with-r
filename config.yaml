@@ -34,7 +34,7 @@ life_cycle: 'pre-alpha'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/stephenogg/bioimage-analysis-with-r'
+source: 'https://github.com/stephenogg/bioimage-analysis-with-r.git'
 
 # Default branch of your lesson
 branch: 'main'

@@ -102,24 +102,20 @@ Examples:
 
 ```text
 DAPI_untreated01_R3D.ome.tif
-DAPI_untreated02_R3D.ome.tif
 
-DAPI_aphidicolin01_R3D.ome.tif
 DAPI_aphidicolin02_R3D.ome.tif
 
-DAPI_camptothecin01_R3D.ome.tif
 DAPI_camptothecin02_R3D.ome.tif
 
-DAPI_etoposide01_R3D.ome.tif
 DAPI_etoposide02_R3D.ome.tif
 ```
 
 Rather than analysing files manually, we will create a workflow that discovers
 and processes all images automatically. First we develop the workflow step-by-step, 
 iteratively, tesing on one image. Then we create a function that incorporates
-each of the individual steps of the workdflow, for reproducibility. 
-We finally apply the function to all the images in our dataset to create metrics that could
-support our hypothesis.
+each of the individual steps of the workflow.
+Finally, we apply the function to all the images in our dataset to create reproducible
+metrics that we can use to test our hypothesis.
 
 ## Listing the Image Files
 
@@ -144,13 +140,6 @@ This approach is flexible and reproducible.
 If additional images are added later, the analysis will automatically include
 them.
 
-::::::::::::::::::::::::::::::::::::: challenge
-
-Why is it preferable to generate a file list automatically rather than typing
-individual filenames into a script?
-
-:::::::::::::::::::::::: solution
-
 Automatically generating a file list:
 
 - reduces typing errors
@@ -158,9 +147,6 @@ Automatically generating a file list:
 - improves reproducibility
 - requires less maintenance
 
-:::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## DNA Content and the Cell Cycle
 
@@ -195,7 +181,7 @@ Computers allocate memory in bytes (1-byte = 8-bits). Therefore, a 12-bit
 image has pixel data that are too large to be stored in a single byte 
 but the largest intensity value (4095) is only 6% of the total range that could be 
 stored in a 2-byte pixel (65,536 intensity values). Consequently, we store them
-in a 16-bit file format and when EBImage reads them into memory and converts the 
+in a 16-bit file format to preserve the data and when EBImage reads them into memory and converts the 
 integers into the range between 0 and 1, the largest possible value is 0.0624856.
 This leads to images that are very dark when displayed on the screen, unless we 
 change the display. We could set the `inputRange` in the normalize function so that the 
@@ -220,9 +206,9 @@ mask <- opening(
 )
 mask <- fillHull(mask)
 
-labels <- watershed(
-  distmap(mask)
-)
+labels <- mask |>
+  distmap() |>
+    watershed()
 ```
 
 ## Why Use Otsu's Thresholding Method?
@@ -411,7 +397,7 @@ measure_dna_content <- function(image_file) {
   features <- cbind(basic_features, shape_features)
 
   features <- features |>
-  mutate( integrated_intensity = b.mean * s.area)
+  mutate(integrated_intensity = b.mean * s.area)
   
   features
 
@@ -515,9 +501,20 @@ This structure makes downstream analysis straightforward.
 
 ## DNA Content Histograms by Treatment
 
-Visualise the DNA-content distributions.
+Visualise the DNA-content distributions. First - let's see how many nuclei we've 
+counted in each condition. The `table()` function creates a contingency table 
+for a single column.
+Alternatively we can use dplyr functions to summarise the data.
 
 ```{r}
+
+table(all_measurements$treatment)
+
+all_measurements |>
+    group_by(treatment) |>
+    summarise(n())
+
+
 ggplot(
   all_measurements,
   aes(x = integrated_intensity)
@@ -573,7 +570,8 @@ G2/M
 ```
 
 The exact thresholds depend on the experiment and are typically chosen by
-examining the DNA-content histogram. 【1-0cef45】
+examining the DNA-content histogram. We can add a "phase "variable to our table to 
+classify the nuclei based on the value of the integrated_intensity column. 
 
 Example gates:
 
@@ -591,9 +589,11 @@ all_measurements <- all_measurements |>
 Inspect the results.
 
 ```{r}
-table(
-  all_measurements$phase
-)
+table(all_measurements$phase)
+
+all_measurements |>
+    group_by(phase) |>
+    summarise(n())
 ```
 
 ::::::::::::::::::::::::::::::::::::: callout
@@ -610,19 +610,19 @@ distributions.
 ## Calculating Cell-Cycle Percentages
 
 Calculate the percentage of cells in each phase.  This table is in the tidy format, 
-but it's hard to see and summarise. We can also create a visually appealing summary table.
+with one case per row and one variable per column.
+But this makes it hard to see trends and summarise. 
+We can also create a visually appealing summary table using the dplyr's `group_by()`
+function
 
 ```{r}
-phase_summary <- aggregate(
-  integrated_intensity ~ treatment + phase,
-  data = all_measurements,
-  FUN = length
-)
+phase_summary <- all_measurements |>
+    group_by(phase, treatment) |>
+    summarise(n())
 
-names(phase_summary)[3] <- "count"
+names(phase_summary) <- c("phase","treatment","count")
+
 phase_summary
-
-
 
 ```
 
@@ -668,10 +668,14 @@ cell_cycle_table <- cell_cycle_table |>
 cell_cycle_table
 ```
 
-Inspect the summary table.
+Change "untreated" to "control" and Inspect the summary table.
 
 ```{r}
+phase_summary <- phase_summary |>
+  mutate(treatment = ifelse(treatment == "untreated", "control",treatment))
+
 phase_summary
+
 ```
 
 ## Visualising Cell-Cycle Distributions

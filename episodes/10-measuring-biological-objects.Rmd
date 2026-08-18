@@ -40,7 +40,7 @@ Segment Objects
 Refine Segmentations
 ```
 
-The goal of image analysis is usually not to create better images.
+The goal of image analysis is usually not to create better images or refine masks.
 
 Instead, the goal is to generate quantitative measurements that can be used to
 answer biological questions.
@@ -51,15 +51,18 @@ ecosystem.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
-## From Images to Data
+## From Images to Data to visualisation
 
-Segmentation identifies objects.
+Image Segmentation identifies objects.
 
-Measurement converts those objects into quantitative data.
+Measurement converts those objects into quantitative data tables;
+
+Graphs of the talbes convey biological meaning.
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Reading the Image Stack
+## Reading the Image Stack and Recap of the previous lessons
 
 Load the required packages.
 
@@ -158,7 +161,7 @@ display(
 
 Each segmented nucleus has now been assigned a unique label.
 
-## Counting Objects
+## Measuring Objects
 
 The simplest measurement is object count.
 
@@ -194,7 +197,7 @@ Each column represents a measurement.
 
 Many R packages work most naturally with data frames.
 
-Creaet a data fram of the measurements.
+Create a data frame of the measurements.
 
 ```{r}
 shape_df <- as.data.frame(
@@ -291,7 +294,21 @@ ggplot(
   )
 ```
 
-Each point represents a single nucleus.
+Each point represents a single nucleus. We might use either of the graphs above 
+to filter the data to remove objects that are too small to be nuclei or 
+are too big and likely to be merged objects.
+
+Perhaps something like this:
+
+```{r}
+library(tidyverse) 
+
+filtered_df <- shape_df |>
+  filter(s.area > 250 & s.area < 1000)
+
+```
+
+
 
 
 
@@ -476,23 +493,10 @@ Higher DNA Content
 ```
 
 If fluorescence intensity is proportional to DNA content, a histogram of
-nuclear intensities may reveal distinct populations of cells.
+nuclear intensities may reveal distinct populations of cells. 
+This is very common in flow cytometry measurements.
 
-Conceptually:
-
-```text
-Number of Cells
-      ^
-      |
-      |       /\            /\
-      |      /  \          /  \
-      |     /    \___ ____/    \
-      +---------------------------->
-
-          G1      S       G2
-
-             DNA Content
-```
+![Call Cycle Analysis in Flow Cytometry](fig/10-measuring-biological-objects/cell_cycle.png){alt="cell cycle DNA content Vs Cell Number"}
 
 In an experiment designed to measure DNA content, such a distribution could be
 used to investigate:
@@ -611,7 +615,7 @@ measure_nuclei <- function(image, frame_id) {
 }
 ```
 
-Apply the function to the first image.
+Apply the function to the first image to validate functionality.
 
 ```{r}
 measure_nuclei(
@@ -662,7 +666,8 @@ The resulting data frame contains measurements from all four images.
 Each row represents a nucleus.
 
 The `frame` column records which image the nucleus originated from.
-## Comparing Images
+
+## Comparing Measurements from different images
 
 Create a boxplot of nuclear areas by frame.
 

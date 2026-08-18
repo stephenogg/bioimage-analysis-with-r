@@ -381,6 +381,85 @@ graphics::hist(another_img, breaks = 50)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::: spoiler
+
+## Looking Beyond OME-TIFF: NGFF and OME-Zarr
+
+For many years, **OME-TIFF** has been the preferred open format for quantitative microscopy. 
+It is portable, reproducible, and easy to analyse across different software packages.
+
+However, microscopy datasets are becoming increasingly large. 
+Modern imaging experiments can generate hundreds of gigabytes or even terabytes of data, 
+particularly for applications such as light-sheet microscopy, 
+whole-slide imaging, high-content screening, and large 3D or time-lapse experiments. 
+Traditional image formats were not designed with these scales or with modern cloud-based workflows in mind.
+
+To address these challenges, the bioimaging community launched the **Next Generation File Formats (NGFF)** initiative. 
+NGFF is a community-driven effort led by the Open Microscopy Environment (OME) 
+and collaborators to develop standards that improve the scalability, accessibility, 
+interoperability, and reusability of bioimaging data.
+
+The file format that has emerged from this effort is called **OME-Zarr**. 
+In practice, when people discuss NGFF today, they are often referring to OME-Zarr. 
+NGFF is the broader community initiative, while OME-Zarr is the implementation of those ideas as a usable file format.
+
+### Why is OME-Zarr Different?
+
+Instead of storing an entire dataset as a single large file, 
+OME-Zarr stores image data as many smaller chunks together with standardized metadata. 
+This offers several advantages:
+
+- Only the portion of an image required for viewing or analysis needs to be loaded.
+- Large datasets can be streamed efficiently across networks or from cloud storage.
+- Multiple users or software processes can access different parts of a dataset simultaneously.
+- Multi-resolution image pyramids are built into the format, 
+  making visualization and zooming much faster.
+
+A useful analogy is that OME-TIFF is like downloading an entire book before reading a page, 
+whereas OME-Zarr allows you to retrieve only the pages you need at that moment.
+
+### Does This Mean OME-TIFF Is Obsolete?
+
+No. OME-TIFF remains widely supported and is still an excellent choice for many microscopy workflows, 
+particularly when datasets fit comfortably on local storage and need to be opened by a broad range of software packages.
+
+Rather than replacing OME-TIFF, OME-Zarr should be viewed as a complementary format that is particularly useful when:
+
+- Datasets are very large.
+- Data are stored remotely or in cloud infrastructure.
+- Analysis is performed on high-performance computing systems.
+- Data need to be shared with collaborators or public repositories.
+- Multiple tools need efficient access to different regions of the same dataset.
+
+### What Should Learners Use Today?
+
+For introductory image processing and analysis, 
+**OME-TIFF remains an excellent recommendation** because it is mature, stable, 
+easy to share, and supported by most microscopy software.
+
+At the same time, 
+learners should be aware that **OME-Zarr is rapidly becoming an important format for large-scale and cloud-enabled bioimaging workflows**. 
+Major bioimaging repositories and community resources are increasingly adopting OME-Zarr, 
+and support is continuing to grow across the bioimaging software ecosystem.
+
+### Key Takeaway
+
+> OME-TIFF is currently the standard open microscopy format and is suitable for most image analysis workflows. 
+However, OME-Zarr, developed through the NGFF initiative, 
+represents the next generation of bioimaging formats and is designed to handle the increasingly large, 
+multidimensional, and cloud-hosted datasets produced by modern microscopy.
+
+### Further Reading
+
+- [NGFF Documentation](https://ngff.openmicroscopy.org/)
+- [OME-Zarr Documentation](https://ome-zarr.readthedocs.io/)
+- [OME File Formats](https://www.openmicroscopy.org/ome-model/ome-tiff/)
+- [OME-NGFF](https://doi.org/10.1038/s41592-021-01326-w)
+
+
+::::::::::::::::::::::::::::::::::::::::::::
+
+
 ## Looking Ahead
 
 We can now read image files into R and understand some of the strengths and

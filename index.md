@@ -2,7 +2,7 @@
 site: sandpaper::sandpaper_site
 ---
 
-This lesson shows how to use R to perform basic image processing.
+This lesson shows how to use R and the EBImage library to perform basic image processing.
 
 ::::::::::::::::::::::::::::::::::::::::::  prereq
 
@@ -20,8 +20,6 @@ to be familiar with.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-Before following the lesson, please make sure you have the [software and data required](learners/setup.md).
 
 
 
