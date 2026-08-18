@@ -1,3 +1,5 @@
 ---
-title: There are no profiles
+title: Learner Profiles
 ---
+
+The learners have no profiles.
