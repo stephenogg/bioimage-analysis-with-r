@@ -30,7 +30,7 @@ exercises: 30
 In the previous lesson we learned that the same image data can be displayed in
 many different ways.
 
-We used lookup tables (LUTs) to assign colours to grayscale images without
+We used lookup tables (LUTs) to assign *colours* to grayscale images without
 changing the underlying pixel values.
 
 This raises an important question:
@@ -48,8 +48,11 @@ different kinds of data.
 ## Grayscale Images
 
 Most microscopy images begin as grayscale images. Detectors on most advanced 
-acquisition systems only detect photons, not their wavelengths. 
-Load an example image from EBImage.
+acquisition systems only detect photons, not their wavelengths. *By convention*, 
+we assign the color black to low values and the color white to high values. 
+The EBImage package contains some example images.
+Let's Load an example. This is an example of a fluorescence micrograph of cells growing
+in culture fixed and stained with the DNA binding dye - DAPI. 
 
 
 ``` r
@@ -57,7 +60,7 @@ library(EBImage)
 
 img <- readImage(
   system.file("images", "nuclei.tif", package = "EBImage"))
-  #Select a single frame for demonstration purposes.
+  #Select a single frame for demonstration purposes. The dataset contains four images
   img <- img[,,1]
 ```
 
@@ -154,11 +157,11 @@ Additive colour is used by devices that emit light, such as:
 
 The additive colour model uses:
 
-```text
-Red
-Green
-Blue
-```
+
+<span style="color: red;">Red</span>
+<span style="color: green;">Green</span>
+<span style="color: blue;">Blue</span>
+
 
 light sources.
 
@@ -167,15 +170,15 @@ together.
 
 For example:
 
-```text
-Red + Green = Yellow
 
-Red + Blue = Magenta
+<span style="color: red;">Red</span> + <span style="color: green;">Green</span> = <span style="color: yellow;">Yellow</span>
 
-Green + Blue = Cyan
+<span style="color: red;">Red</span> + <span style="color: blue;">Blue</span> = <span style="color: magenta;">Magenta</span>
 
-Red + Green + Blue = White
-```
+<span style="color: green;">Green</span> + <span style="color: blue;">Blue</span> = <span style="color: cyan;">Cyan</span>
+
+<span style="color: red;">Red</span> + <span style="color: green;">Green</span> + <span style="color: blue;">Blue</span> = <span style="color: white;">White</span>
+
 
 The more light that is added, the brighter the resulting colour becomes.
 
@@ -195,11 +198,10 @@ such as:
 
 The subtractive colour model uses:
 
-```text
-Cyan
-Magenta
-Yellow
-```
+<span style="color: cyan;">Cyan</span>
+<span style="color: magenta;">Magenta</span>
+<span style="color: yellow;">Yellow</span>
+
 
 pigments or inks.
 
@@ -208,13 +210,12 @@ different wavelengths from white light.
 
 For example:
 
-```text
-Cyan + Magenta = Blue
 
-Cyan + Yellow = Green
+<span style="color: cyan;">Cyan</span> + <span style="color: magenta;">Magenta</span> = <span style="color: blue;">Blue</span>
 
-Magenta + Yellow = Red
-```
+<span style="color: cyan;">Cyan</span> + <span style="color: yellow;">Yellow</span> = <span style="color: green;">Green</span>
+
+<span style="color: magenta;">Magenta</span> + <span style="color: yellow;">Yellow</span> = <span style="color: red;">Red</span>
 
 Combining all colours produces a very dark colour or black.
 
@@ -231,11 +232,10 @@ additive RGB colour model.
 As a result, colour images in software such as EBImage are typically represented
 using three channels:
 
-```text
-Red
-Green
-Blue
-```
+<span style="color: red;">Red</span>
+<span style="color: green;">Green</span>
+<span style="color: blue;">Blue</span>
+
 
 These channels control the brightness of the red, green, and blue elements of
 the display and together produce the colours that we see on screen.
@@ -468,7 +468,8 @@ We can turn each image back into a color image and display those as well:
 
 ``` r
 red_col_channel <- rgbImage(
-  red = red_channel)
+  red = red_channel
+)
 
 green_col_channel <- rgbImage(
   green = green_channel
@@ -701,7 +702,7 @@ different biological structures.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-Why must we create an RGB image before colouring saturated pixels red?
+Why must we create an RGB image before displaying multiple fluorescence channels?
 
 :::::::::::::::::::::::: solution
 

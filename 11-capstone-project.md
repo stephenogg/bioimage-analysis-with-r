@@ -102,24 +102,20 @@ Examples:
 
 ```text
 DAPI_untreated01_R3D.ome.tif
-DAPI_untreated02_R3D.ome.tif
 
-DAPI_aphidicolin01_R3D.ome.tif
 DAPI_aphidicolin02_R3D.ome.tif
 
-DAPI_camptothecin01_R3D.ome.tif
 DAPI_camptothecin02_R3D.ome.tif
 
-DAPI_etoposide01_R3D.ome.tif
 DAPI_etoposide02_R3D.ome.tif
 ```
 
 Rather than analysing files manually, we will create a workflow that discovers
 and processes all images automatically. First we develop the workflow step-by-step, 
 iteratively, tesing on one image. Then we create a function that incorporates
-each of the individual steps of the workdflow, for reproducibility. 
-We finally apply the function to all the images in our dataset to create metrics that could
-support our hypothesis.
+each of the individual steps of the workflow.
+Finally, we apply the function to all the images in our dataset to create reproducible
+metrics that we can use to test our hypothesis.
 
 ## Listing the Image Files
 
@@ -212,13 +208,6 @@ This approach is flexible and reproducible.
 If additional images are added later, the analysis will automatically include
 them.
 
-::::::::::::::::::::::::::::::::::::: challenge
-
-Why is it preferable to generate a file list automatically rather than typing
-individual filenames into a script?
-
-:::::::::::::::::::::::: solution
-
 Automatically generating a file list:
 
 - reduces typing errors
@@ -226,9 +215,6 @@ Automatically generating a file list:
 - improves reproducibility
 - requires less maintenance
 
-:::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## DNA Content and the Cell Cycle
 
@@ -264,7 +250,7 @@ Computers allocate memory in bytes (1-byte = 8-bits). Therefore, a 12-bit
 image has pixel data that are too large to be stored in a single byte 
 but the largest intensity value (4095) is only 6% of the total range that could be 
 stored in a 2-byte pixel (65,536 intensity values). Consequently, we store them
-in a 16-bit file format and when EBImage reads them into memory and converts the 
+in a 16-bit file format to preserve the data and when EBImage reads them into memory and converts the 
 integers into the range between 0 and 1, the largest possible value is 0.0624856.
 This leads to images that are very dark when displayed on the screen, unless we 
 change the display. We could set the `inputRange` in the normalize function so that the 
@@ -293,9 +279,9 @@ mask <- opening(
 )
 mask <- fillHull(mask)
 
-labels <- watershed(
-  distmap(mask)
-)
+labels <- mask |>
+  distmap() |>
+    watershed()
 ```
 
 ## Why Use Otsu's Thresholding Method?
@@ -517,7 +503,7 @@ measure_dna_content <- function(image_file) {
   features <- cbind(basic_features, shape_features)
 
   features <- features |>
-  mutate( integrated_intensity = b.mean * s.area)
+  mutate(integrated_intensity = b.mean * s.area)
   
   features
 
@@ -1159,8 +1145,37 @@ This structure makes downstream analysis straightforward.
 
 ## DNA Content Histograms by Treatment
 
-Visualise the DNA-content distributions.
+Visualise the DNA-content distributions. First - let's see how many nuclei we've 
+counted in each condition. The `table()` function creates a contingency table 
+for a single column.
+Alternatively we can use dplyr functions to summarise the data.
 
+
+``` r
+table(all_measurements$treatment)
+```
+
+``` output
+
+ aphidicolin camptothecin    etoposide    untreated 
+        2005         1778         1788         3355 
+```
+
+``` r
+all_measurements |>
+    group_by(treatment) |>
+    summarise(n())
+```
+
+``` output
+# A tibble: 4 × 2
+  treatment    `n()`
+  <chr>        <int>
+1 aphidicolin   2005
+2 camptothecin  1778
+3 etoposide     1788
+4 untreated     3355
+```
 
 ``` r
 ggplot(
@@ -1220,7 +1235,8 @@ G2/M
 ```
 
 The exact thresholds depend on the experiment and are typically chosen by
-examining the DNA-content histogram. 【1-0cef45】
+examining the DNA-content histogram. We can add a "phase "variable to our table to 
+classify the nuclei based on the value of the integrated_intensity column. 
 
 Example gates:
 
@@ -1240,15 +1256,28 @@ Inspect the results.
 
 
 ``` r
-table(
-  all_measurements$phase
-)
+table(all_measurements$phase)
 ```
 
 ``` output
 
   G1 G2/M    S 
 4458 1827 2641 
+```
+
+``` r
+all_measurements |>
+    group_by(phase) |>
+    summarise(n())
+```
+
+``` output
+# A tibble: 3 × 2
+  phase `n()`
+  <chr> <int>
+1 G1     4458
+2 G2/M   1827
+3 S      2641
 ```
 
 ::::::::::::::::::::::::::::::::::::: callout
@@ -1265,34 +1294,50 @@ distributions.
 ## Calculating Cell-Cycle Percentages
 
 Calculate the percentage of cells in each phase.  This table is in the tidy format, 
-but it's hard to see and summarise. We can also create a visually appealing summary table.
+with one case per row and one variable per column.
+But this makes it hard to see trends and summarise. 
+We can also create a visually appealing summary table using the dplyr's `group_by()`
+function
 
 
 ``` r
-phase_summary <- aggregate(
-  integrated_intensity ~ treatment + phase,
-  data = all_measurements,
-  FUN = length
-)
+phase_summary <- all_measurements |>
+    group_by(phase, treatment) |>
+    summarise(n())
+```
 
-names(phase_summary)[3] <- "count"
+``` output
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by phase and treatment.
+ℹ Output is grouped by phase.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(phase, treatment))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
+```
+
+``` r
+names(phase_summary) <- c("phase","treatment","count")
+
 phase_summary
 ```
 
 ``` output
-      treatment phase count
-1   aphidicolin    G1   967
-2  camptothecin    G1   729
-3     etoposide    G1   353
-4     untreated    G1  2409
-5   aphidicolin  G2/M   220
-6  camptothecin  G2/M   213
-7     etoposide  G2/M  1154
-8     untreated  G2/M   240
-9   aphidicolin     S   818
-10 camptothecin     S   836
-11    etoposide     S   281
-12    untreated     S   706
+# A tibble: 12 × 3
+# Groups:   phase [3]
+   phase treatment    count
+   <chr> <chr>        <int>
+ 1 G1    aphidicolin    967
+ 2 G1    camptothecin   729
+ 3 G1    etoposide      353
+ 4 G1    untreated     2409
+ 5 G2/M  aphidicolin    220
+ 6 G2/M  camptothecin   213
+ 7 G2/M  etoposide     1154
+ 8 G2/M  untreated      240
+ 9 S     aphidicolin    818
+10 S     camptothecin   836
+11 S     etoposide      281
+12 S     untreated      706
 ```
 
 Calculate percentages within each treatment. 
@@ -1348,29 +1393,32 @@ cell_cycle_table
 4 etoposide     19.7   64.5  15.7
 ```
 
-Inspect the summary table.
+Change "untreated" to "control" and Inspect the summary table.
 
 
 ``` r
+phase_summary <- phase_summary |>
+  mutate(treatment = ifelse(treatment == "untreated", "control",treatment))
+
 phase_summary
 ```
 
 ``` output
 # A tibble: 12 × 4
-   treatment    phase count percentage
-   <chr>        <chr> <int>      <dbl>
- 1 aphidicolin  G1      967      48.2 
- 2 camptothecin G1      729      41.0 
- 3 etoposide    G1      353      19.7 
- 4 untreated    G1     2409      71.8 
- 5 aphidicolin  G2/M    220      11.0 
- 6 camptothecin G2/M    213      12.0 
- 7 etoposide    G2/M   1154      64.5 
- 8 untreated    G2/M    240       7.15
- 9 aphidicolin  S       818      40.8 
-10 camptothecin S       836      47.0 
-11 etoposide    S       281      15.7 
-12 untreated    S       706      21.0 
+   phase treatment    count percentage
+   <chr> <chr>        <int>      <dbl>
+ 1 G1    aphidicolin    967      48.2 
+ 2 G1    camptothecin   729      41.0 
+ 3 G1    etoposide      353      19.7 
+ 4 G1    control       2409      71.8 
+ 5 G2/M  aphidicolin    220      11.0 
+ 6 G2/M  camptothecin   213      12.0 
+ 7 G2/M  etoposide     1154      64.5 
+ 8 G2/M  control        240       7.15
+ 9 S     aphidicolin    818      40.8 
+10 S     camptothecin   836      47.0 
+11 S     etoposide      281      15.7 
+12 S     control        706      21.0 
 ```
 
 ## Visualising Cell-Cycle Distributions

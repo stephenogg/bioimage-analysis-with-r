@@ -29,7 +29,7 @@ exercises: 30
 
 In the previous lesson we used thresholding to create binary images.
 
-Thresholding allows us to separate pixels into two classes:
+Binary image have only two values. Thresholding allows us to separate pixels into two classes:
 
 ```text
 Foreground (These pixels are those you care about - objects)
@@ -47,9 +47,9 @@ foreground pixels.
 For example, we may wish to:
 
 - count nuclei
-- measure cell size
+- measure cell or nuclear size
 - quantify fluorescence intensity
-- compare object shape descriptors
+- compare object shapes
 
 To perform these measurements, we must first identify individual objects.
 
@@ -104,7 +104,7 @@ img <- readImage(
   img <- img[,,1]
 ```
 
-If you want, display the image with `display(img)`. By now, you probably knwo 
+If you want, display the image with `display(img)`. By now, you probably know 
 what this image looks like. 
 
 ## Creating a Binary Mask
@@ -127,7 +127,7 @@ display(mask)
 
 <img src="fig/08-segmentation-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" />
 
-The resulting image contains only two classes:
+The resulting image contains only two pixel values (0/1) often termed classes:
 
 ```text
 Foreground (things you care about, your 'objects')
@@ -230,9 +230,9 @@ pixels as unique objects. You can imagine that a labeller starts at a pixel with
 remember, at this point, there are only 0s and 1s. It then traverses the entire matrix. 
 Every time it encounters a pixel with a value of 1, it assigns it to the next value in turn. 
 I.e. the first object gets that value 1, the second object gets the value 2 and so on, until 
-every pixel has been visited. All the pixels that had a value of 0 remain 0, 
-but every pixel that was 1 is now assigned to a unique number depending on the position 
-of the object in relation to the starting point of the labeller. 
+every pixel has been visited and all pixels that used to have a value of 1 now have different values. 
+All the pixels that had a value of 0 remain 0, but every pixel that was 1 is now assigned to a unique 
+number depending on the position of the object in relation to the starting point of the labeller. 
 Every pixel that has value 1 is first checked to see whether it is connected to another pixel 
 of value > 0 before it is assigned a new unique value. 
 Pixel values are changed so that every pixel in a single object gets the 
@@ -278,6 +278,15 @@ display(colorLabels(labels))
 <img src="fig/08-segmentation-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" />
 
 Each colour represents a different object.
+We can also use R's pipe operator (`|>`) to make this a bit easier to read.
+
+```r
+labels |>
+  colorLabels() |>
+    display()
+```
+
+
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -448,7 +457,7 @@ Segmentation determines which pixels belong to each object.
 ## Looking Ahead
 
 In this lesson we transformed image pixels into labelled objects.
-As welearned, a single threshold is often only the first step of creating a biologically 
+As we learned, a single threshold is often only the first step of creating a biologically 
 meaningful segmentation. 
 In the next lesson we will explore tools refine these masks, to make them more relevant. 
 Only after we have a reasonable segmentation and labelling strategy, does it make sense 

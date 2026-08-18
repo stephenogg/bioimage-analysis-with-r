@@ -214,14 +214,14 @@ The structuring element determines how neighbouring pixels influence the
 operation. The structuring element defines the size and shape of the neighbourhood 
 used in the operation. Larger brushes produce larger changes to object boundaries, 
 while smaller brushes produce more subtle effects. using a brush with a size = 3
-is roughly equivalent to dilating or eroding by one pixel. In EBImage, the two operations
-are `erosion()` and `dilation()`. Each function takes two arguments, 
-a binary image to refine and the structuring element (aka `brush`) 
-that determines the size of the change that the function creates.
+is roughly equivalent to dilating or eroding by one pixel. In EBImage,
+the two basic morphological operations are `erosion()` and `dilation()`. 
+Each function takes two arguments,a binary image to refine and the structuring element (aka `brush`). 
+The `brush` determines the size of the change that the function creates.
 
 ## Dilation
 
-Dilation expands foreground objects. It adds pixels to the boundaries of objects.
+Dilation expands foreground objects. It adds pixels to the boundaries/perimeters of objects.
 
 
 ``` r
@@ -264,7 +264,7 @@ Dilation adds pixels to object boundaries, making objects larger.
 
 ## Erosion
 
-Erosion removes pixels from object boundaries.
+Erosion does the opposite of dilation. Erosion removes pixels from object boundaries.
 
 
 ``` r
@@ -305,14 +305,14 @@ Very small objects may be reduced substantially or disappear completely.
 
 ## Opening & Closing
 
-Usually, you don't want to significantly change the obect's size. 
-Opening and closing are used instead of basic erosion and dilation 
+Usually, you don't want to significantly change an object's size. 
+`Opening` and `closing` are used instead of basic `erosion` and `dilation` 
 to maintain object size. 
-Opening removes small dots and breaks thin lines. 
-Closing fills small holes and joins broken parts. In contrast, 
-Erosion/Dilation changes the size of objects.
+`Opening` removes small dots and breaks thin lines. 
+`Closing` fills small holes and joins broken parts. In contrast, 
+`erosion` and `dilation` change the size of objects.
 
-Opening is one erosion operation followed by one dilation operation.
+Opening is defined as one erosion operation followed by one dilation operation.
 
 
 ``` r
@@ -334,7 +334,7 @@ display(
 
 <img src="fig/09-morphological-operations-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" />
 
-Opening is often used to remove small objects and noise.
+Opening is often used to remove small objects and single pixel noise.
 
 ### What Opening Does
 
@@ -345,7 +345,7 @@ Small Artefacts -> Removed
 while larger objects are largely preserved.
 
 
-Closing is the opposite of Opening is one dilation followed by one erosion.
+Closing is the opposite of Opening. It is defined as one dilation followed by one erosion.
 
 
 ``` r
@@ -403,8 +403,8 @@ are small holes in the objects, then Closing would be useful.
 See this figure of a noisy thresholded image of a fingerprint.
 
 ![Noisy Fingerprint](fig/09-morphological-operations/fingerprint_noisy.png){alt="fingerprint binary image corupted with noise." width="32%"}
-![Noisy Fingerprint](fig/09-morphological-operations/fingerprint_open.png){alt="fingerprint binary image corupted with noise." width="32%"}
-![Noisy Fingerprint](fig/09-morphological-operations/fingerprint_close.png){alt="fingerprint binary image corupted with noise." width="32%"}
+![Opened Fingerprint](fig/09-morphological-operations/fingerprint_open.png){alt=" binary image, noise removed with opening." width="32%"}
+![Clsoed Fingerprint](fig/09-morphological-operations/fingerprint_close.png){alt="binary image, noise removed with closing." width="32%"}
 Fingreprint Corrupted With Noise.       Fingreprint Opened            Fingerprint Opened & Closed
 
 ## Filling Holes
@@ -443,7 +443,8 @@ display(
 <img src="fig/09-morphological-operations-rendered-unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" />
 
 This operation is particularly useful when working with nuclei, as nucleoli are 
-often less bright than the neighbouring nucleoplasm. 
+often less bright than the neighbouring nucleoplasm and often results in holes in the 
+binary images.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -456,7 +457,7 @@ regions.
 
 ## The Problem of Touching Objects
 
-Thresholding often merges neighbouring nuclei into a single object.
+Thresholding often merges neighbouring objects into a single object.
 
 There are several examples of this issue in our binary image of nuclei.
 
@@ -466,11 +467,12 @@ This phenomenon is called **under-segmentation**.
 ## Distance Maps
 
 One approach to separating touching objects involves calculating the distance
-from each foreground pixel to the nearest background pixel. The `distmap()` function
-from EBImage calculates this. Note that again, the input is a binary image and the 
-ouput is another image where the pixel values indicate fow far each pixel is from 
-the nearest background pixel. Because these matrixes have pixel values, we can 
-visualise these images. 
+from each foreground pixel to the nearest background pixel, followed by the watershed operation. The `distmap()` function
+from EBImage calculates a euclidean distance map. Note that again, the input is a binary image and the 
+ouput is another image where the pixel values indicate how far each pixel is from 
+the nearest background pixel. pixels at the border get a value of 1. 
+Each successive pixel distance is assigned an increased value. Because these matrices have pixel values, we can 
+visualise them as images. 
 
 Create a distance map.
 
@@ -492,19 +494,7 @@ display(
 
 Bright regions correspond to pixels located near object centres.
 
-::::::::::::::::::::::::::::::::::::: challenge
 
-Where do you expect the largest distance values to occur?
-
-:::::::::::::::::::::::: solution
-
-Near the centres of objects.
-
-These pixels are furthest from the object boundaries.
-
-:::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## How Watershed Segmentation Works
 
@@ -524,7 +514,7 @@ Object Centre
 
 Object Boundary
       ↓
-     Ridge
+    Ridge
 ```
 
 For two touching nuclei, the inverted distance map might look something like:
@@ -580,7 +570,8 @@ A useful way to think about watershed segmentation is:
 > "If water were poured into each object centre, where would neighbouring
 > pools of water meet?"
 
-The watershed boundary is constructed at those meeting points.
+The watershed boundary is constructed at those meeting points. In EBImage, 
+the watershed algorithm (`watershed`) operates on a distance map.
 
 
 ``` r
@@ -654,9 +645,9 @@ A typical workflow might be:
 ```text
 Image
   ↓
-Threshold
+Explore Different Thresholds
   ↓
-Morphological Operations
+Iteratively Apply Morphological Operations
   ↓
 Distance Map
   ↓
@@ -666,8 +657,8 @@ Labelled Objects
 ```
 
 Each stage improves the quality of the final segmentation. 
-Note that in some watershed implementations (e.g. Fiji) includes the distance map
-operation as part of the watershed. 
+Note that in some watershed implementations (e.g. Fiji) the distance map
+operation is part of the watershed function. 
 
 ::::::::::::::::::::::::::::::::::::: callout
 

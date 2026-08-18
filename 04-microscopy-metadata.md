@@ -90,7 +90,7 @@ Pixel intensity values are image data, not metadata.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Common Microscopy Metadata
+## Common Microscopy Metadata - REMBI
 
 Modern imaging experiments generate large amounts of metadata.
 
@@ -295,10 +295,10 @@ Unlike EBImage, which focuses primarily on the image data for image processing a
 RBioFormats was designed to provide access to microscopy image metadata as well
 as image data.
 
-Throughout this lesson we will continue to use EBImage because it provides a
+Throughout *this* lesson though, we will continue to use EBImage because it provides a
 simple and accessible environment for learning image-analysis concepts.
 
-## Image versus AnnotatedImage
+## `Image` versus `AnnotatedImage`
 
 Images can be represented in different ways by different software packages.
 
@@ -336,7 +336,7 @@ Image
 └── Pixel Array
 ```
 
-The object primarily stores image data.
+The object stores primarily image data and minimal metadata (colorMode and array dimensions)
 
 In contrast, when an image is loaded using RBioFormats in R it is represented as an
 `AnnotatedImage` object:
@@ -375,12 +375,16 @@ Conceptually:
 AnnotatedImage
 |
 ├── Pixel Array
-└── Metadata
-    |
-    ├── Pixel Size
-    ├── Channel Names
-    ├── Acquisition Settings
-    └── Instrument Information
+├── coreMetadata
+|   |
+|   ├── Pixel Size
+|   ├── Channel Names
+|   ├── Acquisition Settings
+|   └── Instrument Information
+|
+├── globalMetadata
+|
+├── xeriesMetadata
 ```
 
 `AnnotatedImage` objects preserve the relationship between image data and metadata.
@@ -472,14 +476,15 @@ display(img)
 
 The image can be analysed successfully.
 
-However, the resulting object primarily represents *only* the image pixel data.
+However, the resulting object represents *only* the image pixel data.
 
 ::::::::::::::::::::::::::::::::::::: spoiler
 
 ### Try RBioFormats
 
 The `RBioFromats` library provides an equivalent function to the `EBImage readImage()` 
-function: `read.image()`.
+function: `read.image()`. This function reads pixel data and metadat from file types 
+that containt metadata.
 
 We don't use it here due to RBioFormats dependence on Java and the resulting headaches 
 this can cause. I have included it in the environment file used when you created 
@@ -498,6 +503,8 @@ BioFormats library version 7.3.0
 ```
 
 ``` r
+library(EBImage)
+
 bio_img <- read.image(
   "data/04-microscopy-metadata/Actin.ome.tif"
 )

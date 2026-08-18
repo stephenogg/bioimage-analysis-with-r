@@ -67,7 +67,7 @@ Read an image.
 ``` r
   img <- readImage(system.file('images', 'cells.tif', package='EBImage')
   )
-# cells.tif contains 4 frames, let's subset the data so that our image object contains on ly the first frame.
+# cells.tif contains 4 frames, let's subset the data so that our image object contains only the first frame.
   img<- img[,,1]
 ```
 
@@ -116,17 +116,17 @@ hist(
 par(mfrow = c(1,1))
 ```
 
-The histogram describes the distribution of pixel values that comprise the
-image. NB when we call the histogram function on a vector as above, 
-R uses the base graphics version of the histogram function. When we call it on an image object, 
-the EBImage version of hist() is used. If you prefer one or the other, you can 
-specify it in the function call -- `graphics::hist()` or `EBImage::hist()`
+N.B. when we call the histogram function on a vector object, 
+R uses the base graphics version of the histogram function. 
+When we call it on an image object, the EBImage version of hist() is used. 
+If you prefer one or the other, you can specify it in the function call 
+-- `graphics::hist()` or `EBImage::hist()`
 
 ## Point Operations
 
 Many image enhancement methods are known as **point operations**.
 
-A point operation calculates each output pixel value using only the corresponding
+A point operation calculates each output pixel value using only the
 input pixel value.
 
 Conceptually:
@@ -197,30 +197,30 @@ The pixel values have changed.
 Consequently, the histogram has also changed.
 
 Unlike some of the display operations in the previous lesson, inversion modifies the
-underlying image data.
+underlying image data. Note that because we saved this data to a new object, 
+we did *NOT* overwrite our original data.
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-A pixel has an intensity value of:
+If a pixel has an intensity value of: `0.8`
 
-```text
-0.8
-```
+If a pixel has an intensity value of: `0.2`
 
-What value will it have after inversion?
+What values will they have after inversion?
 
 :::::::::::::::::::::::: solution
 
 Inversion calculates:
 
 ```text
-1 - 0.8
+1 - 0.8 = 0.2
+1 - 0.2 = 0.8
 ```
 
 giving:
 
 ```text
-0.2
+0.2 & 0.8
 ```
 
 Bright pixels become dark and dark pixels become bright.
@@ -268,13 +268,13 @@ range(img_bright)
 But what happens to pixel intensity values that end up greater than 1 after the multiplication? 
 Remember that when the data are read into an image object by EBImage's `readImage()` function, 
 the integer values are scaled between 0 and 1. 
-While multiplying will make these values bigger (and therefore brigther), 
+While multiplying will make these values bigger (and therefore brighter), 
 There is a potential for a pixel to have a value greater than 1. 
-In our example above, any pixel with a value of > 0.5 in the original image will 
-have a value > 1 in img_bright. Pixel values greater than 1 will be clipped because 
-an image display expects an image to have values between 0 and 1. 
-The display will silently map any values that are greater than 1 to the brightest 
-intensity available --- 1.0
+In our example above, any pixel with a value of > 0.5 in `img` will 
+have a value > 1 in `img_bright`. Pixel values greater than 1 will be clipped because 
+an image display expects an image to have a range of 0 to 1. 
+The display may silently map any values that are greater than 1 to the brightest 
+intensity available --- 1.0.
 
 
 We can visualise where the pixels with values greater than one are by thresholding 
@@ -567,7 +567,7 @@ values rather than image appearance.
 
 Which of the following modify image data?
 
-1. Changing a lookup table
+1. Inverting a lookup table
 2. Adjusting display contrast
 3. Inverting an image
 4. Thresholding an image

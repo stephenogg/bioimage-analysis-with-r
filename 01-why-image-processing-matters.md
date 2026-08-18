@@ -149,6 +149,8 @@ A key goal of image analysis is not simply to work faster.
 
 It is to produce measurements that can be reproduced, inspected, and verified.
 
+See [this](https://rdcu.be/fAnXm) paper for an introduction to the reproducibility crisis.
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Common Applications of Bioimage Analysis
@@ -157,29 +159,23 @@ Image processing is used throughout the life sciences.
 
 Examples include:
 
-### Cell Counting
+- ### Cell Counting
+  Determining the number of cells in a field of view.
 
-Determining the number of cells in a field of view.
+- ### Cell Segmentation
+  Identifying individual cells or nuclei.
 
-### Cell Segmentation
+- ### Fluorescence Quantification
+  Measuring gene expression or protein localisation.
 
-Identifying individual cells or nuclei.
+- ### Time-Lapse Imaging
+  Tracking cell movement over time.
 
-### Fluorescence Quantification
+- ### High-Content Screening
+  Analysing thousands of images generated during drug-discovery experiments.
 
-Measuring gene expression or protein localisation.
-
-### Time-Lapse Imaging
-
-Tracking cell movement over time.
-
-### High-Content Screening
-
-Analysing thousands of images generated during drug-discovery experiments.
-
-### Spatial Biology
-
-Measuring the organisation of cells and tissues.
+- ### Spatial Biology
+  Measuring the organisation of cells and tissues.
 
 ## Example: Measuring Cell Size
 
@@ -249,6 +245,8 @@ Image analysis becomes increasingly valuable as datasets grow in size.
 ## Discussion
 
 ![Human Cells/Phase Contrast](fig/01-why-image-processing-matters/DIC_cheekcellspc.jpg){alt="Images of human cheek cells with phase contrast" width="45%"} ![Human Cells/DIC](fig/01-why-image-processing-matters/DIC_cheekcellsdic.jpg){alt="Images of human cheek cells with DIC" width="45%"}
+---
+
 **Human Cells viewed with Phase and differential Interference Contrast**
 
 ---
