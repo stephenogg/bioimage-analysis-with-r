@@ -334,6 +334,51 @@ Notice that we are no longer visualising an image.
 
 Instead, we are visualising measurements extracted from biological objects.
 
+::::::::::::::::::::::::::::::::::::::::::spoiler
+
+## Associating individual objects with their measurements
+
+We can plot summary data using histograms or boxplots, but sometimes it is 
+useful to know exactly which measurements came from which object. 
+In R, it's not straight forward to do this, you can use base R's plotting tools, 
+or use the `annotated_image()` function from the image magick library. 
+Briefly, this is the strategy:
+
+  ```r
+  library(tidyverse)
+  library(magick)
+  
+  # Get Object Centres
+  moment_features <- as.data.frame(computeFeatures.moment(labels))
+  centroids <- select(moment_features, m.cx, m.cy)
+  
+  # Add boundaries of objects to the image.
+  image_with_objects <- paintObjects(labels, nuclei, col='#ff00ff')
+  
+  #  the EBImage data to raw format and read it into magick
+  raw_png <- writeImage(image_with_objects, files = tempfile(fileext = ".png"), type = "png")
+  magick_img <- image_read(raw_png)
+  
+  # Loop through every object and burn labels onto the image matrix
+  for (i in 1:nrow(centroids)){
+    label_text <- paste0("ID:", i)
+    loc_string <- paste0("+", round(centroids[i, "m.cx"]), "+", round(centroids[i, "m.cy"]))
+    magick_img <- image_annotate(
+      magick_img, 
+      text = label_text, 
+      location = loc_string, 
+      size = 12, 
+      color = "yellow", 
+      font = "sans", 
+      weight = 700
+    )
+  }
+  
+  magick_img
+  ```
+
+::::::::::::::::::::::::::::::::::::::::::
+
 ## Exploring Shape Measurements
 
 Nuclei can be described using many measurements.
@@ -364,28 +409,12 @@ are too big and likely to be merged objects.
 
 Perhaps something like this:
 
-
-``` r
+```r
 library(tidyverse) 
-```
 
-``` output
-── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.1     ✔ readr     2.2.0
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ lubridate 1.9.5     ✔ tibble    3.3.1
-✔ purrr     1.2.2     ✔ tidyr     1.3.2
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::combine()   masks EBImage::combine()
-✖ dplyr::filter()    masks stats::filter()
-✖ dplyr::lag()       masks stats::lag()
-✖ purrr::transpose() masks EBImage::transpose()
-ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-```
-
-``` r
 filtered_df <- shape_df |>
   filter(s.area > 250 & s.area < 1000)
+
 ```
 
 
@@ -529,7 +558,7 @@ ggplot(
   )
 ```
 
-<img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-26-1.png" alt="" style="display: block; margin: auto;" />
 
 Plots such as this can help identify biological relationships between
 measurements.
@@ -566,7 +595,7 @@ ggplot(
   )
 ```
 
-<img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-28-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-27-1.png" alt="" style="display: block; margin: auto;" />
 
 The histogram summarises the intensity measurements for every segmented nucleus.
 
@@ -587,6 +616,7 @@ Rather than simply observing that cells "look different", we can measure and
 visualise those differences quantitatively.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## From Measurements to Biological Insight
 
@@ -900,7 +930,7 @@ ggplot(
   )
 ```
 
-<img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-34-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/10-measuring-biological-objects-rendered-unnamed-chunk-33-1.png" alt="" style="display: block; margin: auto;" />
 
 A single workflow has now produced measurements from four separate images.
 
