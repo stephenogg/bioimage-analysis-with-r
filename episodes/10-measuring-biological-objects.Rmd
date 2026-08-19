@@ -273,6 +273,51 @@ Notice that we are no longer visualising an image.
 
 Instead, we are visualising measurements extracted from biological objects.
 
+::::::::::::::::::::::::::::::::::::::::::spoiler
+
+## Associating individual objects with their measurements
+
+We can plot summary data using histograms or boxplots, but sometimes it is 
+useful to know exactly which measurements came from which object. 
+In R, it's not straight forward to do this, you can use base R's plotting tools, 
+or use the `annotated_image()` function from the image magick library. 
+Briefly, this is the strategy:
+
+  ```r
+  library(tidyverse)
+  library(magick)
+  
+  # Get Object Centres
+  moment_features <- as.data.frame(computeFeatures.moment(labels))
+  centroids <- select(moment_features, m.cx, m.cy)
+  
+  # Add boundaries of objects to the image.
+  image_with_objects <- paintObjects(labels, nuclei, col='#ff00ff')
+  
+  #  the EBImage data to raw format and read it into magick
+  raw_png <- writeImage(image_with_objects, files = tempfile(fileext = ".png"), type = "png")
+  magick_img <- image_read(raw_png)
+  
+  # Loop through every object and burn labels onto the image matrix
+  for (i in 1:nrow(centroids)){
+    label_text <- paste0("ID:", i)
+    loc_string <- paste0("+", round(centroids[i, "m.cx"]), "+", round(centroids[i, "m.cy"]))
+    magick_img <- image_annotate(
+      magick_img, 
+      text = label_text, 
+      location = loc_string, 
+      size = 12, 
+      color = "yellow", 
+      font = "sans", 
+      weight = 700
+    )
+  }
+  
+  magick_img
+  ```
+
+::::::::::::::::::::::::::::::::::::::::::
+
 ## Exploring Shape Measurements
 
 Nuclei can be described using many measurements.
@@ -300,7 +345,7 @@ are too big and likely to be merged objects.
 
 Perhaps something like this:
 
-```{r}
+```r
 library(tidyverse) 
 
 filtered_df <- shape_df |>
@@ -465,6 +510,7 @@ Rather than simply observing that cells "look different", we can measure and
 visualise those differences quantitatively.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## From Measurements to Biological Insight
 

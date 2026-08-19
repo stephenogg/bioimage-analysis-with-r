@@ -202,6 +202,35 @@ often part of an initial classification strategy.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::spoiler
+
+## Adaptive thresholding
+
+We've been applying thresholds globally, asking whether a single value
+will separate pixels into foreground and background for the whole image. 
+EBImage also supplies a function to apply *adaptive thresholding*. 
+Adaptive thresholding converts a grayscale image into a binary image by 
+comparing each pixel's intensity to the local mean calculated inside a moving rectangular window, 
+adjusting automatically for uneven background illumination. In EBImage, 
+the `thresh()` function applies adaptive thresholding. As an example:
+
+```r
+  mask <- thresh(img, w=3, h=3, offset= 0.03)
+```
+
+Where:
+
+`img` is the object to segment.
+
+`w` and `h` are the half-width and half-height of the moving rectangular filter window. 
+  The total window size covers width 2w+1 and height 2h+1.
+
+`offset` is a numeric value subtracted or added as a tolerance from the local average intensity.
+
+:::::::::::::::::::::::::::::::::::::::
+
+
+
 ## A Binary Mask Is Not Yet Segmentation
 
 Although the binary mask separates foreground from background, it does not yet
@@ -298,21 +327,15 @@ The largest label number corresponds to the total number of detected objects in 
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-If the highest label value is:
-
-```text
-17
-```
-
-how many objects were detected?
+What happens if there are more than 256 objects in an image?
 
 :::::::::::::::::::::::: solution
 
-```text
-17 objects
-```
-
-Each object receives a unique label.
+Nothing special or limiting happens because EBImage label matrices store object 
+IDs as full 32-bit signed integers, allowing up to 2<sup>31</sup>-1 objects. However, 
+if you try to visualize the label map directly using `display()`, 
+values above 1 are clipped as pure white, requiring normalization (`x / max(x)`) 
+or `colorLabels()` to inspect properly.
 
 :::::::::::::::::::::::::::::::::
 
@@ -374,6 +397,8 @@ This can reveal:
 :::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 
 ## Common Segmentation Challenges
 
