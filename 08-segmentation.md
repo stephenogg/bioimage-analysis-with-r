@@ -94,14 +94,32 @@ Load EBImage.
 library(EBImage)
 ```
 
+``` error
+Error in `library()`:
+! there is no package called 'EBImage'
+```
+
 Read an image.
 
 
 ``` r
 img <- readImage(
   system.file("images", "nuclei.tif", package = "EBImage"))
+```
+
+``` error
+Error in `readImage()`:
+! could not find function "readImage"
+```
+
+``` r
   #Select a single frame for demonstration purposes.
   img <- img[,,1]
+```
+
+``` error
+Error:
+! object 'img' not found
 ```
 
 If you want, display the image with `display(img)`. By now, you probably know 
@@ -118,6 +136,11 @@ Create a binary mask.
 mask <- img > 0.2
 ```
 
+``` error
+Error:
+! object 'img' not found
+```
+
 Display the result.
 
 
@@ -125,7 +148,10 @@ Display the result.
 display(mask)
 ```
 
-<img src="fig/08-segmentation-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 The resulting image contains only two pixel values (0/1) often termed classes:
 
@@ -164,10 +190,29 @@ Create several masks.
 
 ``` r
 mask_1 <- img > 0.1
+```
 
+``` error
+Error:
+! object 'img' not found
+```
+
+``` r
 mask_2 <- img > 0.2
+```
 
+``` error
+Error:
+! object 'img' not found
+```
+
+``` r
 mask_3 <- img > 0.3
+```
+
+``` error
+Error:
+! object 'img' not found
 ```
 
 Display them.
@@ -184,7 +229,10 @@ display(
 )
 ```
 
-<img src="fig/08-segmentation-rendered-unnamed-chunk-6-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 Notice how increasing the threshold changes the detected objects.
 
@@ -297,6 +345,11 @@ typically from `bwlabel()`) and returns a color-coded image where adjacent objec
 labels <- bwlabel(mask)
 ```
 
+``` error
+Error in `bwlabel()`:
+! could not find function "bwlabel"
+```
+
 Inspect the result.
 
 
@@ -304,7 +357,10 @@ Inspect the result.
 display(colorLabels(labels))
 ```
 
-<img src="fig/08-segmentation-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 Each colour represents a different object.
 We can also use R's pipe operator (`|>`) to make this a bit easier to read.
@@ -338,8 +394,9 @@ Inspect the labels.
 max(labels)
 ```
 
-``` output
-[1] 74
+``` error
+Error in `max()`:
+! invalid 'type' (closure) of argument
 ```
 
 The largest label number corresponds to the total number of detected objects in the image.
@@ -379,7 +436,10 @@ display(
 )
 ```
 
-<img src="fig/08-segmentation-rendered-unnamed-chunk-10-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 Comparing the original image and segmentation result allows us to identify
 errors and missed objects.
@@ -397,11 +457,21 @@ overlay <- paintObjects(
   labels,
   toRGB(img)
 )
+```
 
+``` error
+Error in `paintObjects()`:
+! could not find function "paintObjects"
+```
+
+``` r
 display(overlay)
 ```
 
-<img src="fig/08-segmentation-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 This allows the image data and segmentation result to be viewed together.
 

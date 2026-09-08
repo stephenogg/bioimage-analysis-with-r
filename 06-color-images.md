@@ -57,11 +57,31 @@ in culture fixed and stained with the DNA binding dye - DAPI.
 
 ``` r
 library(EBImage)
+```
 
+``` error
+Error in `library()`:
+! there is no package called 'EBImage'
+```
+
+``` r
 img <- readImage(
   system.file("images", "nuclei.tif", package = "EBImage"))
+```
+
+``` error
+Error in `readImage()`:
+! could not find function "readImage"
+```
+
+``` r
   #Select a single frame for demonstration purposes. The dataset contains four images
   img <- img[,,1]
+```
+
+``` error
+Error:
+! object 'img' not found
 ```
 
 Display the image.
@@ -71,7 +91,10 @@ Display the image.
 display(img)
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 Determine its colour mode. EBImage has two color modes. Mode 0 is `Grayscale` and 
 Mode 2 is `Color`. You can find the colormode with the `colorMode()` function or by 
@@ -83,46 +106,27 @@ You can also use the base R function `str()`.
 colorMode(img)
 ```
 
-``` output
-[1] 0
+``` error
+Error in `colorMode()`:
+! could not find function "colorMode"
 ```
 
 ``` r
 img
 ```
 
-``` output
-Image 
-  colorMode    : Grayscale 
-  storage.mode : double 
-  dim          : 510 510 
-  frames.total : 1 
-  frames.render: 1 
-
-imageData(object)[1:5,1:6]
-           [,1]       [,2]       [,3]       [,4]       [,5]       [,6]
-[1,] 0.06274510 0.07450980 0.07058824 0.08235294 0.10588235 0.09803922
-[2,] 0.06274510 0.05882353 0.07843137 0.09019608 0.09019608 0.10588235
-[3,] 0.06666667 0.06666667 0.08235294 0.07843137 0.09411765 0.09411765
-[4,] 0.06666667 0.06666667 0.07058824 0.08627451 0.08627451 0.09803922
-[5,] 0.05882353 0.06666667 0.07058824 0.08235294 0.09411765 0.10588235
+``` error
+Error:
+! object 'img' not found
 ```
 
 ``` r
 str(img)
 ```
 
-``` output
-Formal class 'Image' [package "EBImage"] with 2 slots
-  ..@ .Data    : num [1:510, 1:510] 0.0627 0.0627 0.0667 0.0667 0.0588 ...
-  .. ..- attr(*, "dimnames")=List of 2
-  .. .. ..$ : NULL
-  .. .. ..$ : NULL
-  ..@ colormode: int 0
-  ..$ dim     : int [1:2] 510 510
-  ..$ dimnames:List of 2
-  .. ..$ : NULL
-  .. ..$ : NULL
+``` error
+Error:
+! object 'img' not found
 ```
 
 A grayscale image stores a single intensity value for every pixel.
@@ -253,6 +257,11 @@ rgb_img <- rgbImage(
 )
 ```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
 Display the result.
 
 
@@ -260,7 +269,10 @@ Display the result.
 display(rgb_img)
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 Determine its colour mode.
 
@@ -269,8 +281,9 @@ Determine its colour mode.
 colorMode(rgb_img)
 ```
 
-``` output
-[1] 2
+``` error
+Error in `colorMode()`:
+! could not find function "colorMode"
 ```
 
 ``` r
@@ -284,8 +297,9 @@ Compare the dimensions between the greyscale and colour versions of the image.
 dim(img)
 ```
 
-``` output
-[1] 510 510
+``` error
+Error:
+! object 'img' not found
 ```
 
 
@@ -293,8 +307,9 @@ dim(img)
 dim(rgb_img)
 ```
 
-``` output
-[1] 510 510   3
+``` error
+Error:
+! object 'rgb_img' not found
 ```
 
 The additional dimension corresponds to the 3 colour channels.
@@ -380,6 +395,11 @@ colour_img <- readImage(
 )
 ```
 
+``` error
+Error in `readImage()`:
+! could not find function "readImage"
+```
+
 Display the image.
 
 
@@ -387,7 +407,10 @@ Display the image.
 display(colour_img)
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-10-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 Note that the histogram of a colour image contains one distribution for each of 
 the colour channels. The base R graphics version of the histogram function will sum 
@@ -397,7 +420,10 @@ all the values from each of the channels.
 hist(colour_img)
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error:
+! object 'colour_img' not found
+```
 
 Inspect its dimensions and colorMode.
 
@@ -406,21 +432,9 @@ Inspect its dimensions and colorMode.
 colour_img
 ```
 
-``` output
-Image 
-  colorMode    : Color 
-  storage.mode : double 
-  dim          : 768 512 3 
-  frames.total : 3 
-  frames.render: 1 
-
-imageData(object)[1:5,1:6,1]
-          [,1]      [,2]      [,3]      [,4]      [,5]      [,6]
-[1,] 0.4549020 0.4784314 0.4941176 0.5137255 0.5294118 0.5529412
-[2,] 0.4588235 0.4784314 0.4941176 0.4980392 0.5215686 0.5490196
-[3,] 0.4705882 0.4823529 0.4980392 0.5137255 0.5294118 0.5372549
-[4,] 0.4666667 0.4745098 0.5058824 0.5137255 0.5450980 0.5647059
-[5,] 0.4705882 0.4705882 0.4901961 0.5137255 0.5372549 0.5647059
+``` error
+Error:
+! object 'colour_img' not found
 ```
 
 ``` r
@@ -436,10 +450,29 @@ Extract the individual colour channels. EBImage's `channel()` function.
 
 ``` r
 red_channel <- channel(colour_img, "red")
+```
 
+``` error
+Error in `channel()`:
+! could not find function "channel"
+```
+
+``` r
 green_channel <- channel(colour_img, "green")
+```
 
+``` error
+Error in `channel()`:
+! could not find function "channel"
+```
+
+``` r
 blue_channel <- channel(colour_img, "blue")
+```
+
+``` error
+Error in `channel()`:
+! could not find function "channel"
 ```
 
 Display the channels separately.
@@ -456,7 +489,10 @@ display(
 )
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-14-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 Notice that each channel is itself a grayscale image.
 
@@ -470,15 +506,36 @@ We can turn each image back into a color image and display those as well:
 red_col_channel <- rgbImage(
   red = red_channel
 )
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 green_col_channel <- rgbImage(
   green = green_channel
 )
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 blue_col_channel <- rgbImage(
   blue = blue_channel
 )
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 display(
   EBImage::combine(
     red_col_channel,
@@ -489,7 +546,10 @@ display(
 )
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-15-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
@@ -597,11 +657,21 @@ It might be displayed as:
 blue_nuc <- rgbImage(
   blue = img
 )
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 display(blue_nuc)
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-16-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 This matches our expectations because we know that DAPI emits in the "blue" range 
 of the visible spectrum, therefore we expect that images of DAPI fluorescence should be blue.
@@ -615,25 +685,56 @@ mag_nuc <- rgbImage(
   red = img/2,
   blue = img/2
 )
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 yel_nuc <- rgbImage(
   red = img/2,
   green = img/2,
 )
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 green_nuc <- rgbImage(
   green = img
 )
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 cyan_nuc <- rgbImage(
   green = img/2,
   blue = img/2
 )
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 display(EBImage::combine(rgb_img, blue_nuc, mag_nuc, yel_nuc, green_nuc, cyan_nuc), all = TRUE)
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 without altering the pixel values. We can even use color rather than hue 
 to represent intensity. EBImage has a function - `colormap()` that maps a grayscale 
@@ -642,10 +743,21 @@ image using a colormap.
 
 ``` r
 color_img <- colormap(img, palette = viridis::magma(256))
+```
+
+``` error
+Error in `colormap()`:
+! could not find function "colormap"
+```
+
+``` r
 display(color_img)
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-18-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 
 ## Creating Composite Images
@@ -682,19 +794,58 @@ Composite Image
 ``` r
 #Load the cell body images that correspond to the nuclei images
 cel <- readImage(system.file('images', 'cells.tif', package='EBImage'))
+```
 
+``` error
+Error in `readImage()`:
+! could not find function "readImage"
+```
+
+``` r
 #Select the first frame only for our demo. This is the same field of view as img[,,1]
 cel <- cel[,,1]
+```
 
+``` error
+Error:
+! object 'cel' not found
+```
+
+``` r
 cells_green <- rgbImage(green = cel, blue=img)
+```
+
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 cells_red   <- rgbImage(red = cel, blue = img/2, green = img/2)
+```
 
+``` error
+Error in `rgbImage()`:
+! could not find function "rgbImage"
+```
+
+``` r
 colour_cells <- EBImage::combine(cells_green, cells_red)
+```
 
+``` error
+Error in `loadNamespace()`:
+! there is no package called 'EBImage'
+```
+
+``` r
 display(colour_cells, all = TRUE)
 ```
 
-<img src="fig/06-color-images-rendered-unnamed-chunk-19-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error in `display()`:
+! could not find function "display"
+```
 
 The resulting image helps visualise the spatial relationships between the
 different biological structures.
