@@ -10,7 +10,7 @@ on:
 jobs:
   test-pr:
     name: "Test if pull request is valid"
-    if: ${{ github.event.action != 'closed' }}
+    if: ${{ github.event.action != 'closed' && github.actor != 'github-actions[bot]'}}
     runs-on: ubuntu-latest
     outputs:
       is_valid: ${{ steps.check-pr.outputs.VALID }}
